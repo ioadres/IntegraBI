@@ -10,7 +10,7 @@
     //Rutas
 
     .config(['$stateProvider', "ngRoutesCtrl",'$routeProvider', function ($stateProvider, ngRoutesCtrl,$routeProvider) {   
-    	$routeProvider.otherwise({redirectTo:'/'});     
+    	
         $stateProvider.state('Login', ngRoutesCtrl.LoginViewCtrl);
     }])
 

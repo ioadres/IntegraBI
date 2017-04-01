@@ -10,6 +10,9 @@
             Login : {
                 token: 'http://localhost:5000/api/token'
             },
+            User : {
+            	GetUserContext:'http://localhost:5000/api/user/GetUserContext'
+            },
             Home : {
             }
         }
@@ -26,7 +29,10 @@
         LoginViewCtrl: {
             url: '/',
             templateUrl: 'App/Module/Login/View/Index.html',
-            controller: 'LoginViewCtrl'
+            controller: 'LoginViewCtrl',
+            data: {
+            	guestAccess : true
+            }
         },
     })
 

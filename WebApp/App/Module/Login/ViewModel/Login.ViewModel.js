@@ -26,10 +26,12 @@
             	var self = this;
             	ngLoadRequest.startBlock();
             	self.service.login(self.getModel()).then(function(result) {
-            		debugger;
-            		console.log(result);
-
-            	}).finally(function() {ngLoadRequest.requestSuccess();});
+            		ngAuth.loginToken(result.data);
+            		ngLoadRequest.startBlock();
+            		self.service.getUserContext().then(function(response) {
+            			ngAuth.login(response.data);
+            		}).finally(function() {ngLoadRequest.requestSuccess()});
+            	}).finally(function() {ngLoadRequest.requestSuccess()});
 
             }
 

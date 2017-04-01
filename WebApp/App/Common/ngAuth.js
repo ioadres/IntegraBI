@@ -4,48 +4,44 @@
     angular.module('ngAuth', ['ngCookies'])
 
         .factory('ngAuth', ['$cookies', '$state', '$rootScope', function ($cookies, $state, $rootScope) {
-            var usercontextcookie = "UserContextGame";
+            var ctokenintegrabi = "tokenintegrabi";
+            var UserContextCookie = "UserContextCookie";
 
             return {
+            	loginToken: function (token) {
+            		token.isAnonymus = false;
+            		$cookies.putObject(ctokenintegrabi, token);
+                    $rootScope.token = token;
+                },
                 login: function (UserContext) {
-                    $cookies.putObject(usercontextcookie, UserContext);
+                    $cookies.putObject(UserContextCookie, UserContext);
                     $rootScope.UserContext = UserContext;
                     $state.go('Home');
                 },
                 logout: function () {
-                    $cookies.remove(usercontextcookie);
+                    $cookies.remove(UserContextCookie);
                     $rootScope.UserContext = null;
+                    $rootScope.token = {
+                    	isAnonymus : true
+                    } 
                     $state.go('Login')
                 },
-                logoutCookie: function () {
-                    $cookies.remove(usercontextcookie);
-                    $rootScope.UserContext = null;
-                },
+
                 isLoggedIn: function () {
-                    return ($rootScope.UserContext) ? true : false;
+                    return $rootScope.isAnonymus = true;
                 },
+
                 getUser: function () {
-                    return $cookies.getObject(usercontextcookie);
-                },
-                getUserId: function () {
-                    return $cookies.getObject(usercontextcookie).UserId;
-                },
-                getUserName: function () {
-                    return $cookies.getObject(usercontextcookie).Username;
-                },
-                getEmail: function () {
-                    return $cookies.getObject(usercontextcookie).Email;
-                },
-                getRol: function () {
-                    return $cookies.getObject(usercontextcookie).Rol;
-                },
-                setEmail: function (email) {
-                    var UserContext = $cookies.getObject(usercontextcookie);
-                    UserContext.Email = email;
-                    $cookies.remove(usercontextcookie);
-                    $cookies.putObject(usercontextcookie, UserContext);
-                    $rootScope.UserContext = UserContext
-                }
+                	return $cookies.getObject(UserContextCookie);
+            	},
+            	getToken: function () {
+                	if($cookies.getObject(ctokenintegrabi) == null) {
+                		return {
+                			isAnonymus : true
+                		}
+                	}
+            	},
+
             }
         }])
 
@@ -53,7 +49,7 @@
         .factory('permissions', ['$cookies', function ($cookies) {
             return {
                 hasPermission: function (permission) {
-                    var VIEWS_CURRENT_USER = $cookies.getObject(usercontextcookie).Vistas;
+                    var VIEWS_CURRENT_USER = $cookies.getObject(ctokenintegrabi).Vistas;
                     permission = permission.trim();
                     return _.some(VIEWS_CURRENT_USER, function (item) {
                         if (_.isString(item.Nombre)) {

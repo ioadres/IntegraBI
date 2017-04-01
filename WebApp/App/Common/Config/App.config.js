@@ -10,7 +10,18 @@
             blockUIConfig.delay = 100;
         }])
 
-
+        .factory('sessionInjector', ['$rootScope', function($rootScope) {  
+        	$rootScope.token = {isAnonymus : true};
+	    	var sessionInjector = {
+		        request: function(config) {
+		            if ($rootScope.token != null && !$rootScope.token.isAnonymus) {
+		                config.headers['Authorization'] ='Bearer '+ $rootScope.token.access_token;
+		            }
+		            return config;
+		        }
+	    	}
+		    return sessionInjector;
+	}])
 
         .config([
             '$httpProvider', function ($httpProvider) {
@@ -24,10 +35,13 @@
                 $httpProvider.defaults.headers.get['Pragma'] = 'no-cachse';
         		$httpProvider.defaults.useXDomain = true;
 		        delete $httpProvider.defaults.headers.common['X-Requested-With'];
+		        $httpProvider.interceptors.push('sessionInjector');
                 // Disable IE ajax request caching
                 //  $httpProvider.defaults.headers.get['If-Modified-Since'] = '0';
             }
         ])
+
+
         .config(['$locationProvider', function ($locationProvider) {
             $locationProvider.hashPrefix('');
         }]);

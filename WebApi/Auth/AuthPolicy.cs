@@ -25,13 +25,6 @@ namespace WebApi.Auth
 					}
 				);
 
-				options.AddPolicy("Provider",
-					policy =>
-					{
-						policy.RequireRole("Provider");
-					}
-				);
-
 				options.AddPolicy("Admin",
 					policy =>
 					{

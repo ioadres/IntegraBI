@@ -1,10 +1,8 @@
 ﻿<Properties StartupConfiguration="{35DA2231-55FE-4343-8667-DCC4DEECA42C}|Default">
   <MonoDevelop.Ide.Workbench ActiveDocument="Estado de IntegraBI">
     <Files>
+      <File FileName="WebApi/Controllers/UserController.cs" Line="17" Column="29" />
       <File FileName="Estado de IntegraBI" />
-      <File FileName="WebApp/appsettings.json" Line="9" Column="1" />
-      <File FileName="WebApp/appsettings.Development.json" Line="9" Column="4" />
-      <File FileName="WebApi/appsettings.Development.json" Line="16" Column="4" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />

@@ -13,6 +13,7 @@
                     $rootScope.controller = ngRoutesCtrl;
                     $rootScope.translation = ngTranslations.getTranslationObject();
                     $rootScope.enumerados = ngEnumerados;
+                    $rootScope.token = ngAuth.getToken();
                     $rootScope.UserContext = ngAuth.getUser();
                     $rootScope.state = $state;
                     $rootScope.menuLeftActive = false;
@@ -26,12 +27,13 @@
                         blockUIConfig.message = "Un momentito";//$rootScope.translation.LabelMomento;
 
                        
-                        //### Si no es una pagina huesped  y el usuario no esta logueado --> redirect to Home
-                       /* if (!self.guestAccess(toState.data) && ngAuth.isLoggedIn() === false) {
+                        //### Si no es una pagina huesped  y el usuario no esta logueado --> redirect to Login
+                        if (!self.guestAccess(toState.data) && $rootScope.token.isAnonymus === true) {
                             e.preventDefault();
-                            $state.go('Home');
-                            $rootScope.state = $state.get('Home');
-                        }*/
+                            $state.go('Login');
+                            $rootScope.state = $state.get('Login');
+                            return;
+                        }
 
                         //### Si el usuario esta logueado, pero no tiene los permisos suficientes --> redirect to Home
                         if (ngAuth.isLoggedIn()) {

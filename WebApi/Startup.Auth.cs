@@ -66,11 +66,16 @@ namespace WebApi
 			var now = DateTime.UtcNow;
 			var user = await this._user.Login(username, password);
 			if (user != null) { 
-				return await Task.FromResult(new ClaimsIdentity(new GenericIdentity(user.Username, "Token"), new Claim[] {
-					new Claim(ClaimTypes.Role, user.Rol.Name, Configuration.GetSection("TokenAuthentication:Issuer").Value),
-					new Claim(JwtRegisteredClaimNames.Sub, user.Username),
-					new Claim(JwtRegisteredClaimNames.Iat, new DateTimeOffset(now).ToUniversalTime().ToUnixTimeSeconds().ToString(), ClaimValueTypes.Integer64)
-				}));
+				return await Task.FromResult(
+					new ClaimsIdentity(new GenericIdentity(user.Username, "Token"), new Claim[] {
+						new Claim("Role", user.Rol.Name),
+						new Claim("Username", user.Username),
+						new Claim("UserId", user.Id.ToString()),
+						new Claim(ClaimTypes.Role, user.Rol.Name, Configuration.GetSection("TokenAuthentication:Issuer").Value),
+						new Claim(JwtRegisteredClaimNames.Sub, user.Username),
+						new Claim(JwtRegisteredClaimNames.Iat, new DateTimeOffset(now).ToUniversalTime().ToUnixTimeSeconds().ToString(), ClaimValueTypes.Integer64)
+					})
+				);
 			}
 			//### Account doesn't exists
 			return await Task.FromResult<ClaimsIdentity>(null);
