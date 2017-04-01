@@ -1,0 +1,4 @@
+﻿Content/Lib/*
+wwwroot/lib/*
+wwwroot/js/*
+appsettings.*

@@ -17,20 +17,7 @@ var regex = {
     js: /\.js$/
 };
 
-gulp.task("min", ["min:js", "min:css", "min:html"]);
-gulp.task("mindev", ["moveapp", "min:css", "min:html"]);
-
-gulp.task("min:js", function () {
-    var tasks = getBundles(regex.js).map(function (bundle) {
-        return gulp.src(bundle.inputFiles, { base: "." })
-            .pipe(concat(bundle.outputFileName))
-            .pipe(uglify())
-            .pipe(gulp.dest("."));
-    });
-    return merge(tasks);
-});
-
-gulp.task("dev", ["clean:dev","move:app", "inject:index.html","move:lib"]);
+gulp.task("dev", ["clean:dev","move:app", "inject:index.html","move:lib","min:css",]);
 
 gulp.task("move:app", function () {
     gulp.src('App/**/*', { base: './App' })
@@ -41,7 +28,6 @@ gulp.task("move:index.html", function () {
     gulp.src('./Views/index.html', { base: './Views/' })
         .pipe(gulp.dest('./wwwroot/'));
 });
-
 
 gulp.task("inject:index.html",["move:index.html"], function () {
     gulp.src('./wwwroot/index.html')
@@ -65,23 +51,11 @@ gulp.task("move:lib", function () {
         .pipe(gulp.dest('./wwwroot/lib'));
 });
 
-
-
 gulp.task("min:css", function () {
     var tasks = getBundles(regex.css).map(function (bundle) {
         return gulp.src(bundle.inputFiles, { base: "." })
             .pipe(concat(bundle.outputFileName))
             .pipe(cssmin())
-            .pipe(gulp.dest("."));
-    });
-    return merge(tasks);
-});
-
-gulp.task("min:html", function () {
-    var tasks = getBundles(regex.html).map(function (bundle) {
-        return gulp.src(bundle.inputFiles, { base: "." })
-            .pipe(concat(bundle.outputFileName))
-            .pipe(htmlmin({ collapseWhitespace: true, minifyCSS: true, minifyJS: true }))
             .pipe(gulp.dest("."));
     });
     return merge(tasks);
@@ -93,20 +67,6 @@ gulp.task("clean", function () {
     });
 
     return del(files);
-});
-
-gulp.task("watch", function () {
-    getBundles(regex.js).forEach(function (bundle) {
-        gulp.watch(bundle.inputFiles, ["min:js"]);
-    });
-
-    getBundles(regex.css).forEach(function (bundle) {
-        gulp.watch(bundle.inputFiles, ["min:css"]);
-    });
-
-    getBundles(regex.html).forEach(function (bundle) {
-        gulp.watch(bundle.inputFiles, ["min:html"]);
-    });
 });
 
 function getBundles(regexPattern) {
