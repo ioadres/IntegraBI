@@ -1,0 +1,16 @@
+﻿<div class="modal fade" id="{{::idModal}}" tabindex="-1" role="dialog" >
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">{{::titlePopup}}</h3>
+            </div>
+            <div class="modal-body" ng-transclude>
+
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" type="button" ng-click="ngModel.okPopUp()" data-dismiss="modal">{{::translation.BotonGuardar}}</button>
+                <button class="btn btn-warning" type="button" data-dismiss="modal">{{::translation.BotonCancelar}}</button>
+            </div>
+        </div>
+    </div>
+    </div>

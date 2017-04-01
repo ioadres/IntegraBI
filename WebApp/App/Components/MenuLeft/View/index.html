@@ -1,0 +1,37 @@
+﻿<md-sidenav class="md-sidenav-left main-sidebar" md-component-id="left"
+            md-disable-backdrop md-whiteframe="4">
+
+    <md-content layout-margin>
+        <div class="body">
+            <div class="col-*-12">
+                <h1>General</h1>
+            </div>
+            <div class="col-*-12 block">
+                <label><a ui-sref="Home">Home</a></label>
+            </div>
+            <div class="col-*-12 block" ui-sref="UserManage">
+                <label>Perfil</label>
+            </div>
+            <div class="col-*-12">
+                <h1>Módulos</h1>
+            </div>
+            <div class="col-*-12 block" ng-class="{ active: viewmodel.isActive('UserManage') }">
+                <label><a ui-sref="UserManage">Gestion de Usuarios</a></label>
+            </div>
+            <div class="col-*-12 block" ng-class="{ active: viewmodel.isActive('Franquicia') }">
+                <label><a ui-sref="Franquicia">Gestion de Franquicias</a></label>
+            </div>
+            <div class="col-*-12 block" ui-sref="ServiciosManage" ng-class="{ active: viewmodel.isActive('ServiciosManage') }">
+                <label><a ui-sref="ServiciosManage">Gestion de Servicios</a></label>
+            </div>
+            <div class="col-*-12 block" ng-class="{ active: viewmodel.isActive('Direccion') }">
+                <label><a ui-sref="Direccion">Gestion de Direcciones</a></label>
+            </div>
+            <div class="col-*-12 block" ng-class="{ active: viewmodel.isActive('EnvioManage') }">
+                <label><a ui-sref="EnvioManage">Gestion de Envíos</a></label>
+            </div>
+        </div>
+    </md-content>
+
+</md-sidenav>
+

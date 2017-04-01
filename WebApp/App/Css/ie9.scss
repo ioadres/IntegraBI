@@ -1,0 +1,40 @@
+﻿
+.flex-colum-options {
+    display: inline-table;
+    width: 100%;
+}
+
+.flex-colum-options .box {
+    display: table-cell;
+    width: 30%;
+}
+
+.flex-colum-options .box .title {
+    font-size: 26px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+
+.flex-colum-options .box .header .circle {
+    margin: 0 auto;
+}
+
+.flex-center {
+    width: 100%;
+}
+
+@media screen and (min-width:0\0) {
+    span[flex], md-card-content, md-dialog-content {
+        display: block;
+    }
+}
+
+md-select {
+    padding-top: 17px;
+    padding-bottom: 0;
+}
+
+md-select .md-select-label {
+    width: 100%;
+}

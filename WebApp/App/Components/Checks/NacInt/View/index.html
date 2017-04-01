@@ -1,0 +1,27 @@
+﻿
+<style>
+    .ckeckInLine {
+        padding: 0px;       
+        padding-right: 19px;
+        width: 208px;
+    }
+
+        .ckeckInLine md-switch {
+            float: right;
+            margin: 0px;
+            height: 0px;
+            display: block;
+        }
+
+        .ckeckInLine label {
+            margin-top: 3px;
+        }
+</style>
+
+<div class="form-group">
+    <label>Tipo de servicio: </label>
+    <div class="ckeckInLine">
+        <label>Nacional</label>&nbsp;&nbsp;
+        <md-switch ng-model="$ctrl.selector.option" aria-label="Internacional" ng-change="$ctrl.selector.ngChange($ctrl.selector.selected)">Internacional</md-switch>
+    </div>
+</div>

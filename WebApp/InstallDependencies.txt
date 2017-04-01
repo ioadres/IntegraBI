@@ -1,0 +1,31 @@
+﻿npm install -g bower
+bower install angular --save
+npm install gulp gulp-ruby-sass gulp-notify gulp-bower gulp-concat gulp-cssmin gulp-htmlmin gulp-uglify merge-stream del --save-dev
+npm install -g gulp
+gulp first
+
+
+
+
+--- DB
+Install tools
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp1.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="1.1.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="1.1.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="1.1.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer.Design" Version="1.1.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="1.1.0" />
+    <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="1.0.0" />
+    <DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="1.0.0" />
+  </ItemGroup>
+
+</Project>
+
+Command : 
+dotnet ef dbcontext scaffold -c AppDbContext -o Entities "" Microsoft.EntityFrameworkCore.SqlServer --force

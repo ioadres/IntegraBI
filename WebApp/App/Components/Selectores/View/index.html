@@ -1,0 +1,11 @@
+﻿<label>{{$ctrl.selector.labelText}}</label>
+<select class="form-control"
+        ng-model="$ctrl.selector.selected"
+        ng-options="option.Value as option.Text for option in $ctrl.selector.options"
+        ng-disabled="$ctrl.selector.disabled"
+        ng-required="$ctrl.selector.required"
+        ng-change="$ctrl.selector.ngChange($ctrl.selector.selected)">
+    <option value="">
+        Seleccione un elemento
+    </option>
+</select>
