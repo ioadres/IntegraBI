@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace Repository.Contracts
 {
-	public abstract class IUserRepository : EntityFrameworkRepository<GameDbContext, User>
+	public abstract class IUserRepository : EntityFrameworkRepository<AppDbContext, User>
     {
-		public IUserRepository(GameDbContext context) : base(context)
+		public IUserRepository(AppDbContext context) : base(context)
         {
 		}
 

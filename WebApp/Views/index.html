@@ -2,18 +2,16 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title></title>
+    <title>IntegraBIsjajsa</title>
     <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.css" />
-    <link rel="stylesheet" href="/css/site.css" />
+    <link rel="stylesheet" href="/css/site.min.css" />
     <link rel="stylesheet" href="/lib/angular-material/angular-material.min.css" />
     <link rel="stylesheet" href="/lib/angular-block-ui/dist/angular-block-ui.min.css" />
     <link rel="stylesheet" href="/lib/ngtoast/dist/ngToast.min.css" />
 </head>
 <body>
-
-
-    <script>
-        var SP = {};
+<script>
+		var SP = {};
         SP.lang = '@HttpContext.Current.Session["Culture"].ToString()';
         if (!String.prototype.includes) {
             String.prototype.includes = function () {

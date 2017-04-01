@@ -6,7 +6,7 @@
         [
             'ui.router', 'ngCookies', 'blockUI', 'ngToast', 'ngMessages', 'ngMaterial',
             'App.Control', 'ngTranslations', 'ngLoadRequest', 'ngConstants', 'ngAuth',
-            'Home'
+            'Home','Login'
         ]
     )
 

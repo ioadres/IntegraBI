@@ -9,9 +9,19 @@
     <CustomCommands>
       <CustomCommands>
         <Command>
-          <type>BeforeBuild</type>
-          <command>gulp dev</command>
+          <type>Clean</type>
+          <command>gulp dev:clean</command>
           <workingdir></workingdir>
+          <externalConsole>True</externalConsole>
+        </Command>
+        <Command>
+          <type>Build</type>
+          <command>gulp dev</command>
+          <externalConsole>True</externalConsole>
+        </Command>
+        <Command>
+          <type>BeforeBuild</type>
+          <command>bower install</command>
           <externalConsole>True</externalConsole>
         </Command>
       </CustomCommands>
@@ -85,7 +95,12 @@
 
 
   <ItemGroup>
-    <Folder Include="Content\images\" />
+    <Folder Include="App\Module\Login\" />
+    <Folder Include="App\Module\Login\Css\" />
+    <Folder Include="App\Module\Login\Service\" />
+    <Folder Include="App\Module\Login\View\" />
+    <Folder Include="App\Module\Login\ViewModel\" />
+    <Folder Include="Content\img\" />
   </ItemGroup>
 
 
@@ -99,6 +114,10 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Resources.js</LastGenOutput>
     </None>
+    <None Remove="App\Css\ie9.scss" />
+    <None Remove="App\Css\mixins.scss" />
+    <None Remove="App\Css\animation.scss" />
+    <None Remove="App\Css\card.scss" />
   </ItemGroup>
 
 

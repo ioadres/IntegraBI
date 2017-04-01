@@ -1,0 +1,79 @@
+﻿/*
+* Login Pages
+*/
+.login-form {
+    width: 360px;
+    padding-top: 100px;
+    margin: 0px auto;
+    text-shadow: none;
+}
+.login-form form {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+}
+.login-form form img {
+    margin-bottom: 18px;
+}
+.login-form form .profile {
+    border-radius: 999px;
+}
+.login-form form .top {
+    border-bottom: 1px solid #ddd;
+    text-align: center;
+    padding: 30px 0;
+}
+.login-form form .top .icon {
+    width: 100px;
+    height: 100px;
+}
+.login-form form .top h1, .login-form form .top h4 {
+    margin: 0;
+}
+.login-form form .top h1 {
+    color: #37363E;
+    font-size: 30px;
+    font-family: 'Raleway', sans-serif;
+    font-weight: bold;
+    line-height: 1.6;
+}
+.login-form form .top h4 {
+    font-weight: normal;
+    color: #76757B;
+    font-size: 15px;
+}
+.login-form form .form-area {
+    padding: 40px;
+}
+.login-form form .form-area .group {
+    position: relative;
+    margin-bottom: 20px;
+}
+.login-form form .form-area .form-control {
+    padding-left: 38px;
+    height: 40px;
+}
+.login-form form .form-area .fa {
+    position: absolute;
+    top: 11px;
+    left: 13px;
+    font-size: 16px;
+    color: #C3C3C3;
+}
+.login-form form .form-area .btn {
+    height: 42px;
+    font-weight: 600;
+}
+.login-form form .form-area .checkbox {
+    margin-bottom: 20px;
+}
+.login-form .footer-links {
+    color: #76757B;
+    padding: 10px 5px;
+}
+.login-form .footer-links a {
+    color: #76757B;
+}
+.login-form .footer-links a:hover {
+    color: #37363e;
+}

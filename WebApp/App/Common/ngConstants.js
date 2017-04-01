@@ -7,9 +7,10 @@
     .factory('ngServicesCtrl', [function () {
 
         return {
-            HomeController : {
-                GetInfoBasicRmaCurrentMonth: 'PanelControl/GetInfoBasicRmaCurrentMonth',
-                GetLastRmasChanges:'PanelControl/GetLastRmasChanges'
+            Login : {
+                token: 'http://localhost:5000/token'
+            },
+            Home : {
             }
         }
 
@@ -20,6 +21,12 @@
             url: '/Home',
             templateUrl: 'App/Module/Home/View/Index.html',
             controller: 'HomeViewCtrl'
+        },
+
+        LoginViewCtrl: {
+            url: '/',
+            templateUrl: 'App/Module/Login/View/Index.html',
+            controller: 'LoginViewCtrl'
         },
     })
 

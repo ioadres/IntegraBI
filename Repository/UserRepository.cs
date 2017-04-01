@@ -10,7 +10,7 @@ namespace Repository
 {
 	public class UserRepository : IUserRepository
     {
-		public UserRepository(GameDbContext context) : base(context)
+		public UserRepository(AppDbContext context) : base(context)
         {
 		}
 
