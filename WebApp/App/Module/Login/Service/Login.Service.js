@@ -14,7 +14,17 @@
         Service.prototype.login = function (params) {
             var self = this;
             var url = ngServicesCtrl.Login.token;
-            return $http.post(url, params);
+            var headers = {
+				'Content-Type': 'application/x-www-form-urlencoded'
+			};
+
+            return $http({
+			    url: url,
+			    method: "POST",
+			    headers: headers,
+			    data:"username=webmaster&password=Alfa161_"
+
+			});
         }
 
         return Service;

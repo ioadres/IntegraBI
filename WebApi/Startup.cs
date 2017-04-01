@@ -37,8 +37,19 @@ namespace WebApi
                 builder.UseSqlServer(connStr);
             });
 
-            // Add framework services.
-            services.AddMvc(config =>
+
+			services.AddCors(options =>
+		   {
+			   options.AddPolicy("CorsPolicy",
+				   builder => builder.AllowAnyOrigin()
+				   .AllowAnyMethod()
+				   .AllowAnyHeader()
+				   .AllowCredentials());
+		   });
+
+
+			// Add framework services.
+			services.AddMvc(config =>
             {
 				//### Añade las políticas de acceso.
                 config.Filters.Add(AuthPolicy.AuthorizeFilter());
@@ -49,6 +60,7 @@ namespace WebApi
 
 			//### DI Configurador.
             ServiceLocator.GetServiceLocatorService(services);
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -59,7 +71,12 @@ namespace WebApi
 
 			ConfigureAuth(app, serviceProvider);
 
+			app.UseCors("CorsPolicy");
+
+			
             app.UseMvc();
+
+
         }
     }
 }

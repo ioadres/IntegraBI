@@ -32,7 +32,10 @@ namespace WebApi.Auth
 
 		public Task Invoke(HttpContext context)
 		{
-			// If the request path doesn't match, skip
+			context.Response.Headers.Add("Access-Control-Allow-Headers", new string[] { "Authorization", "Content-Type" });
+			context.Response.Headers.Add("Access-Control-Allow-Methods", new string[] { "POST", "GET", "DELETE", "PUT" });
+			context.Response.Headers.Add("Access-Control-Allow-Origin", "*");
+
 			if (!context.Request.Path.Equals(_options.Path, StringComparison.Ordinal))
 			{
 				return _next(context);

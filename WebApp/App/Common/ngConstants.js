@@ -8,7 +8,7 @@
 
         return {
             Login : {
-                token: 'http://localhost:5000/token'
+                token: 'http://localhost:5000/api/token'
             },
             Home : {
             }

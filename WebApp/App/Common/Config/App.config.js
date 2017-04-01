@@ -22,6 +22,8 @@
                 $httpProvider.defaults.headers.get['If-Modified-Since'] = 'Mon, 26 Jul 1997 05:00:00 GMT';
                 $httpProvider.defaults.headers.get['Cache-Control'] = 'no-cache';
                 $httpProvider.defaults.headers.get['Pragma'] = 'no-cachse';
+        		$httpProvider.defaults.useXDomain = true;
+		        delete $httpProvider.defaults.headers.common['X-Requested-With'];
                 // Disable IE ajax request caching
                 //  $httpProvider.defaults.headers.get['If-Modified-Since'] = '0';
             }

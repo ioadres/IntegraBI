@@ -24,11 +24,21 @@
 
             viewmodel.prototype.login = function() {
             	var self = this;
-            	self.service.then(function() {
-            		
+            	ngLoadRequest.startBlock();
+            	self.service.login(self.getModel()).then(function(result) {
+            		debugger;
+            		console.log(result);
 
-            	});
+            	}).finally(function() {ngLoadRequest.requestSuccess();});
 
+            }
+
+            viewmodel.prototype.getModel = function() {
+            	var self = this;
+            	return {
+	            	username : self.username,
+	            	password: self.password
+            	}
             }
 
             return viewmodel;
