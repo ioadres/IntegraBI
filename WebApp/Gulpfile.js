@@ -30,7 +30,7 @@ gulp.task("min:js", function () {
     return merge(tasks);
 });
 
-gulp.task("dev", ["clean:dev","move:app", "move:index.html", "inject:index.html","move:lib"]);
+gulp.task("dev", ["clean:dev","move:app", "inject:index.html","move:lib"]);
 
 gulp.task("move:app", function () {
     gulp.src('App/**/*', { base: './App' })
@@ -43,7 +43,7 @@ gulp.task("move:index.html", function () {
 });
 
 
-gulp.task("inject:index.html", function () {
+gulp.task("inject:index.html",["move:index.html"], function () {
     gulp.src('./wwwroot/index.html')
         .pipe(inject(gulp.src(['./App/**/*.js'], { read: false }),{starttag: '<!-- inject:dev:{{ext}} -->' }))
         .pipe(gulp.dest('./wwwroot/'));
@@ -61,7 +61,7 @@ gulp.task("move:views", function () {
 });
 
 gulp.task("move:lib", function () {
-    gulp.src('Content/Lib/**/*.js', { base: './Content/Lib' })
+    gulp.src('Content/Lib/**/*', { base: './Content/Lib' })
         .pipe(gulp.dest('./wwwroot/lib'));
 });
 

@@ -6,7 +6,7 @@
     .service('ngTranslations', ['ngLiteral','$cookies', '$rootScope',function (ngLiteral, $cookies,$rootScope) {
         this.literal = ngLiteral;
         if ($cookies.get('lang') == undefined) {
-            $cookies.put('lang', Mrw.lang);
+            $cookies.put('lang', SP.lang);
         }
 
         this.getTranslation = function ($scope) {        
