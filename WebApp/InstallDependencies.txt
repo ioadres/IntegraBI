@@ -28,4 +28,4 @@ Install tools
 </Project>
 
 Command : 
-dotnet ef dbcontext scaffold -c AppDbContext -o Entities "Server=tcp:,1433;Initial Catalog=IntegraBI;Persist Security Info=False;User ID=wwwgame;Password=Akapulpo_;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;" Microsoft.EntityFrameworkCore.SqlServer --force
+dotnet ef dbcontext scaffold -c AppDbContext -o Entities "" Microsoft.EntityFrameworkCore.SqlServer --force
