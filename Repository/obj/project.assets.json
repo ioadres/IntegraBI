@@ -3039,7 +3039,7 @@
       ]
     },
     "Microsoft.EntityFrameworkCore/1.1.1": {
-      "sha512": "0HcsjgXelQggWCAQQkPbv+jqD4IPofDIiVsuwEoXJ557tQ0JAszcKQXVpPfc9M3nqWb2ZjryTFoQelahMTi9+Q==",
+      "sha512": "wkPi/5FriMthUoCBjqO/hCDEGdRrJ5aTGKa9jGHK7NYw1uSxb2FXksBuqqMfFve3sd2j4+9BpYtdvAJ6fzjeXg==",
       "type": "package",
       "path": "microsoft.entityframeworkcore/1.1.1",
       "files": [
@@ -3052,7 +3052,7 @@
       ]
     },
     "Microsoft.EntityFrameworkCore.Design/1.1.1": {
-      "sha512": "BtQfO8dp7AFSedek5qi+5Z2k563QORa5ZQ+F0fGv6mOyh+ezOs1DosQRCLiX6QlpT0/SQLlz75aVT2G2L5VFZQ==",
+      "sha512": "xFeAAi9LUckgeinjji7WPMwPUbZNb6mTVRhWAlo+RVsjpnEjeAQk3Gw4OP3Ln/yncji64J7e74ue+yIArQYt+Q==",
       "type": "package",
       "path": "microsoft.entityframeworkcore.design/1.1.1",
       "files": [
@@ -3065,7 +3065,7 @@
       ]
     },
     "Microsoft.EntityFrameworkCore.Relational/1.1.1": {
-      "sha512": "Jn9EW9+ZL04C1yKKNzUatlEyrxHoJu/LLXSsPj3HLABKxX1ttXtotvy6UGswEGBShqfBcp+SM3q96XXhBFMsfw==",
+      "sha512": "wIeIC02b3uFQ0Mgd5yDcpzbGQs383p2BAkpMjNz2xffo9QAFXO1CDavuolRk5I2Rv/iBy9igB91BZoY0tpcMzA==",
       "type": "package",
       "path": "microsoft.entityframeworkcore.relational/1.1.1",
       "files": [
@@ -3078,7 +3078,7 @@
       ]
     },
     "Microsoft.EntityFrameworkCore.Relational.Design/1.1.1": {
-      "sha512": "X5QH5tiAKDA+4lJoGg14E6WfrJUUq86W93k9XyDg02cJKCLHNhEgQkqoZcRxQ3Epp45+329qj9DZlJSgvKZ9HA==",
+      "sha512": "WZKmQwuDUTLtjhxT/6c3hiMJTwi8OBl9rsPljY/ZhcMFAsF8sLj4uVrpkuNmrg5DEK2dEtnQn6p+Y9miQiIeZw==",
       "type": "package",
       "path": "microsoft.entityframeworkcore.relational.design/1.1.1",
       "files": [
@@ -3117,7 +3117,7 @@
       ]
     },
     "Microsoft.EntityFrameworkCore.Tools/1.1.0": {
-      "sha512": "/EJT9Jkoppn7lQIguJZnOVH28mWs52/SFEi5P6v2A3eibD1flAa2va2p5yHJJu5kG/5RICy3y0vR03AWO9pFXw==",
+      "sha512": "sv9JJsG4p/zu4KrRXjTsZ/Bp1mdRbOLkqrxDtQo6P5e1O+1Z6qXm4gaR5km25tpqLN4QD10lX/Kw6MEyLWf2aQ==",
       "type": "package",
       "path": "microsoft.entityframeworkcore.tools/1.1.0",
       "files": [
@@ -3486,10 +3486,12 @@
       ]
     },
     "Remotion.Linq/2.1.1": {
-      "sha512": "CiAyGZZg3qFo9xuU81sY856d1BmdQPip9jYIoEReoAYcypmXBocjoQuMcTXpB1DTifxOgqnC8wA/jgBnY97Upw==",
+      "sha512": "IJn0BqkvwEDpP+2qjvci7n4/a9f7DhKESLWb2/uG4xQh3rTkGTBUz69bI4IivCoKkTFAqjXxYDZw2K/npohjsw==",
       "type": "package",
       "path": "remotion.linq/2.1.1",
       "files": [
+        "Remotion.Linq.2.1.1.nupkg.sha512",
+        "Remotion.Linq.nuspec",
         "lib/net35/Remotion.Linq.XML",
         "lib/net35/Remotion.Linq.dll",
         "lib/net40/Remotion.Linq.XML",
@@ -3499,9 +3501,7 @@
         "lib/netstandard1.0/Remotion.Linq.dll",
         "lib/netstandard1.0/Remotion.Linq.xml",
         "lib/portable-net45+win+wpa81+wp80/Remotion.Linq.dll",
-        "lib/portable-net45+win+wpa81+wp80/Remotion.Linq.xml",
-        "remotion.linq.2.1.1.nupkg.sha512",
-        "remotion.linq.nuspec"
+        "lib/portable-net45+win+wpa81+wp80/Remotion.Linq.xml"
       ]
     },
     "runtime.debian.8-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {
@@ -4166,7 +4166,7 @@
       ]
     },
     "System.Data.Common/4.3.0": {
-      "sha512": "XokkUFF4yuSbSFECHPJPeu1rZ04bNK1bVswepPYVg+uMF9aqPf6GNQwMQ5f4uPt5Y2L+iyRVuL/9qLU4b9GwIg==",
+      "sha512": "lm6E3T5u7BOuEH0u18JpbJHxBfOJPuCyl4Kg1RH10ktYLp5uEEE1xKrHW56/We4SnZpGAuCc9N0MJpSDhTHZGQ==",
       "type": "package",
       "path": "system.data.common/4.3.0",
       "files": [
@@ -4839,16 +4839,16 @@
       ]
     },
     "System.Interactive.Async/3.0.0": {
-      "sha512": "SpKg5PzuhEjljAeXOjg27iPUh4DJBFlvFR8ZYlDxjQdrANFSZijYvrjiGbtnNRoT2vp6Hjh07Bwzr5kLyl3n4A==",
+      "sha512": "UEM+WmG1Oq0bNbPx/E1jaIQ83QOrPfVDUyuYBtG6D6DpB77ytv9flPterMujumpHuoRjSc0ilSB8w41fQc05dw==",
       "type": "package",
       "path": "system.interactive.async/3.0.0",
       "files": [
+        "System.Interactive.Async.3.0.0.nupkg.sha512",
+        "System.Interactive.Async.nuspec",
         "lib/net45/System.Interactive.Async.dll",
         "lib/net45/System.Interactive.Async.xml",
         "lib/netstandard1.0/System.Interactive.Async.dll",
-        "lib/netstandard1.0/System.Interactive.Async.xml",
-        "system.interactive.async.3.0.0.nupkg.sha512",
-        "system.interactive.async.nuspec"
+        "lib/netstandard1.0/System.Interactive.Async.xml"
       ]
     },
     "System.IO/4.3.0": {
@@ -8216,15 +8216,15 @@
     ]
   },
   "packageFolders": {
-    "/Users/Andres/.nuget/packages/": {}
+    "C:\\Users\\Tokiota\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/Andres/Projects/GIT/IntegraBI/Repository/Repository.csproj",
+      "projectUniqueName": "C:\\Users\\Tokiota\\Source\\Repos\\IntegraBI\\Dev\\Repository\\Repository.csproj",
       "projectName": "Repository",
-      "projectPath": "/Users/Andres/Projects/GIT/IntegraBI/Repository/Repository.csproj",
-      "outputPath": "/Users/Andres/Projects/GIT/IntegraBI/Repository/obj",
+      "projectPath": "C:\\Users\\Tokiota\\Source\\Repos\\IntegraBI\\Dev\\Repository\\Repository.csproj",
+      "outputPath": "C:\\Users\\Tokiota\\Source\\Repos\\IntegraBI\\Dev\\Repository\\obj\\",
       "projectStyle": "PackageReference",
       "originalTargetFrameworks": [
         "netcoreapp1.1"
@@ -8232,11 +8232,11 @@
       "frameworks": {
         "netcoreapp1.1": {
           "projectReferences": {
-            "/Users/Andres/Projects/GIT/IntegraBI/Model/Model.csproj": {
-              "projectPath": "/Users/Andres/Projects/GIT/IntegraBI/Model/Model.csproj"
+            "C:\\Users\\Tokiota\\Source\\Repos\\IntegraBI\\Dev\\Model\\Model.csproj": {
+              "projectPath": "C:\\Users\\Tokiota\\Source\\Repos\\IntegraBI\\Dev\\Model\\Model.csproj"
             },
-            "/Users/Andres/Projects/GIT/IntegraBI/Repository.Contracts/Repository.Contracts.csproj": {
-              "projectPath": "/Users/Andres/Projects/GIT/IntegraBI/Repository.Contracts/Repository.Contracts.csproj"
+            "C:\\Users\\Tokiota\\Source\\Repos\\IntegraBI\\Dev\\Repository.Contracts\\Repository.Contracts.csproj": {
+              "projectPath": "C:\\Users\\Tokiota\\Source\\Repos\\IntegraBI\\Dev\\Repository.Contracts\\Repository.Contracts.csproj"
             }
           }
         }
@@ -8245,13 +8245,14 @@
     "frameworks": {
       "netcoreapp1.1": {
         "dependencies": {
-          "Microsoft.NETCore.App": {
-            "target": "Package",
-            "version": "1.1.1"
-          },
           "Microsoft.EntityFrameworkCore": {
             "target": "Package",
             "version": "1.1.1"
+          },
+          "Microsoft.NETCore.App": {
+            "target": "Package",
+            "version": "1.1.1",
+            "autoReferenced": true
           }
         }
       }

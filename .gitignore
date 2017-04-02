@@ -289,3 +289,10 @@ __pycache__/
 *.btm.cs
 *.odx.cs
 *.xsd.cs
+/WebApp/wwwroot/App
+/WebApp/wwwroot/css
+/WebApp/wwwroot/img
+/WebApp/wwwroot/img
+/WebApp/wwwroot/index.html
+/WebApi/appsettings.json
+/WebApp/wwwroot/lib

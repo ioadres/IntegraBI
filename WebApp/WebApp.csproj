@@ -101,7 +101,6 @@
     <Folder Include="App\Module\Login\Service\" />
     <Folder Include="App\Module\Login\View\" />
     <Folder Include="App\Module\Login\ViewModel\" />
-    <Folder Include="Content\img\" />
   </ItemGroup>
 
 

@@ -1,1 +1,264 @@
-hola mundo
+<style>
+    /* Header */
+    header.simple-normal {
+        float: left;
+        position: fixed;
+        width: 100%;
+        z-index: 1;
+    }
+
+    body.modal-open header {
+        z-index: 0;
+    }
+
+    .top-bar {
+        background: #3b3f51 none repeat scroll 0 0;
+        float: left;
+        padding-right: 19px;
+        width: 100%;
+    }
+
+    .logo {
+        float: left;
+        margin-right: 70px;
+        padding: 18px 30px 18px 50px;
+    }
+
+        .logo > a {
+            color: #ffffff;
+            float: left;
+            font-family: Rubik;
+            font-size: 22px;
+            font-weight: 500;
+            padding: 0;
+        }
+
+            .logo > a > i {
+                color: #afafaf;
+                margin-right: 6px;
+            }
+
+    .menu-action {
+        height: 13px;
+        left: 50%;
+        margin-left: -10px;
+        position: absolute;
+        top: 50%;
+        -webkit-transform: translateY(-50%);
+        -moz-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+        -o-transform: translateY(-50%);
+        transform: translateY(-50%);
+        width: 20px;
+    }
+
+    .menu-options.active > span {
+        margin-left: -7px;
+    }
+
+    .menu-action::after {
+        background: #aaa9a9 none repeat scroll 0 0;
+        -webkit-border-radius: 1px;
+        -moz-border-radius: 1px;
+        -ms-border-radius: 1px;
+        -o-border-radius: 1px;
+        border-radius: 1px;
+        bottom: -2px;
+        content: "";
+        height: 3px;
+        left: 0;
+        position: absolute;
+        width: 100%;
+    }
+
+    .menu-options.active .menu-action::after {
+        bottom: 6px;
+        -webkit-transform: rotate(-45deg);
+        -moz-transform: rotate(-45deg);
+        -ms-transform: rotate(-45deg);
+        -o-transform: rotate(-45deg);
+        transform: rotate(-45deg);
+    }
+
+    .menu-action::before {
+        background: #aaa9a9 none repeat scroll 0 0;
+        -webkit-border-radius: 1px;
+        -moz-border-radius: 1px;
+        -ms-border-radius: 1px;
+        -o-border-radius: 1px;
+        border-radius: 1px;
+        content: "";
+        height: 3px;
+        left: 0;
+        position: absolute;
+        top: -2px;
+        width: 100%;
+    }
+
+    .menu-options.active .menu-action::before {
+        top: 4px;
+        -webkit-transform: rotate(45deg);
+        -moz-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        -o-transform: rotate(45deg);
+        transform: rotate(45deg);
+    }
+
+    .menu-action > i {
+        height: 3px;
+        left: 0;
+        position: absolute;
+        top: 50%;
+        -webkit-transform: translateY(-50%);
+        -moz-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+        -o-transform: translateY(-50%);
+        transform: translateY(-50%);
+        width: 20px;
+    }
+
+        .menu-action > i::before {
+            background: #aaa9a9 none repeat scroll 0 0;
+            -webkit-border-radius: 1px;
+            -moz-border-radius: 1px;
+            -ms-border-radius: 1px;
+            -o-border-radius: 1px;
+            border-radius: 1px;
+            content: "";
+            height: 3px;
+            left: 0;
+            position: absolute;
+            top: 0;
+            width: 100%;
+        }
+
+    .menu-options.active .menu-action > i::before {
+        opacity: 0;
+        -webkit-transform: scale(0.5);
+        -moz-transform: scale(0.5);
+        -ms-transform: scale(0.5);
+        -o-transform: scale(0.5);
+        transform: scale(0.5);
+    }
+
+    .menu-options.active > span::before, .menu-options.active > span::after {
+        background: #ffffff none repeat scroll 0 0;
+    }
+
+    .menu-options {
+        color: #afafaf;
+        cursor: pointer;
+        float: left;
+        font-size: 22px;
+        height: 38px;
+        left: 0;
+        line-height: 25px;
+        margin-top: 15px;
+        position: relative;
+        text-align: center;
+        width: 41px;
+    }
+
+        .menu-options.active {
+            z-index: 2147483647;
+        }
+
+    .search-dashboard {
+        float: left;
+        margin-bottom: 11px;
+        margin-left: 80px;
+        margin-top: 11px;
+    }
+
+        .search-dashboard > form {
+            background: #46495b none repeat scroll 0 0;
+            -webkit-border-radius: 30px;
+            -moz-border-radius: 30px;
+            -ms-border-radius: 30px;
+            -o-border-radius: 30px;
+            border-radius: 30px;
+            float: left;
+            height: 44px;
+            position: relative;
+            width: 244px;
+        }
+
+            .search-dashboard > form:hover {
+                background: #56596b none repeat scroll 0 0;
+            }
+
+            .search-dashboard > form > input {
+                background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+                border: medium none;
+                color: #e7e7e7;
+                float: left;
+                font-family: Rubik;
+                font-size: 13px;
+                padding: 12px 50px 12px 35px;
+            }
+
+            .search-dashboard > form > button {
+                background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+                border: medium none;
+                color: #a7a7a7;
+                padding: 12px 22px;
+                position: absolute;
+                right: 0;
+                top: 0;
+            }
+
+    .custom-dropdowns {
+        float: left;
+        padding: 0;
+        position: relative;
+    }
+
+
+    .name-area {
+        float: right;
+        margin-right: 30px;
+        padding: 2px 0;
+    }
+
+        .name-area > a {
+            color: #94979f;
+            float: left;
+            font-family: Rubik;
+            font-size: 16px;
+            font-weight: normal;
+        }
+
+            .name-area > a > img {
+                -webkit-border-radius: 50%;
+                -moz-border-radius: 50%;
+                -ms-border-radius: 50%;
+                -o-border-radius: 50%;
+                border-radius: 50%;
+                float: left;
+                margin-right: 17px;
+                margin-top: 11px;
+                width: 41px;
+            }
+
+            .name-area > a strong {
+                color: #94979f;
+                float: left;
+                margin: 20px 0;
+            }
+</style>
+
+
+<header class="simple-normal">
+    <div class="top-bar">
+        <div class="logo">
+            <a href="index.html" title=""><i class="fa fa-bullseye"></i> IntegracionBI</a>
+        </div>
+        <div class="menu-options"><span class="menu-action"><i></i></span></div>
+        <div class="top-bar-quick-sec">
+            <div class="name-area">
+                <a href="javascript:void(0)" title=""><img src="img/user.png" alt=""><strong>{{UserContext.username}}</strong></a>
+            </div>
+        </div>
+    </div><!-- Top Bar -->
+
+</header>

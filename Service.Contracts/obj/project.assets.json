@@ -7088,15 +7088,15 @@
     ]
   },
   "packageFolders": {
-    "/Users/Andres/.nuget/packages/": {}
+    "C:\\Users\\Tokiota\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/Andres/Projects/GIT/IntegraBI/Service.Contracts/Service.Contracts.csproj",
+      "projectUniqueName": "C:\\Users\\Tokiota\\Source\\Repos\\IntegraBI\\Dev\\Service.Contracts\\Service.Contracts.csproj",
       "projectName": "Service.Contracts",
-      "projectPath": "/Users/Andres/Projects/GIT/IntegraBI/Service.Contracts/Service.Contracts.csproj",
-      "outputPath": "/Users/Andres/Projects/GIT/IntegraBI/Service.Contracts/obj",
+      "projectPath": "C:\\Users\\Tokiota\\Source\\Repos\\IntegraBI\\Dev\\Service.Contracts\\Service.Contracts.csproj",
+      "outputPath": "C:\\Users\\Tokiota\\Source\\Repos\\IntegraBI\\Dev\\Service.Contracts\\obj\\",
       "projectStyle": "PackageReference",
       "originalTargetFrameworks": [
         "netcoreapp1.1"
@@ -7104,8 +7104,8 @@
       "frameworks": {
         "netcoreapp1.1": {
           "projectReferences": {
-            "/Users/Andres/Projects/GIT/IntegraBI/Common/Common.csproj": {
-              "projectPath": "/Users/Andres/Projects/GIT/IntegraBI/Common/Common.csproj"
+            "C:\\Users\\Tokiota\\Source\\Repos\\IntegraBI\\Dev\\Common\\Common.csproj": {
+              "projectPath": "C:\\Users\\Tokiota\\Source\\Repos\\IntegraBI\\Dev\\Common\\Common.csproj"
             }
           }
         }
@@ -7116,7 +7116,8 @@
         "dependencies": {
           "Microsoft.NETCore.App": {
             "target": "Package",
-            "version": "1.1.1"
+            "version": "1.1.1",
+            "autoReferenced": true
           }
         }
       }

@@ -7075,15 +7075,15 @@
     ]
   },
   "packageFolders": {
-    "/Users/Andres/.nuget/packages/": {}
+    "C:\\Users\\Tokiota\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/Andres/Projects/GIT/IntegraBI/Common/Common.csproj",
+      "projectUniqueName": "C:\\Users\\Tokiota\\Source\\Repos\\IntegraBI\\Dev\\Common\\Common.csproj",
       "projectName": "Common",
-      "projectPath": "/Users/Andres/Projects/GIT/IntegraBI/Common/Common.csproj",
-      "outputPath": "/Users/Andres/Projects/GIT/IntegraBI/Common/obj",
+      "projectPath": "C:\\Users\\Tokiota\\Source\\Repos\\IntegraBI\\Dev\\Common\\Common.csproj",
+      "outputPath": "C:\\Users\\Tokiota\\Source\\Repos\\IntegraBI\\Dev\\Common\\obj\\",
       "projectStyle": "PackageReference",
       "originalTargetFrameworks": [
         "netcoreapp1.1"
@@ -7099,7 +7099,8 @@
         "dependencies": {
           "Microsoft.NETCore.App": {
             "target": "Package",
-            "version": "1.1.1"
+            "version": "1.1.1",
+            "autoReferenced": true
           }
         }
       }
