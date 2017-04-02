@@ -16,7 +16,6 @@
                 },
 
                 showToastSuccess: function (message) {
-                literal.ToastPeticionRealizadaCorrectamente = "Peticion realizada";
                     if (message === undefined || message === '') {
                         ngToast.create('<b>' + literal.ToastPeticionRealizadaCorrectamente + '<b>');
                     } else {

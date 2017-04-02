@@ -3,21 +3,31 @@
 
     angular.module('ngAuth', ['ngCookies'])
 
-        .factory('ngAuth', ['$cookies', '$state', '$rootScope', function ($cookies, $state, $rootScope) {
+        .factory('ngAuth', ['$cookies', '$state', '$rootScope','$timeout', function ($cookies, $state, $rootScope,$timeout) {
             var ctokenintegrabi = "tokenintegrabi";
             var UserContextCookie = "UserContextCookie";
 
             return {
             	loginToken: function (token) {
             		token.isAnonymus = false;
-            		$cookies.putObject(ctokenintegrabi, token);
                     $rootScope.token = token;
+                    var expired = new Date();
+             		expired.setMilliseconds(expired.getMilliseconds() + token.expires_in * 1200 );
+            		$cookies.putObject(ctokenintegrabi, token,{'expires': expired});
+
+            		$rootScope.$watch($cookies.get(ctokenintegrabi), function(){
+		                if(!$cookies.get(ctokenintegrabi)){
+		                 	$window.location.href = '/';
+		                 	}
+					});
                 },
+
                 login: function (UserContext) {
                     $cookies.putObject(UserContextCookie, UserContext);
                     $rootScope.UserContext = UserContext;
                     $state.go('Home');
                 },
+
                 logout: function () {
                     $cookies.remove(UserContextCookie);
                     $rootScope.UserContext = null;
@@ -34,12 +44,16 @@
                 getUser: function () {
                 	return $cookies.getObject(UserContextCookie);
             	},
+
             	getToken: function () {
                 	if($cookies.getObject(ctokenintegrabi) == null) {
                 		return {
                 			isAnonymus : true
-                		}
+                		};
                 	}
+                	return {
+                			isAnonymus : false
+                	};
             	},
 
             }

@@ -1,7 +1,13 @@
 ﻿<Properties StartupConfiguration="{35DA2231-55FE-4343-8667-DCC4DEECA42C}|Default">
   <MonoDevelop.Ide.Workbench ActiveDocument="Estado de IntegraBI">
     <Files>
-      <File FileName="WebApi/Controllers/UserController.cs" Line="17" Column="29" />
+      <File FileName="WebApp/App/Module/Login/ViewModel/Login.ViewModel.js" Line="37" Column="45" />
+      <File FileName="WebApp/App/Module/Login/Service/Login.Service.js" Line="25" Column="69" />
+      <File FileName="WebApp/App/Common/ngAuth.js" Line="15" Column="91" />
+      <File FileName="WebApi/appsettings.json" Line="17" Column="1" />
+      <File FileName="WebApi/Startup.Auth.cs" Line="77" Column="8" />
+      <File FileName="WebApi/Auth/TokenProviderMiddleware.cs" Line="87" Column="30" />
+      <File FileName="WebApi/Auth/TokenProviderOptions.cs" Line="14" Column="17" />
       <File FileName="Estado de IntegraBI" />
     </Files>
   </MonoDevelop.Ide.Workbench>

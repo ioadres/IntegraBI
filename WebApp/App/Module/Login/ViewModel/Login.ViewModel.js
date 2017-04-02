@@ -30,8 +30,14 @@
             		ngLoadRequest.startBlock();
             		self.service.getUserContext().then(function(response) {
             			ngAuth.login(response.data);
-            		}).finally(function() {ngLoadRequest.requestSuccess()});
-            	}).finally(function() {ngLoadRequest.requestSuccess()});
+            		}).finally(function() {
+            			ngLoadRequest.requestSuccess()
+            		});
+            	}).catch(function() {
+            		ngLoadRequest.showToastError("Error: usuario y/o contraseña incorrecta.");
+            	}).finally(function() {
+            		ngLoadRequest.stopBlock()
+            	});
 
             }
 

@@ -22,8 +22,7 @@
 			    url: url,
 			    method: "POST",
 			    headers: headers,
-			    data:"username=webmaster&password=Alfa161_"
-
+			    data:"username="+params.username+"&password="+params.password
 			});
         }
 
