@@ -2,13 +2,13 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>IntegraBIsjajsa</title>
+    <title>IntegraBI</title>
     <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.css" />
     <link rel="stylesheet" href="/css/site.min.css" />
     <link rel="stylesheet" href="/lib/angular-material/angular-material.min.css" />
     <link rel="stylesheet" href="/lib/angular-block-ui/dist/angular-block-ui.min.css" />
     <link rel="stylesheet" href="/lib/ngtoast/dist/ngToast.min.css" />
-    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto|Rubik:900" rel="stylesheet">
 </head>
 <body>
 <script>
@@ -24,11 +24,13 @@
 
 
     <div block-ui="spinner" ng-app="App" class="block-ui-main">
-        <appheader></appheader>
-        <appmenuleft></appmenuleft>
+        <div ng-if="state !==  null && state.name !== 'Login'">
+            <appheader></appheader>
+            <appmenuleft></appmenuleft>
+        </div>
         <div>
             <toast></toast>
-            <div ui-view ng-cloak></div>
+            <div ui-view ng-cloak style="margin-top:30px;"></div>
         </div>
     </div>
 

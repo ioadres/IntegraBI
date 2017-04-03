@@ -1,56 +1,13 @@
-﻿<nav class="navbar navbar-default" style="z-index: 850;display: block;">
-    <div class="container-fluid">
-        <div class="navbar-brand" ng-click="viewmodel.toggleLeft()" ng-class="{'menuLeftActive' : $root.menuLeftActive}">
-            <span class="glyphicon glyphicon-menu-hamburger"></span>
+﻿<header class="navbar-custom">
+    <div class="top-bar">
+        <div class="logo">
+            <a href="index.html" title=""><i class="fa fa-bullseye"></i>IntegracionBI</a>
         </div>
-        <div id="navbar" class="navbar-collapse collapse" aria-expanded="true">
-
-            <div class="nav navbar-nav" style="padding: 15px;width: 171px;background: #00bcd4;font-family: Montserrat, sans-serif;color: #fff;font-size: 14px;font-weight: 700;">
-                APC/SAGEC ADMIN
+        <div class="menu-options"><span class="menu-action"><i></i></span></div>
+        <div class="top-bar-quick-sec hidden-xs hidden-sm" >
+            <div class="name-area">
+                <a href="javascript:void(0)" title=""><img src="img/user.png" alt=""><strong>{{viewmodel.username}}</strong></a>
             </div>
-            <ul class="nav navbar-nav navbar-right menu-user">
-                <li class="app">
-                    <label> APC</label>&nbsp;&nbsp;<md-switch ng-model="viewmodel.isSagec" aria-label="SAGEC" ng-change="viewmodel.appChange()">SAGEC</md-switch>
-                </li>
-                <li>
-                    <div class="dropdown" style="cursor:pointer">
-                        <p id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                            <span>&nbsp;{{::translation.MenuItemIdioma}}</span>
-                            <span class="caret"></span>
-                        </p>
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                            <li><a ng-click="viewmodel.changeLang('es-ES')">España</a></li>
-                            <li><a ng-click="viewmodel.changeLang('pt-PT')">Portugues</a></li>
-                            <li><a ng-click="viewmodel.changeLang('en-GB')">Ingles</a></li>
-                        </ul>
-                    </div>
-                </li>
-                <li class="divider-vertical visible-md visible-lg"></li>
-                <li>
-                    <div class="dropdown" style="cursor:pointer;padding: 4px;padding-left: 15px;">
-                        <p id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="padding: 0px;">
-                            <span>&nbsp;{{viewmodel.username}}</span>
-                            <span class="caret"></span>
-                        </p>
-                        <span id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="font-size: 11px;font-weight: 800;">&nbsp;{{viewmodel.rol}}</span>
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                            <li>
-                                <a href="#/Perfil" class="menu-user-username">
-                                    <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-                                    <span>&nbsp;Perfil</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a ng-click="viewmodel.logOut()">
-                                    <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
-                                    <span>&nbsp;Logout</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
-
-            </ul>
         </div>
     </div>
-</nav>
+</header>
