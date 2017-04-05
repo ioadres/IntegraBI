@@ -8,10 +8,10 @@
 
         return {
             Login : {
-                token: 'http://localhost:5000/api/token'
+                token: 'http://integrabiapi.azurewebsites.net/api/token'
             },
             User : {
-            	GetUserContext:'http://localhost:5000/api/user/GetUserContext'
+                GetUserContext:'http://integrabiapi.azurewebsites.net/api/user/GetUserContext'
             },
             Home : {
             }

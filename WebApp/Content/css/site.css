@@ -4,9 +4,17 @@ body {
   margin: 0;
   line-height: 1.7em;
   font-size: 13px;
-  font-family: 'Open Sans', sans-serif;
-  outline: 0;
+  font-family: 'Segoe UI Condensed','Segoe UI','Segoe WP',Tahoma,Arial,sans-serif;
   text-Shadow: 0 0 1px rgba(0, 0, 0, 0.2); }
+
+.text-super {
+  font-size: 48px;
+  line-height: 1.16;
+  letter-spacing: -.01em;
+  font-weight: 700; }
+
+.text-normal {
+  font-weight: 400; }
 
 h1, .h1, h2, .h2, h3, .h3 {
   margin-top: 20px;
@@ -200,7 +208,8 @@ md-sidenav {
 /* Header */
 header.navbar-custom {
   width: 100%;
-  z-index: 1; }
+  z-index: 1;
+  min-height: 66px; }
 
 body.modal-open header {
   z-index: 0; }

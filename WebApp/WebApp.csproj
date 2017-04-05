@@ -31,58 +31,12 @@
 
   <ItemGroup>
     <Content Remove="wwwroot/App\Modules\Home\Css\Index.js" />
-    <Content Remove="wwwroot\App\App.js" />
-    <Content Remove="wwwroot\App\App.scss" />
-    <Content Remove="wwwroot\App\Common\ngAuth.js" />
-    <Content Remove="wwwroot\App\Common\ngConstants.js" />
-    <Content Remove="wwwroot\App\Common\ngLoadRequest.js" />
-    <Content Remove="wwwroot\App\Common\Config\App.config.js" />
-    <Content Remove="wwwroot\App\Common\Config\App.control.js" />
-    <Content Remove="wwwroot\App\Common\Resources\ngTranslations.js" />
-    <Content Remove="wwwroot\App\Common\Resources\T4\Resources.js" />
-    <Content Remove="wwwroot\App\Common\Resources\T4\Resources.tt" />
-    <Content Remove="wwwroot\App\Components\index.scss" />
-    <Content Remove="wwwroot\App\Components\Checks\NacInt\Component\CheckNacInt.viewmodel.js" />
-    <Content Remove="wwwroot\App\Components\Checks\NacInt\View\index.html" />
-    <Content Remove="wwwroot\App\Components\Config\WaitFor.js" />
-    <Content Remove="wwwroot\App\Components\Header\Component\Header.viewmodel.js" />
-    <Content Remove="wwwroot\App\Components\Header\Css\index.scss" />
-    <Content Remove="wwwroot\App\Components\Header\Service\Header.Service.js" />
-    <Content Remove="wwwroot\App\Components\Header\View\index.html" />
-    <Content Remove="wwwroot\App\Components\MenuLeft\Component\MenuLeft.viewmodel.js" />
-    <Content Remove="wwwroot\App\Components\MenuLeft\Css\index.scss" />
-    <Content Remove="wwwroot\App\Components\MenuLeft\Service\MenuLeft.Service.js" />
-    <Content Remove="wwwroot\App\Components\MenuLeft\View\index.html" />
-    <Content Remove="wwwroot\App\Components\Modal\modal.html" />
-    <Content Remove="wwwroot\App\Components\Modal\modalWithoutBody.html" />
-    <Content Remove="wwwroot\App\Components\Modal\modalWithoutButtons.html" />
-    <Content Remove="wwwroot\App\Components\ModuleHeader\menu.html" />
-    <Content Remove="wwwroot\App\Components\ModuleHeader\moduleheader.html" />
-    <Content Remove="wwwroot\App\Components\Selectores\Base\Selector.js" />
-    <Content Remove="wwwroot\App\Components\Selectores\Idioma\Component\SelectorIdioma.viewmodel.js" />
-    <Content Remove="wwwroot\App\Components\Selectores\Idioma\Service\SelectorIdioma.service.js" />
-    <Content Remove="wwwroot\App\Components\Selectores\Idioma\View\index.html" />
-    <Content Remove="wwwroot\App\Components\Selectores\View\index.html" />
-    <Content Remove="wwwroot\App\Css\animation.scss" />
-    <Content Remove="wwwroot\App\Css\base.scss" />
-    <Content Remove="wwwroot\App\Css\card.scss" />
-    <Content Remove="wwwroot\App\Css\ie9.scss" />
-    <Content Remove="wwwroot\App\Css\init.scss" />
-    <Content Remove="wwwroot\App\Css\mixins.scss" />
-    <Content Remove="wwwroot\App\Css\property.scss" />
-    <Content Remove="wwwroot\App\Module\index.scss" />
-    <Content Remove="wwwroot\App\Module\Home\Home.js" />
-    <Content Remove="wwwroot\App\Module\Home\Css\index.scss" />
-    <Content Remove="wwwroot\App\Module\Home\Service\Home.Service.js" />
-    <Content Remove="wwwroot\App\Module\Home\View\Index.html" />
-    <Content Remove="wwwroot\App\Module\Home\ViewModel\Home.ViewModel.js" />
-    <Content Remove="wwwroot\css\site.css" />
-    <Content Remove="wwwroot\css\site.min.css" />
   </ItemGroup>
 
 
   <ItemGroup>
     <Content Include="Views\index.html" />
+    <Content Include="wwwroot\css\site.min.css" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore" Version="1.1.1" />

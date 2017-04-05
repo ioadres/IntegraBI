@@ -1,8 +1,10 @@
 ﻿/* Header */
 
+
 header.navbar-custom {
     width: 100%;
     z-index: 1;
+    min-height: 66px;
 }
 
 body.modal-open header {
