@@ -4,20 +4,21 @@
     // Rutas
     angular.module('ngConstants', [])
 
-    .factory('ngServicesCtrl', [function () {
+        .factory('ngServicesCtrl', [function() {
+            var url = URLSERVICE;
+        
+            return {
+                    Login: {
+                        token: url + '/token'
+                    },
+                    User: {
+                        GetUserContext: url + '/user/GetUserContext'
+                    },
+                    Home: {
+                    }
+                }
 
-        return {
-            Login : {
-                token: 'http://integrabiapi.azurewebsites.net/api/token'
-            },
-            User : {
-                GetUserContext:'http://integrabiapi.azurewebsites.net/api/user/GetUserContext'
-            },
-            Home : {
-            }
-        }
-
-    }])
+        }])
 
     .constant('ngRoutesCtrl', {
         HomeViewCtrl: {
