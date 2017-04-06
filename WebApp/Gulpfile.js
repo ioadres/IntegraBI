@@ -1,4 +1,4 @@
-/// <binding BeforeBuild='min' Clean='clean' />
+    /// <binding BeforeBuild='min' Clean='clean' />
 "use strict";
 
 var gulp = require("gulp"),
@@ -7,11 +7,12 @@ var gulp = require("gulp"),
     htmlmin = require("gulp-htmlmin"),
     uglify = require("gulp-uglify"),
     merge = require("merge-stream"),
-    del = require("del"),
-    bundleconfig = require("./bundleconfig.json"),
-    inject = require('gulp-inject');
-    var run = require('run-sequence');
-    var sass = require('gulp-sass');
+    del = require("del"),    
+    inject = require('gulp-inject'),
+    sass = require('gulp-sass'),
+    gulpSequence = require('gulp-sequence'),
+    gulpReplace = require('gulp-replace'),
+    bundleconfig = require("./bundleconfig.json");
 
 var regex = {
     css: /\.css$/,
@@ -20,11 +21,9 @@ var regex = {
     js: /\.js$/
 };
 
-gulp.task('dev',[], function(callback) {
-	run(['dev:move','create:index.html','min:css']);
-});
-
-gulp.task('dev:move', ['move:app','move:lib','move:img']);
+gulp.task('dev', gulpSequence(['dev:move', 'min:css'],'dev:inject:WebApiUrl', 'dev:index.html'));
+gulp.task('dev:move', gulpSequence(['move:app', 'move:lib', 'move:img']));
+gulp.task('dev:index.html', gulpSequence('dev:create:index.html', 'dev:inject:index.html'));
 gulp.task('dev:clean', ['clean:dev']);
 
 
@@ -39,42 +38,55 @@ gulp.task('clean:dev', function () {
     return del(files);
 });
 
-
+/** Move Folders **/
 gulp.task('move:app', function () {
-    gulp.src('App/**/*', { base: './App' })
+    return gulp.src('App/**/*', { base: './App' })
         .pipe(gulp.dest('./wwwroot/App'));
 });
 
 gulp.task('move:views', function () {
-    gulp.src('App/**/*.html', { base: './App' })
+    return gulp.src('App/**/*.html', { base: './App' })
         .pipe(gulp.dest('./wwwroot/App'));
 });
 
 gulp.task('move:lib', function () {
-    gulp.src('Content/Lib/**/*', { base: './Content/Lib' })
+    return gulp.src('Content/Lib/**/*', { base: './Content/Lib' })
         .pipe(gulp.dest('./wwwroot/lib'));
 });
 
 gulp.task('move:img', function () {
-    gulp.src('Content/img/**/*', { base: './Content/img' })
+    return gulp.src('Content/img/**/*', { base: './Content/img' })
         .pipe(gulp.dest('./wwwroot/img'));
 });
 
-gulp.task('create:index.html', function () {
-    gulp.src('./Views/index.html', { base: './Views/' })
+/** Manage index.html **/
+gulp.task('dev:create:index.html', function() {
+    return gulp.src('./Views/index.html', { base: './Views/' })
         .pipe(gulp.dest('./wwwroot/'));
-
-     gulp.src('./wwwroot/index.html')
-	    .pipe(inject(gulp.src(['./App/**/*.js'], { read: false }),{starttag: '<!-- inject:dev:{{ext}} -->' }))
-	    .pipe(gulp.dest('./wwwroot/'));
+});
+gulp.task('dev:inject:index.html', function() {
+   return gulp.src('./wwwroot/index.html')
+        .pipe(inject(gulp.src(['./App/**/*.js'], { read: false }), { starttag: '<!-- inject:dev:{{ext}} -->' }))
+        .pipe(gulp.dest('./wwwroot/'));
 });
 
-gulp.task('min:css', function () {
+gulp.task('dev:inject:WebApiUrl', function() {
+    return gulp.src('./wwwroot/App/Common/ngConstants.js')
+        .pipe(gulpReplace(/URLSERVICE/g, '"http://integrabiapi.azurewebsites.net/api"'))
+        .pipe(gulp.dest('./wwwroot/App/Common/'));
+});
 
+gulp.task('local:inject:WebApiUrl', function() {
+    return gulp.src('./wwwroot/App/Common/ngConstants.js')
+        .pipe(gulpReplace(/URLSERVICE/g, '"http://localhost:5000/api"'))
+        .pipe(gulp.dest('./wwwroot/App/Common/'));
+});
+
+/** Manage min.css **/
+gulp.task('min:css', function () {
 	gulp.src("./Content/css/site.scss")
 	        .pipe(sass().on('error', sass.logError))
 	        .pipe(gulp.dest("Content/css/"));
-
 	
 	var tasks = getBundles(regex.css).map(function (bundle) {
 
