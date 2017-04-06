@@ -1,25 +1,25 @@
-(function(){
+(function() {
 
     "use strict";
 
     angular.module('Login',
         [
             'ngRoute', 'Login.ViewModel'
-     ])
+        ])
 
-    //Rutas
+        //Rutas
 
-    .config(['$stateProvider', "ngRoutesCtrl",'$routeProvider', function ($stateProvider, ngRoutesCtrl,$routeProvider) {   
-    	
-        $stateProvider.state('Login', ngRoutesCtrl.LoginViewCtrl);
-    }])
+        .config(['$stateProvider', "ngRoutesCtrl", '$urlRouterProvider', function($stateProvider, ngRoutesCtrl, $urlRouterProvider) {
+            $urlRouterProvider.otherwise("/");
+            $stateProvider.state('Login', ngRoutesCtrl.LoginViewCtrl);
+        }])
 
 
-    //Controladores   
+        //Controladores   
 
-    .controller('LoginViewCtrl', ['$scope', 'LoginViewModel', function ($scope, LoginViewModel) {
-        $scope.viewmodel = new LoginViewModel();
-        $scope.viewmodel.init();
-    }])
+        .controller('LoginViewCtrl', ['$scope', 'LoginViewModel', function($scope, LoginViewModel) {
+            $scope.viewmodel = new LoginViewModel();
+            $scope.viewmodel.init();
+        }])
 
 })();

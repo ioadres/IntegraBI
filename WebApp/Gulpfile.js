@@ -21,7 +21,8 @@ var regex = {
     js: /\.js$/
 };
 
-gulp.task('dev', gulpSequence(['dev:move', 'min:css'],'dev:inject:WebApiUrl', 'dev:index.html'));
+gulp.task('dev', gulpSequence(['dev:move', 'min:css'], 'dev:inject:WebApiUrl', 'dev:index.html'));
+gulp.task('local', gulpSequence(['dev:move', 'min:css'], 'local:inject:WebApiUrl', 'dev:index.html'));
 gulp.task('dev:move', gulpSequence(['move:app', 'move:lib', 'move:img']));
 gulp.task('dev:index.html', gulpSequence('dev:create:index.html', 'dev:inject:index.html'));
 gulp.task('dev:clean', ['clean:dev']);

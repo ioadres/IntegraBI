@@ -29,12 +29,12 @@
                 },
 
                 logout: function () {
+                    $cookies.remove(ctokenintegrabi);
                     $cookies.remove(UserContextCookie);
                     $rootScope.UserContext = null;
                     $rootScope.token = {
                     	isAnonymus : true
                     } 
-                    $state.go('Login')
                 },
 
                 isLoggedIn: function () {
