@@ -26,6 +26,10 @@
                         $rootScope.state = toState;
                         blockUIConfig.message = "Un momentito";//$rootScope.translation.LabelMomento;
 
+                        //### Cuando es un pagina huesped y es la pantalla de login --> deslogueamos
+                        if (self.guestAccess(toState.data) && toState.name == 'Login') {
+                            ngAuth.logout();
+                        }
                        
                         //### Si no es una pagina huesped  y el usuario no esta logueado --> redirect to Login
                         if (!self.guestAccess(toState.data) && $rootScope.token.isAnonymus === true) {
