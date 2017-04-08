@@ -1,4 +1,4 @@
-
+﻿
 (function () {
     "use strict";
 
@@ -6,7 +6,7 @@
         [
             'ui.router', 'ngCookies', 'blockUI', 'ngToast', 'ngMessages', 'ngMaterial',
             'App.Control', 'ngTranslations', 'ngLoadRequest', 'ngConstants', 'ngAuth','Header','MenuLeft',
-            'Home','Login'
+            'Home','Login','Report'
         ]
     )
 
