@@ -36,7 +36,6 @@
 
   <ItemGroup>
     <Content Include="Views\index.html" />
-    <Content Include="wwwroot\css\site.min.css" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore" Version="1.1.1" />
@@ -55,6 +54,9 @@
     <Folder Include="App\Module\Login\Service\" />
     <Folder Include="App\Module\Login\View\" />
     <Folder Include="App\Module\Login\ViewModel\" />
+    <Folder Include="App\Module\Report\" />
+    <Folder Include="App\Module\Report\View\" />
+    <Folder Include="App\Module\Report\Service\" />
   </ItemGroup>
 
 

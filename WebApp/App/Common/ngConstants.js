@@ -1,4 +1,4 @@
-(function () {
+﻿(function () {
     "use strict";
 
     // Rutas
@@ -21,6 +21,13 @@
         }])
 
     .constant('ngRoutesCtrl', {
+
+    	ReportViewCtrl: {
+            url: '/Report',
+            templateUrl: 'App/Module/Report/View/Index.html',
+            controller: 'ReportViewCtrl'
+        },
+
         HomeViewCtrl: {
             url: '/Home',
             templateUrl: 'App/Module/Home/View/Index.html',

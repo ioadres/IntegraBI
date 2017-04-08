@@ -1,0 +1,27 @@
+﻿<h1>gridstack-angular demo</h1>
+<p>{{viewmodel.widgets}}</p>
+<div>
+    <a class="btn btn-primary" ng-click="viewmodel.addWidget()" href="#">Add Widget</a>
+    <a class="btn btn-primary" ng-click="viewmodel.moveWidget()" href="#">Move Widget</a>
+</div>
+
+<div gridstack class="grid-stack grid1" options="options" 
+     on-change="viewmodel.onChange(event,items)" 
+     on-drag-start="viewmodel.onDragStart(event,ui)" 
+     on-drag-stop="viewmodel.onDragStop(event,ui)" 
+     on-resize-start="viewmodel.onResizeStart(event,ui)" 
+     on-resize-stop="viewmodel.onResizeStop(event,ui)">
+    
+    <div gridstack-item ng-repeat="w in viewmodel.widgets" class="grid-stack-item" gs-item-x="w.x" gs-item-y="w.y"
+         gs-item-width="w.width" 
+         gs-item-height="w.height" 
+         gs-item-autopos="1" 
+         on-item-added="viewmodel.onItemAdded(item)" 
+         on-item-removed="viewmodel.onItemRemoved(item)">
+        
+        <div class="grid-stack-item-content">
+            <a class="btn btn-primary" ng-click="viewmodel.removeWidget(w)" href="#">remove</a>
+        </div>
+
+    </div>
+</div>
