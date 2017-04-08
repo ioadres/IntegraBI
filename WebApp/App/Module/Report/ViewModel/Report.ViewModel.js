@@ -5,18 +5,18 @@
     angular.module('Report.ViewModel', ['Report.Service'])
 
     angular.module('Report.ViewModel').factory('ReportViewModel',
-        ['ngLoadRequest', 'ngRoutesCtrl', 'ReportService', 'ngAuth', 'ngCommon', 'ngEnumerados', function (ngLoadRequest, ngRoutesCtrl, ReportService, ngAuth, ngCommon, ngEnumerados,$log) {
+        ['ngLoadRequest', 'ngRoutesCtrl', 'ReportService', 'ngAuth', 'ngCommon', 'ngEnumerados', function (ngLoadRequest, ngRoutesCtrl, ReportService, ngAuth, ngCommon, ngEnumerados) {
 
             var viewmodel = function () {
                 var self = this;
                 //### Config
                 self.service = new ReportService();
 
-		self.widgets = [{ x:0, y:0, width:1, height:1 }, { x:0, y:0, width:3, height:1 }];
-		self.options = {
-			cellHeight: 200,
-			verticalMargin: 10
-		};
+                self.widgets = [{ x:0, y:0, width:1, height:1 }, { x:0, y:0, width:3, height:1 }];
+                self.options = {
+                    cellHeight: 200,
+                    verticalMargin: 10
+                };
             }
             
             viewmodel.prototype.init = function () {
@@ -43,32 +43,32 @@
 
             viewmodel.prototype.onChange = function(event, items) {
             	var self  =this;
-                $log.log("onChange event: "+event+" items:"+items);
+                console.log("onChange event: "+event+" items:"+items);
             };
 
             viewmodel.prototype.onDragStart = function(event, ui) {
             	var self  =this;
-                $log.log("onDragStart event: "+event+" ui:"+ui);
+                console.log("onDragStart event: "+event+" ui:"+ui);
             };
             viewmodel.prototype.onDragStop = function(event, ui) {
             	var self  =this;
-                $log.log("onDragStop event: "+event+" ui:"+ui);
+                console.log("onDragStop event: "+event+" ui:"+ui);
             };
             viewmodel.prototype.onResizeStart = function(event, ui) {
             	var self  =this;
-                $log.log("onResizeStart event: "+event+" ui:"+ui);
+                console.log("onResizeStart event: "+event+" ui:"+ui);
             };
             viewmodel.prototype.onResizeStop = function(event, ui) {
             	var self  =this;
-                $log.log("onResizeStop event: "+event+" ui:"+ui);
+                console.log("onResizeStop event: "+event+" ui:"+ui);
             };
             viewmodel.prototype.onItemAdded = function(item) {
             	var self  =this;
-                $log.log("onItemAdded item: "+item);
+                console.log("onItemAdded item: "+item);
             };
             viewmodel.prototype.onItemRemoved = function(item) {
             	var self  =this;
-                $log.log("onItemRemoved item: "+item);
+                console.log("onItemRemoved item: "+item);
             };
 
 
