@@ -19,8 +19,7 @@
     "ngtoast": "2.0.0",
     "moment": "2.0.0",
     "angular-cookies": "1.6.3",
-    "gridstack-angular": "^0.5.0",
-    "gridstack": "^0.2.6"
+    "angular-widget-grid": "^0.3.0"
   },
   "resolutions": {
     "angular": "1.6.3",

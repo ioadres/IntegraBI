@@ -4,7 +4,7 @@
 
     angular.module('Report',
         [
-            'ngRoute', 'Report.ViewModel','gridstack-angular'
+            'ngRoute', 'Report.ViewModel','widgetGrid'
      ])
 
     //Rutas
@@ -17,7 +17,7 @@
     //Controladores   
 
     .controller('ReportViewCtrl', ['$scope', 'ReportViewModel', function ($scope, ReportViewModel) {
-        $scope.viewmodel = new ReportViewModel();
+        $scope.viewmodel = new ReportViewModel($scope);
         $scope.viewmodel.init();
     }])
 

@@ -1,27 +1,234 @@
-﻿<h1>gridstack-angular demo</h1>
-<p>{{viewmodel.widgets}}</p>
-<div>
-    <a class="btn btn-primary" ng-click="viewmodel.addWidget()" href="#">Add Widget</a>
-    <a class="btn btn-primary" ng-click="viewmodel.moveWidget()" href="#">Move Widget</a>
+﻿
+<style>
+    body {
+        background: inherit;
+    }
+
+    .grid-header {
+        width: 100%;
+        position: fixed;
+        background: #2e80ab;
+        height: 40px;
+        z-index: 250;
+        font-size: 13px;
+        padding: 5px;
+        color: #eee;
+    }
+
+    .grid-left {
+        background: #282d32;
+        height: 100%;
+        width: 300px;
+        margin-top: 30px;
+        position: fixed;
+    }
+
+    .grid-left .grid-elements {
+        padding: 8px;
+        height: 87%;
+    }
+
+    .grid-left .grid-elements h2 {
+        color: #eee;
+    }
+
+    .grid-left .grid-elements .list {
+        max-height: 100%;
+        overflow-y: scroll;
+    }
+
+    .grid-left .grid-elements .list .item {
+        display: inline-table;
+        margin: 4px;
+        margin-bottom: 23px;
+    }
+
+    .grid-left .grid-elements .list .item img {
+        width: 120px;
+        height: 120px;
+    }
+
+    .grid {
+        max-width: 100%;
+        height: 96vh;
+        padding: 15px;
+        margin-left: 300px;
+        margin-bottom: 2px;
+        position: relative;
+        z-index: 1;
+        padding-top: 56px;
+    }
+
+    .grid input {
+        border-radius: 0px;
+    }
+
+    .grid .grid-panel {
+        max-width: 100%;
+        height: 100%;
+        margin-top: 52px;
+        margin-left: 15px;
+        overflow-x: auto;
+        overflow-y: auto;
+        position: relative;
+        transition: margin .2s ease;
+    }
+
+    .grid .grid-panel .panel {
+        width: 3840px;
+        height: 2160px;
+        border: 1px solid #eee;
+        box-shadow: inherit !important;
+    }
+    .btn-remove-widget {
+        background: #2e80ab;
+        width: 25px;
+        height: 25px;
+        z-index: 500;
+        color: #fff;
+    } 
+    .fxs-flowlayout-resolutionguide {
+        position: absolute;
+        top: 0;
+        left: 0;
+        box-sizing: border-box;
+        color: #282d32;
+        border-color: #fb9191;
+        opacity: .7;
+        border-width: 1px;
+        border-right-style: dashed;
+        border-bottom-style: dashed;
+        pointer-events: none;
+        font-family: az_ea_font,wf_segoe-ui_normal,"Segoe UI","Segoe WP",Tahoma,Arial,sans-serif;
+        font-size: 13px;
+        line-height: normal;
+        z-index: 300;
+    }
+
+    .fxs-flowlayout-resolutionguide::after {
+        position: absolute;
+        right: 8px;
+        bottom: 5px;
+    }
+
+    .fxs-flowlayout-resolutionguide-1366x768 {
+        height: 768px;
+        width: 1366px;
+    }
+
+    .fxs-flowlayout-resolutionguide-1366x768::after {
+        content: "1366 x 768";
+    }
+
+    .fxs-flowlayout-resolutionguide-1024x768 {
+        height: 768px;
+        width: 1024px;
+    }
+
+    .fxs-flowlayout-resolutionguide-1024x768::after {
+        content: "1024 x 768";
+    }
+</style>
+
+
+<div class="grid-header">
+    <div class="text-center">
+        <div>
+            Agregue, ancle, mueva y cambie el tamaño de sus iconos.
+            &nbsp;<button type="button" class="btn btn-default btn-xs">
+                Personalización finalizada
+            </button>
+        </div>
+    </div>
 </div>
 
-<div gridstack class="grid-stack grid1" options="options" 
-     on-change="viewmodel.onChange(event,items)" 
-     on-drag-start="viewmodel.onDragStart(event,ui)" 
-     on-drag-stop="viewmodel.onDragStop(event,ui)" 
-     on-resize-start="viewmodel.onResizeStart(event,ui)" 
-     on-resize-stop="viewmodel.onResizeStop(event,ui)">
-    
-    <div gridstack-item ng-repeat="w in viewmodel.widgets" class="grid-stack-item" gs-item-x="w.x" gs-item-y="w.y"
-         gs-item-width="w.width" 
-         gs-item-height="w.height" 
-         gs-item-autopos="1" 
-         on-item-added="viewmodel.onItemAdded(item)" 
-         on-item-removed="viewmodel.onItemRemoved(item)">
-        
-        <div class="grid-stack-item-content">
-            <a class="btn btn-primary" ng-click="viewmodel.removeWidget(w)" href="#">remove</a>
+<div class="grid-left">
+    <div class="grid-elements">
+        <div class="text-center">
+            <h2>Galería</h2>
         </div>
+        <div class="list">
+            <div class="item">
+                <img src="https://dummyimage.com/100x100/eee/grafico1" ng-click="viewmodel.addWidget(1)">
+            </div>
+            <div class="item">
+                <img src="https://dummyimage.com/100x100/eee/grafico2" ng-click="viewmodel.addWidget(2)">
+            </div>
+            <div class="item">
+                <img src="https://dummyimage.com/450x400/eee/grafico3" ng-click="viewmodel.addWidget(2)">
+            </div>
+            <div class="item">
+                <img src="https://dummyimage.com/100x100/eee/grafico1" ng-click="viewmodel.addWidget(2)">
+            </div>
+            <div class="item">
+                <img src="https://dummyimage.com/100x100/eee/grafico2" ng-click="viewmodel.addWidget(2)">
+            </div>
+            <div class="item">
+                <img src="https://dummyimage.com/450x400/eee/grafico3" ng-click="viewmodel.addWidget(2)">
+            </div>
+            <div class="item">
+                <img src="https://dummyimage.com/100x100/eee/grafico1" ng-click="viewmodel.addWidget(1)">
+            </div>
+            <div class="item">
+                <img src="https://dummyimage.com/100x100/eee/grafico2" ng-click="viewmodel.addWidget(2)">
+            </div>
+            <div class="item">
+                <img src="https://dummyimage.com/450x400/eee/grafico3" ng-click="viewmodel.addWidget(3)">
+            </div>
+            <div class="item">
+                <img src="https://dummyimage.com/100x100/eee/grafico1" ng-click="viewmodel.addWidget(1)">
+            </div>
+            <div class="item">
+                <img src="https://dummyimage.com/100x100/eee/grafico2" ng-click="viewmodel.addWidget(2)">
+            </div>
+            <div class="item">
+                <img src="https://dummyimage.com/450x400/eee/grafico3" ng-click="viewmodel.addWidget(3)">
+            </div>
+            <div class="item">
+                <img src="https://dummyimage.com/100x100/eee/grafico1" ng-click="viewmodel.addWidget(1)">
+            </div>
+            <div class="item">
+                <img src="https://dummyimage.com/100x100/eee/grafico2" ng-click="viewmodel.addWidget(2)">
+            </div>
+            <div class="item">
+                <img src="https://dummyimage.com/450x400/eee/grafico3" ng-click="viewmodel.addWidget(3)">
+            </div>
+            <div class="item">
+                <img src="https://dummyimage.com/100x100/eee/grafico1" ng-click="viewmodel.addWidget(1)">
+            </div>
+            <div class="item">
+                <img src="https://dummyimage.com/100x100/eee/grafico2" ng-click="viewmodel.addWidget(2)">
+            </div>
+            <div class="item">
+                <img src="https://dummyimage.com/450x400/eee/grafico3" ng-click="viewmodel.addWidget(3)">
+            </div>
+            <div class="item">
+                <img src="https://dummyimage.com/100x100/eee/grafico1" ng-click="viewmodel.addWidget(1)">
+            </div>
+            <div class="item">
+                <img src="https://dummyimage.com/100x100/eee/grafico2" ng-click="viewmodel.addWidget(2)">
+            </div>
+            <div class="item">
+                <img src="https://dummyimage.com/450x400/eee/grafico3" ng-click="viewmodel.addWidget(3)">
+            </div>
+        </div>
+    </div>
+</div>
 
+<div class="grid">
+    <div class="col-lg-3">
+        <input class="form-control" placeholder="Nombre" />
+    </div>
+    <div class="col-lg-12">
+    </div>
+    <div class="grid-panel">
+        <div class="fxs-flowlayout-resolutionguide fxs-flowlayout-resolutionguide-1024x768 fxs-hide-in-normal"></div>
+        <div class="fxs-flowlayout-resolutionguide fxs-flowlayout-resolutionguide-1366x768 fxs-hide-in-normal"></div>
+        <wg-grid columns="30" rows="30" class="panel" options="viewmodel.options">
+            <wg-widget ng-repeat="(key, item) in viewmodel.widgets" position="item.position" wg-resizable="" wg-movable="" editable="true">
+                <button title="Remove Widget" class="btn-remove-widget" ng-show="viewmodel.editable" ng-click="viewmodel.removeWidget(item)">&#x2715;</button>
+                <div ng-bind-html="item.body"></div>
+            </wg-widget>
+        </wg-grid>
     </div>
 </div>
