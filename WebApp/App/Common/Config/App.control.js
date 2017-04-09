@@ -16,6 +16,7 @@
                     $rootScope.token = ngAuth.getToken();
                     $rootScope.UserContext = ngAuth.getUser();
                     $rootScope.state = $state;
+                    $rootScope.headerVisible = true;
                     $rootScope.menuLeftActive = false;
                 }
 
@@ -24,6 +25,7 @@
                     $rootScope.$on('$stateChangeStart', function (e, toState, toParams, fromState, fromParams) {
 
                         $rootScope.state = toState;
+                        $rootScope.headerVisible = true;
                         blockUIConfig.message = "Un momentito";//$rootScope.translation.LabelMomento;
 
                         //### Cuando es un pagina huesped y es la pantalla de login --> deslogueamos

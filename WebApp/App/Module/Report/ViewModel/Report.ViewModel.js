@@ -5,18 +5,24 @@
     angular.module('Report.ViewModel', ['Report.Service'])
 
     angular.module('Report.ViewModel').factory('ReportViewModel',
-        ['ngLoadRequest', 'ngRoutesCtrl', 'ReportService', 'ngAuth', 'ngCommon', 'ngEnumerados', function (ngLoadRequest, ngRoutesCtrl, ReportService, ngAuth, ngCommon, ngEnumerados) {
+        ['ngLoadRequest', 'ngRoutesCtrl', 'ReportService', 'ngAuth', 'ngCommon', 'ngEnumerados','$rootScope','$sce', function (ngLoadRequest, ngRoutesCtrl, ReportService, ngAuth, ngCommon, ngEnumerados,$rootScope, $sce) {
 
-            var viewmodel = function () {
+            var viewmodel = function ($scope) {
                 var self = this;
                 //### Config
                 self.service = new ReportService();
-
-                self.widgets = [{ x:0, y:0, width:1, height:1 }, { x:0, y:0, width:3, height:1 }];
+                
+                //$rootScope.headerVisible = false;
+                self.widgets = [];
+                self.preview = false;
                 self.options = {
-                    cellHeight: 200,
+                    cellHeight:800,
                     verticalMargin: 10
                 };
+
+                $scope.$on('wg-update-position', function (event, widgetInfo) {
+                    console.log('A widget has changed its position!', widgetInfo);
+                });
             }
             
             viewmodel.prototype.init = function () {
@@ -24,17 +30,27 @@
             
             }
 
-            viewmodel.prototype.addWidget = function() {
+        viewmodel.prototype.edit = function(item) {
             	var self  =this;
-                var newWidget = { x:0, y:0, width:1, height:1 };
+                self.editable = !self.editable;
+            };
+
+            viewmodel.prototype.addWidget = function(item) {
+            	var self  =this;
+                var newWidget = {};
+                if (item == 1) {
+                    newWidget = { position: { top: 10, height: 7, left: 9, width: 7 }, body:$sce.trustAsHtml('<div style="background-color: green;height: 100%;">Test1</div>') };
+                }
+                if (item == 2) {
+                     newWidget = { position: { top: 10, height: 7, left: 9, width: 7 }, body:$sce.trustAsHtml('<div style="background-color: green;height: 100%;">Test1</div>') };
+                }
+                if (item == 3) {
+                    newWidget = { position: { top: 10, height: 7, left: 9, width: 7 }, body:$sce.trustAsHtml('<div style="background-color: green;height: 100%;">Test1</div>') };
+                }
+                
                 self.widgets.push(newWidget);
             };
-            viewmodel.prototype.moveWidget = function() {
-            	var self = this;
-                self.widgets[0].x = 1;
-                self.widgets[0].width = 2;
-                self.widgets[0].height = 2;
-            };
+            
             viewmodel.prototype.removeWidget = function(w) {
             	var self  =this;
                 var index = self.widgets.indexOf(w);
