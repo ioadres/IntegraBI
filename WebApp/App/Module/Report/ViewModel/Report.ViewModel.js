@@ -12,13 +12,10 @@
                 //### Config
                 self.service = new ReportService();
                 
-                //$rootScope.headerVisible = false;
+                $rootScope.headerVisible = false;
                 self.widgets = [];
                 self.preview = false;
-                self.options = {
-                    cellHeight:800,
-                    verticalMargin: 10
-                };
+                self.options = { showGrid: true }
 
                 $scope.$on('wg-update-position', function (event, widgetInfo) {
                     console.log('A widget has changed its position!', widgetInfo);
@@ -30,7 +27,7 @@
             
             }
 
-        viewmodel.prototype.edit = function(item) {
+            viewmodel.prototype.edit = function(item) {
             	var self  =this;
                 self.editable = !self.editable;
             };
@@ -39,13 +36,13 @@
             	var self  =this;
                 var newWidget = {};
                 if (item == 1) {
-                    newWidget = { position: { top: 10, height: 7, left: 9, width: 7 }, body:$sce.trustAsHtml('<div style="background-color: green;height: 100%;">Test1</div>') };
+                    newWidget = { position: { top: 10, height: 7, left: 9, width: 7 }, body:$sce.trustAsHtml('<div style="background-color: #282d32;height: 100%;">Test1</div>') };
                 }
                 if (item == 2) {
-                     newWidget = { position: { top: 10, height: 7, left: 9, width: 7 }, body:$sce.trustAsHtml('<div style="background-color: green;height: 100%;">Test1</div>') };
+                     newWidget = { position: { top: 10, height: 7, left: 9, width: 7 }, body:$sce.trustAsHtml('<div style="background-color: #282d32;height: 100%;">Test1</div>') };
                 }
                 if (item == 3) {
-                    newWidget = { position: { top: 10, height: 7, left: 9, width: 7 }, body:$sce.trustAsHtml('<div style="background-color: green;height: 100%;">Test1</div>') };
+                    newWidget = { position: { top: 10, height: 7, left: 9, width: 7 }, body:$sce.trustAsHtml('<div style="background-color: #282d32;height: 100%;">Test1</div>') };
                 }
                 
                 self.widgets.push(newWidget);
