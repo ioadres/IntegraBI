@@ -20,7 +20,13 @@
 
         }])
 
-    .constant('ngRoutesCtrl', {
+     .constant('ngRoutesCtrl', {
+
+        ReportListViewCtrl: {
+            url: '/Report/List',
+            templateUrl: 'App/Module/Report/View/List.html',
+            controller: 'ReportListViewCtrl'
+        },
 
     	ReportViewCtrl: {
             url: '/Report',

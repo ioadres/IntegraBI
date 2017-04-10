@@ -24,20 +24,8 @@
                 $scope.$on('wg-update-position', function (event, widgetInfo) {
                     var old = self.widgets[widgetInfo.index].position;
                     self.widgets[widgetInfo.index].position = widgetInfo.newPosition;
-                    
-                    for (var i = 0; i < old.height; i++) {
-                        for (var j = 0; j < old.width; j++) {
-                            self.matriz[old.top - 1 + i][old.left - 1 + j] = 0;
-                        }
-                    }
-
-                    for (var i = 0; i < widgetInfo.newPosition.height; i++) {
-                        for (var j = 0; j < widgetInfo.newPosition.width; j++) {
-                            self.matriz[widgetInfo.newPosition.top - 1 + i][widgetInfo.newPosition.left - 1 + j] = 1;
-                        }
-                    }
-                    
-
+                    self.resetPositionWidget(old);
+                    self.registerPositionWidget(widgetInfo.newPosition);
                 });
             }
 
@@ -68,6 +56,33 @@
                 }
             }
 
+            viewmodel.prototype.removeWidget = function (widget) {
+                var self = this;
+                var idx = self.widgets.indexOf(widget);
+                if (idx > -1) {
+                    self.widgets.splice(idx, 1);
+                    self.resetPositionWidget(widget.position);
+                }
+            }
+
+            viewmodel.prototype.resetPositionWidget = function (position) {
+                var self = this;
+                for (var i = 0; i < position.height; i++) {
+                    for (var j = 0; j < position.width; j++) {
+                        self.matriz[position.top - 1 + i][position.left - 1 + j] = 0;
+                    }
+                }
+            }
+
+            viewmodel.prototype.registerPositionWidget = function (position) {
+                var self = this;
+                for (var i = 0; i < position.height; i++) {
+                    for (var j = 0; j < position.width; j++) {
+                        self.matriz[position.top - 1 + i][position.left - 1 + j] = 1;
+                    }
+                }
+            }
+
             viewmodel.prototype.getPosition = function () {
                 var self = this;
                 var end = false;
@@ -92,19 +107,6 @@
                     }
                 }
                 return { top: top + 1, height: 2, left: left + 1, width: 2 };
-            }
-
-            viewmodel.prototype.removeWidget = function (widget) {
-                var self = this;
-                var idx = self.widgets.indexOf(widget);
-                if (idx > -1) {
-                    self.widgets.splice(idx, 1);
-                    for (var i = 0; i < widget.position.height; i++) {
-                        for (var j = 0; j < widget.position.width; j++) {
-                            self.matriz[widget.position.top - 1 + i][widget.position.left - 1 + j] = 0;
-                        }
-                    }
-                }
             }
 
             viewmodel.prototype.onChange = function (event, items) {
