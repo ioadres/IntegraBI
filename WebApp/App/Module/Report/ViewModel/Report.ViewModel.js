@@ -34,7 +34,7 @@
                 self.initArray();
             }
 
-            viewmodel.prototype.edit = function (item) {
+            viewmodel.prototype.edit = function () {
                 var self = this;
                 self.editable = !self.editable;
             };
@@ -42,7 +42,8 @@
             viewmodel.prototype.addWidget = function (item) {
                 var self = this;
                 var position = self.getPosition();
-                var newWidget = { position: position, body: $sce.trustAsHtml('<div style="background-color: #282d32;height: 100%;">Test1</div>') };
+                var newWidget = {
+                    position: position, body: $sce.trustAsHtml('<iframe style="width:100%;height:100%;" src="https://app.powerbi.com/view?r=eyJrIjoiMWRkM2E4MTUtZDMzZC00M2U0LTgwOGItZjJiMWZlMjYxYjExIiwidCI6IjNjN2I1ODYzLWVkMGMtNDQyYS1hODdiLTQ4YzE0MDQyOGJkNyIsImMiOjh9" frameborder="0" allowFullScreen="true"></iframe>') };
                 self.widgets.push(newWidget);
             };
 

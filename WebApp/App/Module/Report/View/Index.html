@@ -135,7 +135,7 @@
     <div class="text-center">
         <div>
             Agregue, ancle, mueva y cambie el tamaño de sus iconos.
-            &nbsp;<button type="button" class="btn btn-default btn-xs">
+            &nbsp;<button type="button" class="btn btn-default btn-xs" ng-click="viewmodel.edit()">
                 Personalización finalizada
             </button>
         </div>
@@ -168,7 +168,7 @@
         <div class="fxs-flowlayout-resolutionguide fxs-flowlayout-resolutionguide-1024x768 fxs-hide-in-normal"></div>
         <div class="fxs-flowlayout-resolutionguide fxs-flowlayout-resolutionguide-1366x768 fxs-hide-in-normal"></div>
         <wg-grid columns="30" rows="30" class="panel" options="viewmodel.options">
-            <wg-widget ng-repeat="(key, item) in viewmodel.widgets" position="item.position" wg-resizable="" wg-movable="" editable="true">
+            <wg-widget ng-repeat="(key, item) in viewmodel.widgets" position="item.position" wg-resizable="" wg-movable="" editable="{{viewmodel.editable}}">
                 <button title="Remove Widget" class="btn-remove-widget" ng-show="viewmodel.editable" ng-click="viewmodel.removeWidget(item)">&#x2715;</button>
                 <div ng-bind-html="item.body"></div>
             </wg-widget>
