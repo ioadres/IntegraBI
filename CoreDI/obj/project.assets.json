@@ -2862,7 +2862,8 @@
         "framework": ".NETCoreApp,Version=v1.1",
         "dependencies": {
           "Common": "1.0.0",
-          "Microsoft.NETCore.App": "1.1.1"
+          "Microsoft.NETCore.App": "1.1.1",
+          "Model": "1.0.0"
         }
       }
     }

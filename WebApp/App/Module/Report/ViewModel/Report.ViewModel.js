@@ -39,6 +39,29 @@
                 self.editable = !self.editable;
             };
 
+            viewmodel.prototype.save = function (exit) {
+                var self = this;
+                ngLoadRequest.startBlock();
+                self.service.addReport(self.getModel()).success(function () {
+                    debugger;
+                }).finally(function () {
+                    ngLoadRequest.stopBlock();
+                });
+            };
+
+            viewmodel.prototype.getModel = function () {
+                var self = this;
+                return {
+                    name: self.name,
+                    json : self.getJson()
+                }
+            }
+
+            viewmodel.prototype.getJson = function () {
+                var self = this;
+                return JSON.stringify(self.widgets);
+            }
+
             viewmodel.prototype.addWidget = function (item) {
                 var self = this;
                 var position = self.getPosition();

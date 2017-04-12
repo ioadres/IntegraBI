@@ -15,6 +15,9 @@
                         GetUserContext: url + '/user/GetUserContext'
                     },
                     Home: {
+                    },
+                    ReportController: {
+                        Add: url + '/Report/Add'
                     }
                 }
 

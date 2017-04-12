@@ -7,10 +7,11 @@ namespace Model.Entities
     public partial class AppDbContext : DbContext
     {
         public virtual DbSet<Profile> Profile { get; set; }
+        public virtual DbSet<Report> Report { get; set; }
         public virtual DbSet<Rol> Rol { get; set; }
         public virtual DbSet<User> User { get; set; }
 
-		public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
+        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -45,7 +46,28 @@ namespace Model.Entities
                 entity.HasOne(d => d.User)
                     .WithMany(p => p.Profile)
                     .HasForeignKey(d => d.UserId)
-                    .HasConstraintName("FK__Profile__UserId__5BE2A6F2");
+                    .HasConstraintName("FK__Profile__UserId__3D5E1FD2");
+            });
+
+            modelBuilder.Entity<Report>(entity =>
+            {
+                entity.Property(e => e.DateCreated)
+                    .HasColumnType("datetime")
+                    .HasDefaultValueSql("getdate()");
+
+                entity.Property(e => e.Json)
+                    .HasColumnName("JSON")
+                    .HasColumnType("varchar(max)");
+
+                entity.Property(e => e.Name)
+                    .IsRequired()
+                    .HasColumnType("varchar(255)");
+
+                entity.HasOne(d => d.User)
+                    .WithMany(p => p.Report)
+                    .HasForeignKey(d => d.UserId)
+                    .OnDelete(DeleteBehavior.Restrict)
+                    .HasConstraintName("FK__Report__UserId__4AB81AF0");
             });
 
             modelBuilder.Entity<Rol>(entity =>
@@ -81,7 +103,7 @@ namespace Model.Entities
                 entity.HasOne(d => d.Rol)
                     .WithMany(p => p.User)
                     .HasForeignKey(d => d.RolId)
-                    .HasConstraintName("FK__User__RolId__5EBF139D");
+                    .HasConstraintName("FK__User__RolId__4316F928");
             });
         }
     }

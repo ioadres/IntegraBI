@@ -11,6 +11,12 @@
             self.$http = $http;
         }        
 
+        Service.prototype.addReport = function (params) {
+            var self = this;
+            var url = ngServicesCtrl.ReportController.Add;
+            return $http.post(url, params);
+        };
+
 
 
         return Service;
