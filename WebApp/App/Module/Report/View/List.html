@@ -32,14 +32,14 @@
     </div>
 
     <div class="row">
-        <div class="col-lg-12 card">
-            
-            <div class="item text-center">
+        <div class="col-lg-12 card">            
+            <div class="item text-center" ng-repeat="(key, item) in viewmodel.reports">
                 <img src="/img/report.png">
-                <h4>Reporte Click</h4>
+                <h4>{{::item.name}}</h4>
+                <p>{{viewmodel.formatDate(item.dateCreated)}}</p>
                 <div class="col-lg-12">
-                    <button class="btn btn-info btn-xs">Editar</button>&nbsp;
-                    <button class="btn btn-success btn-xs">Visualizar</button>&nbsp;
+                    <a class="btn btn-info btn-xs" ui-sref="Report({id:item.reportId})">Editar</a>&nbsp;
+                    <a class="btn btn-success btn-xs" ui-sref="ReportView({id:item.reportId})" target="_blank">Visualizar</a>&nbsp;
                     <button class="btn btn-default btn-xs">Dar acceso</button>&nbsp;
                     <button class="btn btn-danger btn-xs">Eliminar</button>&nbsp;
                 </div>

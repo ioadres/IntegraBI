@@ -2,6 +2,7 @@
 using Repository.Contracts.Helper;
 using System.Threading.Tasks;
 using Common;
+using System.Collections.Generic;
 
 namespace Repository.Contracts
 {
@@ -14,5 +15,6 @@ namespace Repository.Contracts
         public abstract Task<Report> Add(ReportDto model);
 
         public abstract Task<Report> Update(ReportDto model);
+        public abstract Task<IEnumerable<ReportDto>> GetReports(int userId);
     }
 }

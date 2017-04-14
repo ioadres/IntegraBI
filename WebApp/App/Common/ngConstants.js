@@ -18,7 +18,9 @@
                     },
                     ReportController: {
                         Add: url + '/Report/Add',
-                        Update: url + '/Report/Update'
+                        Update: url + '/Report/Update',
+                        GetReports: url + '/Report/GetReports',
+                        Get: url + '/Report/Get',
                     }
                 }
 
@@ -33,9 +35,15 @@
         },
 
     	ReportViewCtrl: {
-            url: '/Report',
+            url: '/Report/?id',
             templateUrl: 'App/Module/Report/View/Index.html',
             controller: 'ReportViewCtrl'
+        },
+
+        ReportViewViewCtrl : {
+            url: '/Report/View/?id',
+            templateUrl: 'App/Module/Report/View/View.html',
+            controller: 'ReportViewViewCtrl'
         },
 
         HomeViewCtrl: {

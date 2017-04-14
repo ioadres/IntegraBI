@@ -2,12 +2,13 @@ html {
   background: #F5F5F5; }
 
 body {
+  background: #F5F5F5;
   color: #58666e;
   margin: 0;
   line-height: 1.7em;
   font-size: 13px;
   font-family: 'Segoe UI Condensed','Segoe UI','Segoe WP',Tahoma,Arial,sans-serif;
-  text-Shadow: 0 0 1px rgba(0, 0, 0, 0.2); }
+  text-shadow: 0 0 1px rgba(0, 0, 0, 0.2); }
 
 .text-super {
   font-size: 48px;

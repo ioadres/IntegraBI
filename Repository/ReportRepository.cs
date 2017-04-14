@@ -3,6 +3,8 @@ using Repository.Contracts;
 using System;
 using System.Threading.Tasks;
 using Common;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Repository
 {
@@ -38,6 +40,18 @@ namespace Repository
                 }                
                 return null;
             });
+        }
+
+        public override async Task<IEnumerable<ReportDto>> GetReports(int userId) {
+            return await Task.Run(() => {                
+                return this.Context.Report.Where(x=>x.UserId == userId).Select(x=> new ReportDto() {
+                    ReportId = x.Id,
+                    UserId = userId,
+                    DateCreated = x.DateCreated,
+                    Name = x.Name,
+                    Json = x.Json
+                });
+            });        
         }
         
     }

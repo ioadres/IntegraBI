@@ -5,13 +5,13 @@
     angular.module('Report.ViewModel', ['Report.Service'])
 
     angular.module('Report.ViewModel').factory('ReportViewModel',
-        ['ngLoadRequest', 'ngRoutesCtrl', 'ReportService', 'ngAuth', 'ngCommon', 'ngEnumerados', '$rootScope', '$sce', function (ngLoadRequest, ngRoutesCtrl, ReportService, ngAuth, ngCommon, ngEnumerados, $rootScope, $sce) {
+        ['ngLoadRequest', 'ReportService','$rootScope', '$sce','$state', function (ngLoadRequest, ReportService, $rootScope, $sce, $state) {
 
             var viewmodel = function ($scope, reportId) {
                 var self = this;
                 //### Config
                 self.service = new ReportService();
-
+                self.state = $state;
                 $rootScope.headerVisible = false;
                 self.reportId = reportId;
                 self.widgets = [];
@@ -30,10 +30,12 @@
                 });
             }
 
-            viewmodel.prototype.init = function () {
+            viewmodel.prototype.init = function (id) {
                 var self = this;
+                self.reportId = id;
                 self.initArray();
             }
+            
 
             viewmodel.prototype.edit = function () {
                 var self = this;
@@ -45,6 +47,24 @@
                 return $sce.trustAsResourceUrl(item.url);
             }
 
+            viewmodel.prototype.get = function() {
+                var self = this;
+                ngLoadRequest.startBlock();
+                self.service.get(self.reportId).then(function(result) {
+                    if (result.data == "") {
+                    } else {
+                        self.name = result.data.name;
+                        if(result.data.json != "") {
+                            self.widgets = JSON.parse(result.data.json);
+                            self.widgets.forEach(function(element) {
+                                self.registerPositionWidget(element.position);
+                            }, this);
+                        }   
+                    }
+                }).finally(function () {
+                    ngLoadRequest.stopBlock();
+                });
+            }   
             viewmodel.prototype.save = function (exit) {
                 var self = this;
                 ngLoadRequest.startBlock();
@@ -54,6 +74,7 @@
                     } else {
                         if (exit) self.state.go('ReportList');
                         else {
+                            ngLoadRequest.showToastSuccess();
                             self.reportId = result.data.reportId;
                         }
                     }
@@ -84,6 +105,7 @@
                 return JSON.stringify(self.widgets);
             }
 
+            //### Widget Managde
             viewmodel.prototype.addWidget = function (item) {
                 var self = this;
                 var position = self.getPosition();
@@ -115,18 +137,19 @@
 
             viewmodel.prototype.resetPositionWidget = function (position) {
                 var self = this;
-                for (var i = 0; i < position.height; i++) {
-                    for (var j = 0; j < position.width; j++) {
-                        self.matriz[position.top - 1 + i][position.left - 1 + j] = 0;
-                    }
-                }
+                self.setMatriz(position,0);    
             }
 
             viewmodel.prototype.registerPositionWidget = function (position) {
                 var self = this;
+                self.setMatriz(position,1);                
+            }
+
+            viewmodel.prototype.setMatriz = function(position,value) {
+                var self = this;
                 for (var i = 0; i < position.height; i++) {
                     for (var j = 0; j < position.width; j++) {
-                        self.matriz[position.top - 1 + i][position.left - 1 + j] = 1;
+                        self.matriz[position.top - 1 + i][position.left - 1 + j] = value;
                     }
                 }
             }

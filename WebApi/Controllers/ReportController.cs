@@ -4,6 +4,7 @@ using Service.Contracts;
 using System.Linq;
 using System.Threading.Tasks;
 using Common;
+using System.Collections.Generic;
 
 namespace WebApi.Controllers
 {
@@ -34,6 +35,24 @@ namespace WebApi.Controllers
             }
 
             return null;
+        }
+
+        // GET api/values   
+        [HttpPost("GetReports")]
+        public async Task<IEnumerable<ReportDto>> GetReports()
+        {
+            var userId = User.Claims.Where(c => c.Type == "UserId").FirstOrDefault().Value;            
+            var result = await this._report.GetReports(int.Parse(userId));
+            return result.OrderByDescending(x=>x.DateCreated);
+        }
+
+        // GET api/values   
+        [HttpPost("Get")]
+        public async Task<ReportDto> Get([FromBody] int reportId)
+        {
+            var userId = User.Claims.Where(c => c.Type == "UserId").FirstOrDefault().Value;            
+            var result = await this._report.Get(reportId);
+            return result;
         }
 
         // GET api/values   

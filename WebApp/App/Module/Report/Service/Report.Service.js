@@ -23,7 +23,17 @@
             return $http.post(url, params);
         };
 
+        Service.prototype.getReports = function () {
+            var self = this;
+            var url = ngServicesCtrl.ReportController.GetReports;
+            return $http.post(url);
+        };
 
+        Service.prototype.get = function (params) {
+            var self = this;
+            var url = ngServicesCtrl.ReportController.Get;
+            return $http.post(url, params);
+        };
 
         return Service;
 
