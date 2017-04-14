@@ -152,10 +152,10 @@
         </div>
         <div class="list">
             <div class="item">
-                <img src="https://dummyimage.com/100x100/eee/grafico1" ng-click="viewmodel.addWidget(1)">
+                <img src="https://dummyimage.com/100x100/eee/grafico1" ng-click="viewmodel.editable && viewmodel.addWidget(1)">
             </div>
             <div class="item">
-                <img src="https://dummyimage.com/100x100/eee/grafico2" ng-click="viewmodel.addWidget(2)">
+                <img src="https://dummyimage.com/100x100/eee/grafico2" ng-click="viewmodel.editable && viewmodel.addWidget(2)">
             </div>
         </div>
     </div>
@@ -163,7 +163,11 @@
 
 <div class="grid">
     <div class="col-lg-3">
-        <input class="form-control" placeholder="Nombre Reporte" />
+        <input class="form-control" placeholder="Nombre Reporte" ng-model="viewmodel.name"/>
+    </div>
+    <div class="col-lg-2">
+        <button class="btn btn-default" ng-show="viewmodel.editable" ng-click="viewmodel.edit()">Parar Edición</button>
+        <button class="btn btn-default" ng-show="!viewmodel.editable" ng-click="viewmodel.edit()">Editar</button>
     </div>
     <div class="col-lg-12">
     </div>
@@ -173,7 +177,7 @@
         <wg-grid columns="30" rows="30" class="panel" options="viewmodel.options">
             <wg-widget ng-repeat="(key, item) in viewmodel.widgets" position="item.position" wg-resizable="" wg-movable="" editable="{{viewmodel.editable}}">
                 <button title="Remove Widget" class="btn-remove-widget" ng-show="viewmodel.editable" ng-click="viewmodel.removeWidget(item)">&#x2715;</button>
-                <div ng-bind-html="item.body"></div>
+                <iframe style="width:100%;height:100%;" ng-src="{{::viewmodel.getUrlIframe(item)}}" frameborder="0" allowFullScreen="true"></iframe>
             </wg-widget>
         </wg-grid>
     </div>

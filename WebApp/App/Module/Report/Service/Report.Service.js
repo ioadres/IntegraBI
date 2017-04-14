@@ -17,6 +17,12 @@
             return $http.post(url, params);
         };
 
+        Service.prototype.updateReport = function (params) {
+            var self = this;
+            var url = ngServicesCtrl.ReportController.Update;
+            return $http.post(url, params);
+        };
+
 
 
         return Service;

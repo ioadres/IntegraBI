@@ -1,9 +1,8 @@
 ﻿using Model.Entities;
 using Repository.Contracts;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
+using Common;
 
 namespace Repository
 {
@@ -13,16 +12,31 @@ namespace Repository
         {
         }
 
-        public override async Task<Report> Add(string name, int userId, string json)
+        public override async Task<Report> Add(ReportDto model)
         {
             return await Task.Run(() => {
                 var report = this.Create();
                 report.DateCreated = DateTime.Now;
-                report.Name = name;
-                report.Json = json;
-                report.UserId = userId;
-                this.Save(report);
-                return report;
+                report.Name = model.Name;
+                report.Json = model.Json;
+                report.UserId = model.UserId;
+                if(this.Save(report)) {
+                    return report;
+                }                
+                return null;
+            });
+        }
+
+        public override async Task<Report> Update(ReportDto model)
+        {
+            var report = await this.Load(model.ReportId);
+            return await Task.Run(() => {                
+                report.Name = model.Name;
+                report.Json = model.Json;
+                if(this.Save(report)) {
+                    return report;
+                }                
+                return null;
             });
         }
         

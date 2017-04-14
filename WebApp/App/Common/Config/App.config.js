@@ -14,7 +14,6 @@
         	$rootScope.token = {isAnonymus : true};
 	    	var sessionInjector = {
                 request: function (config) {
-                    debugger;
 		            if ($rootScope.token != null && !$rootScope.token.isAnonymus) {
 		                config.headers['Authorization'] ='Bearer '+ $rootScope.token.access_token;
 		            }

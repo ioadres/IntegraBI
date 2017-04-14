@@ -51,9 +51,7 @@
                 			isAnonymus : true
                 		};
                 	}
-                	return {
-                			isAnonymus : false
-                	};
+                	return $cookies.getObject(ctokenintegrabi);                	
             	},
 
             }

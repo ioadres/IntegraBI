@@ -5,9 +5,17 @@
     "args": [],
     "tasks": [
         {
-            "taskName": "build",
+            "taskName": "build-web",
             "args": [
                 "${workspaceRoot}/WebApp/WebApp.csproj"
+            ],
+            "isBuildCommand": true,
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "taskName": "build",
+            "args": [
+                "${workspaceRoot}/WebApi/WebApi.csproj"
             ],
             "isBuildCommand": true,
             "problemMatcher": "$msCompile"

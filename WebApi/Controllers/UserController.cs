@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Service.Contract;
+using Service.Contracts;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;

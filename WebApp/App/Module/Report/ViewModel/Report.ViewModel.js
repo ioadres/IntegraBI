@@ -7,12 +7,13 @@
     angular.module('Report.ViewModel').factory('ReportViewModel',
         ['ngLoadRequest', 'ngRoutesCtrl', 'ReportService', 'ngAuth', 'ngCommon', 'ngEnumerados', '$rootScope', '$sce', function (ngLoadRequest, ngRoutesCtrl, ReportService, ngAuth, ngCommon, ngEnumerados, $rootScope, $sce) {
 
-            var viewmodel = function ($scope) {
+            var viewmodel = function ($scope, reportId) {
                 var self = this;
                 //### Config
                 self.service = new ReportService();
 
                 $rootScope.headerVisible = false;
+                self.reportId = reportId;
                 self.widgets = [];
                 self.preview = false;
                 self.editable = true;
@@ -39,21 +40,42 @@
                 self.editable = !self.editable;
             };
 
+            viewmodel.prototype.getUrlIframe = function(item) {
+                var self = this;
+                return $sce.trustAsResourceUrl(item.url);
+            }
+
             viewmodel.prototype.save = function (exit) {
                 var self = this;
                 ngLoadRequest.startBlock();
-                self.service.addReport(self.getModel()).success(function () {
-                    debugger;
+                self.getServiceAction()(self.getModel()).then(function(result) {
+                    if (result.data == "") {
+                        ngLoadRequest.showToastError("Error inexperado al guardar el reporte");
+                    } else {
+                        if (exit) self.state.go('ReportList');
+                        else {
+                            self.reportId = result.data.reportId;
+                        }
+                    }
                 }).finally(function () {
                     ngLoadRequest.stopBlock();
                 });
             };
 
+            viewmodel.prototype.getServiceAction = function() {
+                var self = this;
+                if(self.reportId != null) {
+                    return self.service.updateReport;
+                }
+                return self.service.addReport;
+            }
+
             viewmodel.prototype.getModel = function () {
                 var self = this;
                 return {
-                    name: self.name,
-                    json : self.getJson()
+                    Name: self.name,
+                    ReportId: self.reportId,
+                    Json : self.getJson()
                 }
             }
 
@@ -66,7 +88,9 @@
                 var self = this;
                 var position = self.getPosition();
                 var newWidget = {
-                    position: position, body: $sce.trustAsHtml('<iframe style="width:100%;height:100%;" src="https://app.powerbi.com/view?r=eyJrIjoiMWRkM2E4MTUtZDMzZC00M2U0LTgwOGItZjJiMWZlMjYxYjExIiwidCI6IjNjN2I1ODYzLWVkMGMtNDQyYS1hODdiLTQ4YzE0MDQyOGJkNyIsImMiOjh9" frameborder="0" allowFullScreen="true"></iframe>') };
+                    position: position, 
+                    url : 'https://app.powerbi.com/view?r=eyJrIjoiMWRkM2E4MTUtZDMzZC00M2U0LTgwOGItZjJiMWZlMjYxYjExIiwidCI6IjNjN2I1ODYzLWVkMGMtNDQyYS1hODdiLTQ4YzE0MDQyOGJkNyIsImMiOjh9'
+                };
                 self.widgets.push(newWidget);
             };
 
@@ -133,36 +157,7 @@
                 return { top: top + 1, height: 2, left: left + 1, width: 2 };
             }
 
-            viewmodel.prototype.onChange = function (event, items) {
-                var self = this;
-                console.log("onChange event: " + event + " items:" + items);
-            };
-
-            viewmodel.prototype.onDragStart = function (event, ui) {
-                var self = this;
-                console.log("onDragStart event: " + event + " ui:" + ui);
-            };
-            viewmodel.prototype.onDragStop = function (event, ui) {
-                var self = this;
-                console.log("onDragStop event: " + event + " ui:" + ui);
-            };
-            viewmodel.prototype.onResizeStart = function (event, ui) {
-                var self = this;
-                console.log("onResizeStart event: " + event + " ui:" + ui);
-            };
-            viewmodel.prototype.onResizeStop = function (event, ui) {
-                var self = this;
-                console.log("onResizeStop event: " + event + " ui:" + ui);
-            };
-            viewmodel.prototype.onItemAdded = function (item) {
-                var self = this;
-                console.log("onItemAdded item: " + item);
-            };
-            viewmodel.prototype.onItemRemoved = function (item) {
-                var self = this;
-                console.log("onItemRemoved item: " + item);
-            };
-
+            
             return viewmodel;
         }]);
 

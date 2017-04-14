@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Repository.Helper
+﻿namespace Repository.Helper
 {
     /// <summary>
 	/// Object that holds a single Validation Error for the business object

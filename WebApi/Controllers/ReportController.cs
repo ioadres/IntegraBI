@@ -1,14 +1,11 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Model.Entities;
-using Service.Contract;
 using Service.Contracts;
-using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Common;
 
-namespace WebApi.Controllers 
+namespace WebApi.Controllers
 {
     [Authorize(Policy = "Base")]
     [Route("api/[controller]")]
@@ -21,12 +18,41 @@ namespace WebApi.Controllers
         }
 
         // GET api/values   
-        [HttpGet("Add")]
-        public async Task<Report> Add(string name, string json)
+        [HttpPost("Add")]
+        public async Task<ReportDto> Add([FromBody]ReportDto model)
         {
             var userId = User.Claims.Where(c => c.Type == "UserId").FirstOrDefault().Value;
-            var result = await this._report.Add(name, int.Parse(userId), json);
-            return result;
+            model.UserId = int.Parse(userId);
+            var result = await this._report.Add(model);
+            if(result != null) {
+                return new ReportDto() {
+                    UserId = result.UserId,
+                    Json = result.Json,
+                    Name = result.Name,
+                    ReportId = result.Id
+                };
+            }
+
+            return null;
+        }
+
+        // GET api/values   
+        [HttpPost("Update")]
+        public async Task<ReportDto> Update([FromBody]ReportDto model)
+        {
+            var userId = User.Claims.Where(c => c.Type == "UserId").FirstOrDefault().Value;
+            model.UserId = int.Parse(userId);
+            var result = await this._report.Update(model);
+            if(result != null) {
+                return new ReportDto() {
+                    UserId = result.UserId,
+                    Json = result.Json,
+                    Name = result.Name,
+                    ReportId = result.Id
+                };
+            }
+
+            return null;
         }
     }
 }

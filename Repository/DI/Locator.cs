@@ -9,6 +9,7 @@ namespace Repository
 		public static void ServiceLocator<T>(T services)
 		{
 			((IServiceCollection)services).AddSingleton<IUserRepository, UserRepository>();
+			((IServiceCollection)services).AddSingleton<IReportRepository, ReportRepository>();
 
 			//Lifetimes demo
 			//services.AddTransient<IOperationTransient, Operation>();/

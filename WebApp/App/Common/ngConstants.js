@@ -17,7 +17,8 @@
                     Home: {
                     },
                     ReportController: {
-                        Add: url + '/Report/Add'
+                        Add: url + '/Report/Add',
+                        Update: url + '/Report/Update'
                     }
                 }
 

@@ -1,10 +1,8 @@
 ﻿using Model.Entities;
 using Repository.Contracts;
 using Service.Contracts;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
+using Common;
 
 namespace Service
 {
@@ -17,9 +15,15 @@ namespace Service
             this._report = report;
         }
 
-        public async Task<Report> Add(string name, int userId, string json)
+        public async Task<Report> Add(ReportDto model)
         {
-            var result = await _report.Add(name, userId, json);
+            var result = await _report.Add(model);
+            return result;
+        }
+
+        public async Task<Report> Update(ReportDto model)
+        {
+            var result = await _report.Update(model);
             return result;
         }
 

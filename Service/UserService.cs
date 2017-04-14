@@ -1,8 +1,6 @@
-﻿using System;
-using System.Linq;
-using Repository.Contracts;
+﻿using Repository.Contracts;
 using System.Threading.Tasks;
-using Service.Contract;
+using Service.Contracts;
 using Common;
 
 namespace Service
