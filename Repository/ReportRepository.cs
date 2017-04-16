@@ -53,6 +53,12 @@ namespace Repository
                 });
             });        
         }
-        
+
+        public override async Task<bool> Remove(int reportId)
+        {
+            return await Task.Run(() => {                
+                return this.Delete(reportId,true);
+            });        
+        }
     }
 }

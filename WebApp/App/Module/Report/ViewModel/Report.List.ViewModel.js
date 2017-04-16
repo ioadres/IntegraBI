@@ -30,7 +30,23 @@
                 }).finally(function () {
                     ngLoadRequest.stopBlock();
                 });
-            }   
+            }  
+
+            viewmodel.prototype.removeReport = function(item) {
+                var self = this;
+                ngLoadRequest.startBlock();
+                self.service.removeReport(item.reportId).then(function(result) {
+                    if (result.data == "" || result.data == false) {
+                        ngLoadRequest.showToastError("No se ha podido eliminar el reporte : " + item.name);
+                    } else {
+                         ngLoadRequest.showToastSuccess("Se ha eliminado correctamente el reporte : " + item.name);
+                         var idx = self.reports.indexOf(item);
+                         self.reports.splice(idx, 1);
+                    }
+                }).finally(function () {
+                    ngLoadRequest.stopBlock();
+                });
+            } 
 
             viewmodel.prototype.formatDate = function(date) {
                 var self = this;

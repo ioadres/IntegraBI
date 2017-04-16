@@ -41,8 +41,12 @@
         display: inline-table;
         margin: 4px;
         margin-bottom: 23px;
-        background-color: #eaeaea;
+        background-color: #ffffff;
         border-radius: 8px;
+    }
+
+    .grid-left .grid-elements .list p {
+        font-size: 12px;
     }
 
     .grid-left .grid-elements .list .item img {
@@ -142,6 +146,9 @@
             </button>
             <button type="button" class="btn btn-info btn-xs" ng-click="viewmodel.save(false)">
                 Guardar
+            </button>
+            <button type="button" class="btn btn-warning btn-xs" ui-sref="ReportList">
+                Salir
             </button>
         </div>
     </div>

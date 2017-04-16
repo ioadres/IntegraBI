@@ -16,12 +16,13 @@ body.modal-open header {
     float: left;
     padding-right: 19px;
     width: 100%;
+    height: 42px;
 }
 
 .logo {
     float: left;
     margin-right: 70px;
-    padding: 18px 30px 18px 50px;
+    padding: 10px 30px 15px 49px;
 }
 
 .logo > a {
@@ -142,7 +143,7 @@ body.modal-open header {
     height: 38px;
     left: 0;
     line-height: 25px;
-    margin-top: 15px;
+    margin-top: 8px;
     position: relative;
     text-align: center;
     width: 41px;
@@ -151,9 +152,6 @@ body.modal-open header {
 .menu-options.active {
     z-index: 2147483647;
 }
-
-
-
 
 .name-area {
     float: right;
@@ -177,12 +175,12 @@ body.modal-open header {
     border-radius: 50%;
     float: left;
     margin-right: 17px;
-    margin-top: 11px;
-    width: 41px;
+    margin-top: 7px;
+    width: 26px;
 }
 
 .name-area > a strong {
     color: #94979f;
     float: left;
-    margin: 20px 0;
+    margin: 9px 0;
 }

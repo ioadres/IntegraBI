@@ -150,64 +150,6 @@ input, select {
 .login-form .footer-links a:hover {
   color: #37363e; }
 
-md-sidenav {
-  width: 230px;
-  transition: width 300ms ease-in-out;
-  font-family: Montserrat, sans-serif; }
-
-.main-sidebar {
-  background: #FFF;
-  padding-top: 50px;
-  min-height: 100vh;
-  z-index: 810;
-  font-size: 14px;
-  overflow: auto; }
-
-.main-sidebar .block {
-  padding: 15px;
-  padding-left: 20px;
-  padding-right: 20px;
-  cursor: pointer; }
-
-.main-sidebar .active {
-  border-left: 5px outset #004095;
-  cursor: pointer;
-  padding-left: 15px; }
-
-.main-sidebar .block label {
-  display: block;
-  cursor: pointer;
-  color: #878787;
-  line-height: 20px;
-  border-bottom: none;
-  background: none;
-  text-decoration: none;
-  transition: all 0.3s ease-in-out; }
-
-.main-sidebar .block label:hover {
-  color: #00bcd4;
-  position: relative; }
-
-.main-sidebar .block a {
-  text-decoration: none;
-  color: inherit; }
-
-.main-sidebar .btn-group {
-  width: 100%; }
-
-.main-sidebar .form-inline .form-group {
-  width: 49%; }
-
-.main-sidebar .body h1 {
-  font-size: 0.9em;
-  height: 30px;
-  line-height: 40px;
-  padding-left: 20px;
-  padding-right: 20px;
-  color: #00bcd4;
-  text-transform: uppercase;
-  font-weight: normal; }
-
 /* Header */
 header.navbar-custom {
   width: 100%;
@@ -221,12 +163,13 @@ body.modal-open header {
   background: #3b3f51 none repeat scroll 0 0;
   float: left;
   padding-right: 19px;
-  width: 100%; }
+  width: 100%;
+  height: 42px; }
 
 .logo {
   float: left;
   margin-right: 70px;
-  padding: 18px 30px 18px 50px; }
+  padding: 10px 30px 15px 49px; }
 
 .logo > a {
   color: #ffffff;
@@ -335,7 +278,7 @@ body.modal-open header {
   height: 38px;
   left: 0;
   line-height: 25px;
-  margin-top: 15px;
+  margin-top: 8px;
   position: relative;
   text-align: center;
   width: 41px; }
@@ -363,10 +306,10 @@ body.modal-open header {
   border-radius: 50%;
   float: left;
   margin-right: 17px;
-  margin-top: 11px;
-  width: 41px; }
+  margin-top: 7px;
+  width: 26px; }
 
 .name-area > a strong {
   color: #94979f;
   float: left;
-  margin: 20px 0; }
+  margin: 9px 0; }

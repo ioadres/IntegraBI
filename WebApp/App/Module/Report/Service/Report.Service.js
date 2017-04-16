@@ -35,6 +35,12 @@
             return $http.post(url, params);
         };
 
+        Service.prototype.removeReport = function (params) {
+            var self = this;
+            var url = ngServicesCtrl.ReportController.Remove;
+            return $http.post(url, params);
+        };
+
         return Service;
 
     }]);

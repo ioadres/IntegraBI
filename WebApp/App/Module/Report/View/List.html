@@ -41,7 +41,7 @@
                     <a class="btn btn-info btn-xs" ui-sref="Report({id:item.reportId})">Editar</a>&nbsp;
                     <a class="btn btn-success btn-xs" ui-sref="ReportView({id:item.reportId})" target="_blank">Visualizar</a>&nbsp;
                     <button class="btn btn-default btn-xs">Dar acceso</button>&nbsp;
-                    <button class="btn btn-danger btn-xs">Eliminar</button>&nbsp;
+                    <button class="btn btn-danger btn-xs" ng-click="viewmodel.removeReport(item)">Eliminar</button>&nbsp;
                 </div>
             </div>
 
