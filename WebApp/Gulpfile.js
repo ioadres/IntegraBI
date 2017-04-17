@@ -27,7 +27,6 @@ gulp.task('dev:move', gulpSequence(['move:app', 'move:lib', 'move:img']));
 gulp.task('dev:index.html', gulpSequence('dev:create:index.html', 'dev:inject:index.html'));
 gulp.task('dev:clean', ['clean:dev']);
 
-
 gulp.task('clean:dev', function () {
     del('./wwwroot/App', { force: true });
     del('./wwwroot/lib', { force: true });
@@ -42,6 +41,11 @@ gulp.task('clean:dev', function () {
 /** Move Folders **/
 gulp.task('move:app', function () {
     return gulp.src('App/**/*', { base: './App' })
+        .pipe(gulp.dest('./wwwroot/App'));
+});
+
+gulp.task('move:appjs', function () {
+    return gulp.src('App/**/*.js', { base: './App' })
         .pipe(gulp.dest('./wwwroot/App'));
 });
 
@@ -100,8 +104,19 @@ gulp.task('min:css', function () {
 });
 
 
-gulp.task("watch:dev", function () {
-	gulp.watch('./Views/index.html', ['dev']);
+gulp.task("watch:local", function () {
+	gulp.watch('./Views/index.html', function (event) {
+        gulpSequence('dev:create:index.html', 'dev:inject:index.html')(function (err) {
+            if (err) console.log(err)
+        })
+    });
+    gulp.watch('./App/**/*.scss', ['min:css']);
+    gulp.watch('./App/**/*.html', ['move:views']);
+    gulp.watch('./App/**/*.js', function (event) {
+        gulpSequence('move:appjs', 'local:inject:WebApiUrl')(function (err) {
+            if (err) console.log(err)
+        });
+     });
 });
 
 function getBundles(regexPattern) {

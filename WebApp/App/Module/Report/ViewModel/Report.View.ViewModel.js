@@ -14,7 +14,7 @@
                 $rootScope.headerVisible = false;
                 self.reportId = reportId;
                 self.widgets = [];
-                self.options = { showGrid: true }                
+                self.options = { showGrid: false }                
             }
 
             viewmodel.prototype.init = function (id) {

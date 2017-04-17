@@ -22,14 +22,15 @@ body.modal-open header {
 .logo {
     float: left;
     margin-right: 70px;
-    padding: 10px 30px 15px 49px;
+    padding: 10px 30px 10px 49px;
+    border-right: 2px solid#f5f5f5;
 }
 
 .logo > a {
     color: #ffffff;
     float: left;
     font-family: 'Rubik', sans-serif;
-    font-size: 22px;
+    font-size: 19px;
     font-weight: 500;
     padding: 0;
     text-decoration: none;
@@ -39,101 +40,6 @@ body.modal-open header {
     color: #afafaf;
     margin-right: 6px;
 }
-
-.menu-action {
-    height: 13px;
-    left: 50%;
-    margin-left: -10px;
-    position: absolute;
-    top: 50%;
-    -webkit-transform: translateY(-50%);
-    -moz-transform: translateY(-50%);
-    -ms-transform: translateY(-50%);
-    -o-transform: translateY(-50%);
-    transform: translateY(-50%);
-    width: 20px;
-}
-
-.menu-options.active > span {
-    margin-left: -7px;
-}
-
-.menu-action::after {
-    background: #aaa9a9 none repeat scroll 0 0;
-    -webkit-border-radius: 1px;
-    -moz-border-radius: 1px;
-    -ms-border-radius: 1px;
-    -o-border-radius: 1px;
-    border-radius: 1px;
-    bottom: -2px;
-    content: "";
-    height: 3px;
-    left: 0;
-    position: absolute;
-    width: 100%;
-}
-
-.menu-options.active .menu-action::after {
-    bottom: 6px;
-    -webkit-transform: rotate(-45deg);
-    -moz-transform: rotate(-45deg);
-    -ms-transform: rotate(-45deg);
-    -o-transform: rotate(-45deg);
-    transform: rotate(-45deg);
-}
-
-.menu-action::before {
-    background: #aaa9a9 none repeat scroll 0 0;
-    -webkit-border-radius: 1px;
-    -moz-border-radius: 1px;
-    -ms-border-radius: 1px;
-    -o-border-radius: 1px;
-    border-radius: 1px;
-    content: "";
-    height: 3px;
-    left: 0;
-    position: absolute;
-    top: -2px;
-    width: 100%;
-}
-
-.menu-options.active .menu-action::before {
-    top: 4px;
-    -webkit-transform: rotate(45deg);
-    -moz-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    -o-transform: rotate(45deg);
-    transform: rotate(45deg);
-}
-
-.menu-action > i {
-    height: 3px;
-    left: 0;
-    position: absolute;
-    top: 50%;
-    -webkit-transform: translateY(-50%);
-    -moz-transform: translateY(-50%);
-    -ms-transform: translateY(-50%);
-    -o-transform: translateY(-50%);
-    transform: translateY(-50%);
-    width: 20px;
-}
-
-.menu-action > i::before {
-    background: #aaa9a9 none repeat scroll 0 0;
-    -webkit-border-radius: 1px;
-    -moz-border-radius: 1px;
-    -ms-border-radius: 1px;
-    -o-border-radius: 1px;
-    border-radius: 1px;
-    content: "";
-    height: 3px;
-    left: 0;
-    position: absolute;
-    top: 0;
-    width: 100%;
-}
-
 
 .menu-options {
     color: #afafaf;
@@ -149,8 +55,13 @@ body.modal-open header {
     width: 41px;
 }
 
-.menu-options.active {
-    z-index: 2147483647;
+.menu-options a {
+    color: #e6e6e6!important;
+    font-size: 18px;
+}
+
+.menu-options a:hover {
+    text-decoration: underline;
 }
 
 .name-area {

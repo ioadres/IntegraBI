@@ -35,23 +35,42 @@
     .grid-left .grid-elements .list {
         max-height: 100%;
         overflow-y: scroll;
+        overflow-x: none;
     }
 
     .grid-left .grid-elements .list .item {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 5px;
+        font-family: verdana!important;
+        background-color:inherit;
+        border-radius: 3px;
         display: inline-table;
-        margin: 4px;
-        margin-bottom: 23px;
-        background-color: #ffffff;
-        border-radius: 8px;
     }
 
-    .grid-left .grid-elements .list p {
+    .grid-left .grid-elements .list .item:hover {
+        opacity: .35;
+        background-color: #000;
+    }
+
+    .grid-left .grid-elements .list .description {
+        display: inline-table;
         font-size: 12px;
+        margin-left: 10px;
+        width: 160px;
+        vertical-align: top;
+        color:#ccc;
+    }
+
+    .grid-left .grid-elements .list .description h5 {
+        margin: 0px;
+        color:#fff;
     }
 
     .grid-left .grid-elements .list .item img {
-        width: 120px;
-        height: 120px;
+        display: inline-table;
+        width: 90px;
+        height: 90px;
     }
 
     .grid {
@@ -160,13 +179,21 @@
             <h2>Galería</h2>
         </div>
         <div class="list">
-            <div class="item text-center">
-                <img src="/img/report.png" ng-click="viewmodel.editable && viewmodel.addWidget(1)">
-                <p>Reporte</p>
+            <div class="item" ng-click="viewmodel.editable && viewmodel.addWidget(1)">
+                <img src="/img/report.png" >
+                <div class="description">
+                    <h5>Integración</h5>
+                    <p>Enterprise-class solutions that are simple to deploy, cost-effective, </p>
+                </div>
             </div>
-            <div class="item text-center">
-                <img src="/img/report.png" ng-click="viewmodel.editable && viewmodel.addWidget(2)">
-                <p>Reporte</p>
+            <div class="item" ng-click="viewmodel.editable && viewmodel.addWidget(2)">
+                <img src="/img/report.png">
+                <div class="description">
+                    <h5>Click </h5>
+                    <p>Red Hat Enterprise Linux 7 is the world's leading enterprise Linux platform</p>
+
+                </div>
+
             </div>
         </div>
     </div>
