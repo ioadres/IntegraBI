@@ -1,6 +1,6 @@
 ﻿
 using Microsoft.Extensions.DependencyInjection;
-using Service.Contract;
+using Service.Contracts;
 
 namespace Service
 {
@@ -9,6 +9,7 @@ namespace Service
 		public static void ServiceLocator<T>(T services)
 		{
 			((IServiceCollection)services).AddSingleton<IUserService, UserService>();
+			((IServiceCollection)services).AddSingleton<IReportService, ReportService>();
 
 			//Lifetimes demo
 			//services.AddTransient<IOperationTransient, Operation>();/

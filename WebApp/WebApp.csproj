@@ -54,8 +54,6 @@
     <Folder Include="App\Module\Login\Service\" />
     <Folder Include="App\Module\Login\View\" />
     <Folder Include="App\Module\Login\ViewModel\" />
-    <Folder Include="App\Module\Report\" />
-    <Folder Include="App\Module\Report\View\" />
     <Folder Include="App\Module\Report\Service\" />
   </ItemGroup>
 

@@ -1,0 +1,9 @@
+// Coloque su configuración en este archivo para sobrescribir la configuración predeterminada y de usuario.
+{
+    "files.exclude": {
+        "**/node_modules/": true,
+        "**/bin/**":true,
+        "**/obj/**":true,
+        "**/wwwroot/**":true
+    }
+}

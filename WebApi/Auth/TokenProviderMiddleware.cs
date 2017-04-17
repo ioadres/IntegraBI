@@ -123,12 +123,7 @@ namespace WebApi.Auth
 			if (options.SigningCredentials == null)
 			{
 				throw new ArgumentNullException(nameof(TokenProviderOptions.SigningCredentials));
-			}
-
-			/*if (options.NonceGenerator == null)
-			{
-				throw new ArgumentNullException(nameof(TokenProviderOptions.NonceGenerator));
-			}*/
+			}			
 		}
 
 	}

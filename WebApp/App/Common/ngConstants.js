@@ -15,17 +15,36 @@
                         GetUserContext: url + '/user/GetUserContext'
                     },
                     Home: {
+                    },
+                    ReportController: {
+                        Add: url + '/Report/Add',
+                        Update: url + '/Report/Update',
+                        GetReports: url + '/Report/GetReports',
+                        Get: url + '/Report/Get',
+                        Remove : url + '/Report/Remove',
                     }
                 }
 
         }])
 
-    .constant('ngRoutesCtrl', {
+     .constant('ngRoutesCtrl', {
+
+        ReportListViewCtrl: {
+            url: '/Report/List',
+            templateUrl: 'App/Module/Report/View/List.html',
+            controller: 'ReportListViewCtrl'
+        },
 
     	ReportViewCtrl: {
-            url: '/Report',
+            url: '/Report/?id',
             templateUrl: 'App/Module/Report/View/Index.html',
             controller: 'ReportViewCtrl'
+        },
+
+        ReportViewViewCtrl : {
+            url: '/Report/View/?id',
+            templateUrl: 'App/Module/Report/View/View.html',
+            controller: 'ReportViewViewCtrl'
         },
 
         HomeViewCtrl: {

@@ -1,8 +1,7 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Common;
 
-namespace Service.Contract
+namespace Service.Contracts
 {
     public interface IUserService
     {

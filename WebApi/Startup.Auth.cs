@@ -8,7 +8,7 @@ using Microsoft.IdentityModel.Tokens;
 using WebApi.Auth;
 using Microsoft.Extensions.Options;
 using System.IdentityModel.Tokens.Jwt;
-using Service.Contract;
+using Service.Contracts;
 using Common;
 
 namespace WebApi

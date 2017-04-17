@@ -6,7 +6,7 @@
             "name": ".NET Core Development (web) - WebApp",
             "type": "coreclr",
             "request": "launch",
-            "preLaunchTask": "build",
+            "preLaunchTask": "build-web",
             "program": "${workspaceRoot}/WebApp/bin/Debug/netcoreapp1.1/WebApp.dll",
             "args": [],
             "cwd": "${workspaceRoot}/WebApp",
@@ -31,6 +31,34 @@
             },
             "sourceFileMap": {
                 "/Views": "${workspaceRoot}/wwwroot"
+            }
+        },
+        {
+            "name": ".NET Core Development (API) - WebApi",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            "program": "${workspaceRoot}/WebApi/bin/Debug/netcoreapp1.1/WebApi.dll",
+            "args": [],
+            "cwd": "${workspaceRoot}/WebApi",
+            "stopAtEntry": false,
+            "internalConsoleOptions": "openOnSessionStart",
+            "launchBrowser": {
+                "enabled": true,
+                "args": "${auto-detect-url}",
+                "windows": {
+                    "command": "cmd.exe",
+                    "args": "/C start ${auto-detect-url}"
+                },
+                "osx": {
+                    "command": "open"
+                },
+                "linux": {
+                    "command": "xdg-open"
+                }
+            },
+            "env": {
+                "ASPNETCORE_ENVIRONMENT": "Development"
             }
         },
         {
