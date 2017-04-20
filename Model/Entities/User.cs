@@ -7,6 +7,7 @@ namespace Model.Entities
     {
         public User()
         {
+            Chart = new HashSet<Chart>();
             Profile = new HashSet<Profile>();
             Report = new HashSet<Report>();
         }
@@ -21,6 +22,7 @@ namespace Model.Entities
         public bool? Lock { get; set; }
         public int? RolId { get; set; }
 
+        public virtual ICollection<Chart> Chart { get; set; }
         public virtual ICollection<Profile> Profile { get; set; }
         public virtual ICollection<Report> Report { get; set; }
         public virtual Profile ProfileNavigation { get; set; }

@@ -14,7 +14,8 @@
                 self.state = $state;
                 $rootScope.headerVisible = false;
                 self.reportId = reportId;
-                self.widgets = [];
+                self.widgets = [];                
+                self.charts = [];
                 self.preview = false;
                 self.editable = true;
                 self.options = { showGrid: true }
@@ -33,7 +34,8 @@
             viewmodel.prototype.init = function (id) {
                 var self = this;
                 self.reportId = id;
-                self.initArray();
+                self.initArray();                
+                self.getCharts();
             }
             
 
@@ -65,6 +67,20 @@
                     ngLoadRequest.stopBlock();
                 });
             }   
+
+            viewmodel.prototype.getCharts = function() {
+                var self = this;
+                ngLoadRequest.startBlock();debugger;
+                self.service.getCharts().then(function(result) {
+                    if (result.data == "") {
+                    } else {
+                        self.charts = result.data;
+                    }
+                }).finally(function () {
+                    ngLoadRequest.stopBlock();
+                });
+            }   
+
             viewmodel.prototype.save = function (exit) {
                 var self = this;
                 ngLoadRequest.startBlock();
@@ -111,7 +127,7 @@
                 var position = self.getPosition();
                 var newWidget = {
                     position: position, 
-                    url : 'https://app.powerbi.com/view?r=eyJrIjoiMWRkM2E4MTUtZDMzZC00M2U0LTgwOGItZjJiMWZlMjYxYjExIiwidCI6IjNjN2I1ODYzLWVkMGMtNDQyYS1hODdiLTQ4YzE0MDQyOGJkNyIsImMiOjh9'
+                    url : item.url
                 };
                 self.widgets.push(newWidget);
             };

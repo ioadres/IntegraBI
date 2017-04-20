@@ -22,6 +22,11 @@
                         GetReports: url + '/Report/GetReports',
                         Get: url + '/Report/Get',
                         Remove : url + '/Report/Remove',
+                    },
+
+                    ChartController : {
+                        GetCharts : url + '/Chart/GetCharts'
+
                     }
                 }
 

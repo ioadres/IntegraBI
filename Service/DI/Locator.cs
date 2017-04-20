@@ -10,6 +10,7 @@ namespace Service
 		{
 			((IServiceCollection)services).AddSingleton<IUserService, UserService>();
 			((IServiceCollection)services).AddSingleton<IReportService, ReportService>();
+			((IServiceCollection)services).AddSingleton<IChartService, ChartService>();
 
 			//Lifetimes demo
 			//services.AddTransient<IOperationTransient, Operation>();/

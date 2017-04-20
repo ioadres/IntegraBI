@@ -119,6 +119,21 @@ gulp.task("watch:local", function () {
      });
 });
 
+gulp.task("watch:dev", function () {
+	gulp.watch('./Views/index.html', function (event) {
+        gulpSequence('dev:create:index.html', 'dev:inject:index.html')(function (err) {
+            if (err) console.log(err)
+        })
+    });
+    gulp.watch('./App/**/*.scss', ['min:css']);
+    gulp.watch('./App/**/*.html', ['move:views']);
+    gulp.watch('./App/**/*.js', function (event) {
+        gulpSequence('move:appjs', 'dev:inject:WebApiUrl')(function (err) {
+            if (err) console.log(err)
+        });
+     });
+});
+
 function getBundles(regexPattern) {
     return bundleconfig.filter(function (bundle) {
         return regexPattern.test(bundle.outputFileName);

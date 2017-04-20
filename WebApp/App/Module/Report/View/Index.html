@@ -179,21 +179,12 @@
             <h2>Galería</h2>
         </div>
         <div class="list">
-            <div class="item" ng-click="viewmodel.editable && viewmodel.addWidget(1)">
+            <div class="item" ng-repeat="(key, item) in viewmodel.charts" ng-click="viewmodel.editable && viewmodel.addWidget(item)">
                 <img src="/img/report.png" >
                 <div class="description">
-                    <h5>Integración</h5>
-                    <p>Enterprise-class solutions that are simple to deploy, cost-effective, </p>
+                    <h5>{{item.name}}</h5>
+                    <p>{{item.description}} </p>
                 </div>
-            </div>
-            <div class="item" ng-click="viewmodel.editable && viewmodel.addWidget(2)">
-                <img src="/img/report.png">
-                <div class="description">
-                    <h5>Click </h5>
-                    <p>Red Hat Enterprise Linux 7 is the world's leading enterprise Linux platform</p>
-
-                </div>
-
             </div>
         </div>
     </div>

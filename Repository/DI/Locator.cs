@@ -10,6 +10,7 @@ namespace Repository
 		{
 			((IServiceCollection)services).AddSingleton<IUserRepository, UserRepository>();
 			((IServiceCollection)services).AddSingleton<IReportRepository, ReportRepository>();
+			((IServiceCollection)services).AddSingleton<IChartRepository, ChartRepository>();
 
 			//Lifetimes demo
 			//services.AddTransient<IOperationTransient, Operation>();/
