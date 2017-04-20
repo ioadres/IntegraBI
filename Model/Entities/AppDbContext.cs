@@ -6,6 +6,7 @@ namespace Model.Entities
 {
     public partial class AppDbContext : DbContext
     {
+        public virtual DbSet<Chart> Chart { get; set; }
         public virtual DbSet<Profile> Profile { get; set; }
         public virtual DbSet<Report> Report { get; set; }
         public virtual DbSet<Rol> Rol { get; set; }
@@ -13,8 +14,30 @@ namespace Model.Entities
 
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Chart>(entity =>
+            {
+                entity.Property(e => e.DateCreated)
+                    .HasColumnType("datetime")
+                    .HasDefaultValueSql("getdate()");
+
+                entity.Property(e => e.Description).HasColumnType("varchar(max)");
+
+                entity.Property(e => e.Name)
+                    .IsRequired()
+                    .HasColumnType("varchar(255)");
+
+                entity.Property(e => e.Url).HasColumnType("varchar(max)");
+
+                entity.HasOne(d => d.User)
+                    .WithMany(p => p.Chart)
+                    .HasForeignKey(d => d.UserId)
+                    .OnDelete(DeleteBehavior.Restrict)
+                    .HasConstraintName("FK__Chart__UserId__4E88ABD4");
+            });
+
             modelBuilder.Entity<Profile>(entity =>
             {
                 entity.Property(e => e.Avatar)

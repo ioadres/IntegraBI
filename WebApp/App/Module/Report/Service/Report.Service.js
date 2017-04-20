@@ -29,6 +29,12 @@
             return $http.post(url);
         };
 
+        Service.prototype.getCharts = function () {
+            var self = this;
+            var url = ngServicesCtrl.ChartController.GetCharts;
+            return $http.post(url);
+        };
+
         Service.prototype.get = function (params) {
             var self = this;
             var url = ngServicesCtrl.ReportController.Get;
