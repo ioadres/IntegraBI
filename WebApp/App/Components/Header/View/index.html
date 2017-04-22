@@ -1,10 +1,15 @@
 ﻿<header class="navbar-custom">
     <div class="top-bar">
         <div class="logo">
-            <a href="index.html" title=""><i class="fa fa-bullseye"></i>IntegracionBI</a>
+            <a href="javascript:void(0)" title=""><i class="fa fa-bullseye"></i>IntegracionBI</a>
         </div>
         <div class="menu-options"><a ui-sref="Home">Inicio</a></div>
-        <div class="top-bar-quick-sec hidden-xs hidden-sm" >
+        <div class="top-bar-quick-sec hidden-xs hidden-sm">
+
+            <div class="name-area">
+                <a href="javascript:void(0)" ng-click="viewmodel.logOut()" title=""><strong>Salir</strong></a>
+            </div>
+
             <div class="name-area">
                 <a href="javascript:void(0)" title=""><img src="img/user.png" alt=""><strong>{{viewmodel.username}}</strong></a>
             </div>

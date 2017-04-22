@@ -4,9 +4,9 @@
 
     angular.module('App',
         [
-            'ui.router', 'ngCookies', 'blockUI', 'ngToast', 'ngMessages', 'ngMaterial',
+            'ui.router', 'ngCookies', 'blockUI', 'ngToast', 'ngMessages', 'ngMaterial','powerbi',
             'App.Control', 'ngTranslations', 'ngLoadRequest', 'ngConstants', 'ngAuth','Header',
-            'Home','Login','Report'
+            'Home','Login','Report','MachineLearning'
         ]
     )
 

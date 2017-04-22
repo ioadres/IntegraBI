@@ -1,39 +1,39 @@
-(function(){
+(function() {
 
     "use strict";
 
     angular.module('Login.Service', []);
 
-    angular.module('Login.Service').factory('LoginService', ['$http', 'ngServicesCtrl',"$rootScope", function ($http, ngServicesCtrl,$rootScope) {
+    angular.module('Login.Service').factory('LoginService', ['$http', 'ngServicesCtrl', "$rootScope", function($http, ngServicesCtrl, $rootScope) {
 
-        var Service = function () {
+        var Service = function() {
             var self = this;
             self.$http = $http;
-        }        
+        }
 
-        Service.prototype.login = function (params) {
+        Service.prototype.login = function(params) {
             var self = this;
             var url = ngServicesCtrl.Login.token;
             var headers = {
-				'Content-Type': 'application/x-www-form-urlencoded'
-			};
+                'Content-Type': 'application/x-www-form-urlencoded'
+            };
 
             return $http({
-			    url: url,
-			    method: "POST",
-			    headers: headers,
-			    data:"username="+params.username+"&password="+params.password
-			});
+                url: url,
+                method: "POST",
+                headers: headers,
+                data: "username=" + params.username + "&password=" + params.password
+            });
         }
 
-        Service.prototype.getUserContext = function () {
+        Service.prototype.getUserContext = function() {
             var self = this;
             var url = ngServicesCtrl.User.GetUserContext;
 
             return $http({
-			    url: url,
-			    method: "GET"
-			});
+                url: url,
+                method: "GET"
+            });
         }
 
 

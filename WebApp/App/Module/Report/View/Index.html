@@ -1,9 +1,8 @@
-﻿
-<style>
+﻿<style>
     body {
         background: inherit;
     }
-
+    
     .grid-header {
         width: 100%;
         position: fixed;
@@ -14,7 +13,7 @@
         padding: 5px;
         color: #eee;
     }
-
+    
     .grid-left {
         background: #282d32;
         height: 100%;
@@ -22,57 +21,57 @@
         margin-top: 30px;
         position: fixed;
     }
-
+    
     .grid-left .grid-elements {
         padding: 8px;
         height: 87%;
     }
-
+    
     .grid-left .grid-elements h2 {
         color: #eee;
     }
-
+    
     .grid-left .grid-elements .list {
         max-height: 100%;
         overflow-y: scroll;
         overflow-x: none;
     }
-
+    
     .grid-left .grid-elements .list .item {
         width: 100%;
         padding: 10px;
         margin-bottom: 5px;
         font-family: verdana!important;
-        background-color:inherit;
+        border-bottom: 1px solid #a4ddee;
+        background: #28738a;
         border-radius: 3px;
         display: inline-table;
     }
-
+    
     .grid-left .grid-elements .list .item:hover {
         opacity: .35;
-        background-color: #000;
     }
-
+    
     .grid-left .grid-elements .list .description {
         display: inline-table;
         font-size: 12px;
         margin-left: 10px;
         width: 160px;
         vertical-align: top;
-        color:#ccc;
+        color: #ccc;
     }
-
+    
     .grid-left .grid-elements .list .description h5 {
         margin: 0px;
-        color:#fff;
+        color: #fff;
     }
-
+    
     .grid-left .grid-elements .list .item img {
         display: inline-table;
         width: 90px;
         height: 90px;
     }
-
+    
     .grid {
         max-width: 100%;
         height: 96vh;
@@ -83,11 +82,11 @@
         z-index: 1;
         padding-top: 56px;
     }
-
+    
     .grid input {
         border-radius: 0px;
     }
-
+    
     .grid .grid-panel {
         max-width: 100%;
         height: 100%;
@@ -98,20 +97,22 @@
         position: relative;
         transition: margin .2s ease;
     }
-
+    
     .grid .grid-panel .panel {
         width: 3840px;
         height: 2160px;
         border: 1px solid #eee;
         box-shadow: inherit !important;
     }
+    
     .btn-remove-widget {
         background: #2e80ab;
         width: 25px;
         height: 25px;
         z-index: 500;
         color: #fff;
-    } 
+    }
+    
     .fxs-flowlayout-resolutionguide {
         position: absolute;
         top: 0;
@@ -124,32 +125,32 @@
         border-right-style: dashed;
         border-bottom-style: dashed;
         pointer-events: none;
-        font-family: az_ea_font,wf_segoe-ui_normal,"Segoe UI","Segoe WP",Tahoma,Arial,sans-serif;
+        font-family: az_ea_font, wf_segoe-ui_normal, "Segoe UI", "Segoe WP", Tahoma, Arial, sans-serif;
         font-size: 13px;
         line-height: normal;
         z-index: 300;
     }
-
+    
     .fxs-flowlayout-resolutionguide::after {
         position: absolute;
         right: 8px;
         bottom: 5px;
     }
-
+    
     .fxs-flowlayout-resolutionguide-1366x768 {
         height: 768px;
         width: 1366px;
     }
-
+    
     .fxs-flowlayout-resolutionguide-1366x768::after {
         content: "1366 x 768";
     }
-
+    
     .fxs-flowlayout-resolutionguide-1024x768 {
         height: 768px;
         width: 1024px;
     }
-
+    
     .fxs-flowlayout-resolutionguide-1024x768::after {
         content: "1024 x 768";
     }
@@ -159,8 +160,8 @@
 <div class="grid-header">
     <div class="text-center">
         <div>
-            Agregue, ancle, mueva y cambie el tamaño de sus iconos.
-            &nbsp;<button type="button" class="btn btn-default btn-xs" ng-click="viewmodel.save(true)">
+            Agregue, ancle, mueva y cambie el tamaño de sus iconos. &nbsp;
+            <button type="button" class="btn btn-default btn-xs" ng-click="viewmodel.save(true)">
                 Guardar y salir
             </button>
             <button type="button" class="btn btn-info btn-xs" ng-click="viewmodel.save(false)">
@@ -180,7 +181,7 @@
         </div>
         <div class="list">
             <div class="item" ng-repeat="(key, item) in viewmodel.charts" ng-click="viewmodel.editable && viewmodel.addWidget(item)">
-                <img src="/img/report.png" >
+                <img src="/img/report.png">
                 <div class="description">
                     <h5>{{item.name}}</h5>
                     <p>{{item.description}} </p>
@@ -192,11 +193,15 @@
 
 <div class="grid">
     <div class="col-lg-3">
-        <input class="form-control" placeholder="Nombre Reporte" ng-model="viewmodel.name"/>
+        <form name="form" id="form" ng-submit="register();">
+            <div ng-class="{ 'has-error': form.name.$error.required && form.$submitted }">
+                <input class="form-control" name="name" placeholder="Nombre Reporte" ng-model="viewmodel.name" ng-required="true" />
+            </div>
+        </form>
     </div>
     <div class="col-lg-2">
-        <button class="btn btn-default" ng-show="viewmodel.editable" ng-click="viewmodel.edit()">Parar Edición</button>
-        <button class="btn btn-default" ng-show="!viewmodel.editable" ng-click="viewmodel.edit()">Editar</button>
+        <button class="btn btn-default" ng-show="viewmodel.editable" for="submit-form" ng-click="viewmodel.edit()">Parar Edición</button>
+        <button class="btn btn-default" ng-show="!viewmodel.editable" for="submit-form" ng-click="viewmodel.edit()">Editar</button>
     </div>
     <div class="col-lg-12">
     </div>
