@@ -56,6 +56,15 @@ namespace WebApi.Controllers
         }
 
         // GET api/values   
+        [HttpPost("SendReport")]
+        public async Task<bool> SendReport([FromBody] SendReportDto report)
+        {
+            var userId = User.Claims.Where(c => c.Type == "UserId").FirstOrDefault().Value;  
+            var result = await this._report.SendReport(report.ReportId,report.Emails);
+            return result;
+        }
+
+        // GET api/values   
         [HttpPost("Update")]
         public async Task<ReportDto> Update([FromBody]ReportDto model)
         {

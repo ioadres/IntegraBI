@@ -29,6 +29,6 @@ namespace WebApi.Controllers
 			user.Role = User.Claims.Where(c => c.Type == "Role").FirstOrDefault().Value;
 			user.UserId = User.Claims.Where(c => c.Type == "UserId").FirstOrDefault().Value;
 			return user;
-        }       
+        }          
     }
 }
