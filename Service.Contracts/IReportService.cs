@@ -11,6 +11,7 @@ namespace Service.Contracts
         Task<Report> Update(ReportDto model);
         Task<IEnumerable<ReportDto>> GetReports(int userId);
         Task<ReportDto> Get(int reportId);
+        Task<bool> SendReport(int reportId, string emails);
         Task<bool> Remove(int reportId);
         
     }

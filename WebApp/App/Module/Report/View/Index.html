@@ -34,11 +34,11 @@
     .grid-left .grid-elements .list {
         max-height: 100%;
         overflow-y: scroll;
-        overflow-x: none;
+        text-align: center;
     }
     
     .grid-left .grid-elements .list .item {
-        width: 100%;
+        width: 85%;
         padding: 10px;
         margin-bottom: 5px;
         font-family: verdana!important;
@@ -46,6 +46,7 @@
         background: #28738a;
         border-radius: 3px;
         display: inline-table;
+        text-align: left;
     }
     
     .grid-left .grid-elements .list .item:hover {
@@ -181,7 +182,6 @@
         </div>
         <div class="list">
             <div class="item" ng-repeat="(key, item) in viewmodel.charts" ng-click="viewmodel.editable && viewmodel.addWidget(item)">
-                <img src="/img/report.png">
                 <div class="description">
                     <h5>{{item.name}}</h5>
                     <p>{{item.description}} </p>

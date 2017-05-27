@@ -20,6 +20,7 @@
                 Update: url + '/Report/Update',
                 GetReports: url + '/Report/GetReports',
                 Get: url + '/Report/Get',
+                SendReport: url + '/Report/SendReport',
                 Remove: url + '/Report/Remove',
             },
 
