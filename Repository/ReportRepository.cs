@@ -54,10 +54,11 @@ namespace Repository
             });        
         }
 
-        public override async Task<bool> Remove(int reportId)
+        public override async Task<bool> Remove(int reportId, int userId)
         {
-            return await Task.Run(() => {                
-                return this.Delete(reportId,true);
+            return await Task.Run(() => {             
+                var entity = this.Context.Report.Where(x=> x.UserId.Equals(userId) && x.Id.Equals(reportId)).FirstOrDefault();
+                return this.Delete(entity, true);
             });        
         }
     }

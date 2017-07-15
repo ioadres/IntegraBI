@@ -298,3 +298,5 @@ __pycache__/
 /WebApp/wwwroot/index.html
 /WebApi/appsettings.json
 /WebApp/wwwroot/lib
+history.reset
+.DS_Store

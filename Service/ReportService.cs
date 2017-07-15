@@ -92,8 +92,8 @@ namespace Service
             }
         }
 
-        public async Task<bool> Remove(int reportId) {
-            return await _report.Remove(reportId);
+        public async Task<bool> Remove(int reportId, int userId) {
+            return await _report.Remove(reportId, userId);
         }
 
       

@@ -88,7 +88,7 @@ namespace WebApi.Controllers
         public async Task<bool> Remove([FromBody] int reportId)
         {
             var userId = User.Claims.Where(c => c.Type == "UserId").FirstOrDefault().Value;            
-            var result = await this._report.Remove(reportId);
+            var result = await this._report.Remove(reportId, int.Parse(userId));
             return result;
         }
     }
