@@ -12,7 +12,7 @@ namespace Service.Contracts
         Task<IEnumerable<ReportDto>> GetReports(int userId);
         Task<ReportDto> Get(int reportId);
         Task<bool> SendReport(int reportId, string emails);
-        Task<bool> Remove(int reportId);
+        Task<bool> Remove(int reportId, int userId);
         
     }
 }
