@@ -71,9 +71,12 @@
             url: '/MachineLearning',
             templateUrl: 'App/Module/MachineLearning/View/Index.html',
             controller: 'MachineLearningViewCtrl',
-            data: {
-                guestAccess: true
-            }
+        },
+
+        BotViewCtrl: {
+            url: '/Bot',
+            templateUrl: 'App/Module/Bot/View/Index.html',
+            controller: 'BotViewCtrl'
         }
     })
 
