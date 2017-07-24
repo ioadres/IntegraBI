@@ -5,10 +5,8 @@ using System.Threading.Tasks;
 using Common;
 using System.Collections.Generic;
 using System;
-using MimeKit;
-using MailKit.Net.Smtp;
 using System.Security.Cryptography.X509Certificates;
-using MailKit.Security;
+
 
 namespace Service
 {
@@ -63,15 +61,15 @@ namespace Service
                     //Smtp Port Number
                     int SmtpPortNumber = 587;
     
-                    var mimeMessage = new MimeMessage();
+                    /*var mimeMessage = new MimeMessage();
                     mimeMessage.From.Add(new MailboxAddress(FromAdressTitle, FromAddress));
                     
                     var email_a = emails.Split(';');
                     for(int i = 0; i < email_a.Length; i++) {
                         mimeMessage.To.Add(new MailboxAddress("", email_a[i]));
-                    }
+                    }*/
 
-                    mimeMessage.Subject = Subject;
+                    /*mimeMessage.Subject = Subject;
                     mimeMessage.Body = new TextPart("plain")
                     {
                         Text = BodyContent    
@@ -83,7 +81,7 @@ namespace Service
                         client.AuthenticationMechanisms.Remove("XOAUTH2");
                         client.Authenticate("", "");
                         client.Send(mimeMessage); 
-                    }
+                    }*/
                 });
 
             return true;

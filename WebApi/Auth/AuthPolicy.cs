@@ -18,6 +18,13 @@ namespace WebApi.Auth
             
             services.AddAuthorization(options =>
 			{
+				options.AddPolicy("Bot",
+					policy =>
+					{
+						 policy.RequireClaim("UserId");
+					}
+				);
+
                 options.AddPolicy("Client",
 					policy =>
 					{

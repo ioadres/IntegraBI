@@ -18,7 +18,7 @@
         viewmodel.prototype.init = function() {
             var self = this;
 
-        }
+        }    
 
         return viewmodel;
     }]);
