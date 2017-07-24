@@ -8,7 +8,7 @@ using System.Collections.Generic;
 
 namespace WebApi.Controllers
 {
-    [Authorize(Policy = "Bot")]  
+    [AllowAnonymous]
     [Route("api/[controller]")]
     public class ReportBotController : Controller
     {
@@ -17,7 +17,7 @@ namespace WebApi.Controllers
         {
             this._report = _report;
         }
-        
+
         [HttpGet("GetReports")]
         public async Task<IEnumerable<ReportDto>> GetReports(int userId)
         {           
