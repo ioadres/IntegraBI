@@ -23,6 +23,12 @@
                 SendReport: url + '/Report/SendReport',
                 Remove: url + '/Report/Remove',
             },
+            UserController: {
+                Add: url + '/User/Add',
+                GetAll: url + '/User/GetAll',
+                Get: url + '/User/Get',
+                Remove: url + '/User/Remove',
+            },
 
             ChartController: {
                 GetCharts: url + '/Chart/GetCharts'
@@ -50,6 +56,18 @@
             url: '/Report/View/?id',
             templateUrl: 'App/Module/Report/View/View.html',
             controller: 'ReportViewViewCtrl'
+        },
+
+         UserListViewCtrl: {
+            url: '/User/List',
+            templateUrl: 'App/Module/User/View/List.html',
+            controller: 'UserListViewCtrl'
+        },
+
+        UserViewCtrl: {
+            url: '/User/?id',
+            templateUrl: 'App/Module/User/View/Index.html',
+            controller: 'UserViewCtrl'
         },
 
         HomeViewCtrl: {

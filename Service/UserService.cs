@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using Service.Contracts;
 using Common;
+using System.Collections.Generic;
 
 namespace Service
 {
@@ -31,6 +32,34 @@ namespace Service
 			}
 
 			return UserMapper.Map(user);
-		}
+        }
+
+        public async Task<UserDto> Add(UserDto model)
+        {
+            var result = await _userRepo.Add(model);
+            return result;
+        }
+
+        public async  Task<UserDto> Update(UserDto model)
+        {
+            var result = await _userRepo.Update(model);
+            return result;
+        }
+
+        public async  Task<IEnumerable<UserDto>> GetAll()
+        {
+            var result = await _userRepo.GetAll();
+            return result;
+        }
+
+        public async Task<UserDto> Get(int userId)
+        {
+             var result = await _userRepo.Load(userId);
+            return UserMapper.Map(result);
+        }
+
+        public async  Task<bool> Remove(int userId) {
+            return await _userRepo.Remove(userId);
+        }
     }
 }

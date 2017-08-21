@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using Common;
 
 namespace Repository.Contracts
 {
@@ -14,5 +15,11 @@ namespace Repository.Contracts
 		}
 
 		public abstract Task<User> Login(string username, string password);
+
+		public abstract Task<UserDto> Add(UserDto model);
+
+        public abstract Task<UserDto> Update(UserDto model);
+        public abstract Task<IEnumerable<UserDto>> GetAll();
+        public abstract Task<bool> Remove(int userId);
     }
 }

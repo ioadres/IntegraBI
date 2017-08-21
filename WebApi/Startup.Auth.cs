@@ -70,7 +70,7 @@ namespace WebApi
 					new ClaimsIdentity(new GenericIdentity(user.Username, "Token"), new Claim[] {
 						new Claim("Role", user.Rol.Name),
 						new Claim("Username", user.Username),
-						new Claim("UserId", user.Id.ToString()),
+						new Claim("UserId", user.UserId.ToString()),
 						new Claim(ClaimTypes.Role, user.Rol.Name, Configuration.GetSection("TokenAuthentication:Issuer").Value),
 						new Claim(JwtRegisteredClaimNames.Sub, user.Username),
 						new Claim(JwtRegisteredClaimNames.Iat, new DateTimeOffset(now).ToUniversalTime().ToUnixTimeSeconds().ToString(), ClaimValueTypes.Integer64)

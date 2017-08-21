@@ -11,14 +11,18 @@ namespace Service
 		{
 			return new UserDto()
 			{
-				Id = user.Id,
+				UserId = user.Id.ToString(),
 				Password = user.Password,
 				Username = user.Username,
 				Rol = new RolDto()
 				{
 					Id = user.Rol.Id,
 					Name = user.Rol.Name
-				}
+				},
+				DateCreated = user.DateCreated,
+                Lock = user.Lock,
+                Role = user.Rol.Id.ToString(),
+				Email = user.Email
 			};
 		}
 		
