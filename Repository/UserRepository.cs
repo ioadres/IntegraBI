@@ -24,11 +24,8 @@ namespace Repository
                 user.Username = model.Username;
                 user.Email = model.Email;
 				user.Lock =model.Lock;
-				user.Rol =  new Rol() {
-					Id = int.Parse(model.Role)
-				};
+				user.RolId =  model.Rol.Id;
 				user.Password = model.Password;
-			 
                 if(this.Save(user)) {
                     return model;
                 }                
@@ -68,23 +65,26 @@ namespace Repository
         public override async Task<bool> Remove(int userId)
         {
             return await Task.Run(() => {             
-                var entity = this.Context.Report.Where(x=> x.Id.Equals(userId)).FirstOrDefault();
+                var entity = this.Context.User.Where(x=> x.Id == userId).FirstOrDefault();
                 return this.Delete(entity, true);
             }); 
         }
 
+        public override async Task<User> Get(int userid) {
+            return await Task.Run(()=> {
+                return this.Context.User.Include(x => x.Rol).Where(x=> x.Id == userid).FirstOrDefault();
+            });
+        }
+        
         public override async Task<UserDto> Update(UserDto model)
         {
-            var user = await this.Load(model.UserId);
+            var user = this.Context.User.Where(x=> x.Id == int.Parse(model.UserId)).FirstOrDefault();
             return await Task.Run(() => {       
                 user.Username = model.Username;
                 user.Email = model.Email;
 				user.Lock =model.Lock;
-				user.Rol =  new Rol() {
-					Id = int.Parse(model.Role)
-				};
+                user.RolId =  model.Rol.Id;
 				user.Password = model.Password;
-			 
                 if(this.Save(user)) {
                     return model;
                 }                

@@ -35,7 +35,7 @@ namespace WebApi.Controllers
         [HttpPost("Add")]
         public async Task<UserDto> Add([FromBody]UserDto model)
         {
-			if (model.UserId != null || model.UserId != "") {
+			if (model.UserId != null && model.UserId != "") {
 				var result = await this._user.Update(model);
 				if(result != null) {
 					return new UserDto() {

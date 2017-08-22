@@ -15,7 +15,7 @@ namespace Repository.Contracts
 		}
 
 		public abstract Task<User> Login(string username, string password);
-
+        public abstract Task<User> Get(int userid);
 		public abstract Task<UserDto> Add(UserDto model);
 
         public abstract Task<UserDto> Update(UserDto model);

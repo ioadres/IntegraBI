@@ -12,6 +12,9 @@
             self.service = new UserService();
             self.state = $state;
             self.userId = userId;
+            self.user = {
+                rol : {}
+            };
             self.scope = $scope;
         }
 
@@ -25,25 +28,21 @@
             ngLoadRequest.startBlock();
             self.service.get(self.userId).then(function(result) {
                 if (result.data == "") {} else {
-                    self.username = result.data.username;
+                    self.user = result.data;
                 }
             }).finally(function() {
                 ngLoadRequest.stopBlock();
             });
         }       
 
-        viewmodel.prototype.save = function(exit) {
-            var self = this;            
+        viewmodel.prototype.save = function() {
+            var self = this;     
             ngLoadRequest.startBlock();
-            self.save(self.getModel()).then(function(result) {
+            self.service.save(self.getModel()).then(function(result) {
                 if (result.data == "") {
                     ngLoadRequest.showToastError("Error inesperado al guardar el usuario");
                 } else {
-                    if (exit) self.state.go('UserList');
-                    else {
-                        ngLoadRequest.showToastSuccess();
-                        self.userId = result.data.id;
-                    }
+                    self.state.go('UserList');
                 }
             }).finally(function() {
                 ngLoadRequest.stopBlock();
@@ -52,9 +51,16 @@
 
         viewmodel.prototype.getModel = function() {
             var self = this;
+            debugger;
             return {
-                UserName: self.username,
-                Password: self.password
+                UserName: self.user.username,
+                Password: self.password,
+                Email : self.user.email,
+                Lock : self.user.lock,
+                Rol : {
+                    id : self.user.rol.id
+                },
+                UserId : self.user.userId
             }
         }
 

@@ -54,7 +54,7 @@ namespace Service
 
         public async Task<UserDto> Get(int userId)
         {
-             var result = await _userRepo.Load(userId);
+             var result = await _userRepo.Get(userId);
             return UserMapper.Map(result);
         }
 
