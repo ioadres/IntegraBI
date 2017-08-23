@@ -30,7 +30,7 @@
                     <td>{{viewmodel.formatDate(item.DateCreated)}}</td>
                     <td>{{::item.lock}}</td>
                     <td><a class="btn btn-info btn-xs" ui-sref="User({id:item.userId})">Editar</a>&nbsp;
-                        <button class="btn btn-danger btn-xs" ng-click="viewmodel.removeUser(item)">Eliminar</button>&nbsp;</td>
+                        <button class="btn btn-danger btn-xs" ng-click="viewmodel.remove(item)">Eliminar</button>&nbsp;</td>
                 </tr>
             </table>            
         </div>

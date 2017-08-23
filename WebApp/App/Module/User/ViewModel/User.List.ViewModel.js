@@ -30,7 +30,7 @@
             });
         }
 
-        viewmodel.prototype.removeUser = function(item) {
+        viewmodel.prototype.remove = function(item) {
             var self = this;
             ngLoadRequest.startBlock();
             self.service.remove(item.userId).then(function(result) {

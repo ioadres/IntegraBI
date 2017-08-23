@@ -16,6 +16,8 @@
                 rol : {}
             };
             self.scope = $scope;
+            self.passwordValidate = true;          
+            self.runValidation();
         }
 
         viewmodel.prototype.init = function(id) {
@@ -28,15 +30,50 @@
             ngLoadRequest.startBlock();
             self.service.get(self.userId).then(function(result) {
                 if (result.data == "") {} else {
-                    self.user = result.data;
+                    self.user = result.data;                    
+                    self.passwordValidate = false;
+                    var password = document.getElementById("password")
+                    password.setCustomValidity('');
                 }
             }).finally(function() {
                 ngLoadRequest.stopBlock();
             });
         }       
 
+        viewmodel.prototype.runValidation = function() {
+            var self = this;
+            var password = document.getElementById("password")
+            var confirm_password = document.getElementById("confirm_password");
+
+            password.setCustomValidity('Completa este campo');
+
+            function validatePassword() {
+                password.setCustomValidity('');
+                confirm_password.setCustomValidity('');
+                if(password.value != confirm_password.value) {
+                    confirm_password.setCustomValidity("Las contraseñas no coinciden");
+                } 
+                if(password.value.length < 5) {
+                    password.setCustomValidity("La contraseña ha de tener un minimo de 5 caracteres");
+                } 
+                if(confirm_password.value.length < 5) {
+                    confirm_password.setCustomValidity("La contraseña ha de tener un minimo de 5 caracteres");
+                } 
+            }
+
+            function onchangePassword() {                
+                self.passwordValidate = true;
+                validatePassword();
+            }
+
+            password.onchange = onchangePassword;
+            confirm_password.onkeyup = onchangePassword;
+
+        }
+
         viewmodel.prototype.save = function() {
             var self = this;     
+
             ngLoadRequest.startBlock();
             self.service.save(self.getModel()).then(function(result) {
                 if (result.data == "") {
@@ -54,7 +91,7 @@
             debugger;
             return {
                 UserName: self.user.username,
-                Password: self.password,
+                Password: self.passwordValidate == true ? self.password: self.user.password,
                 Email : self.user.email,
                 Lock : self.user.lock,
                 Rol : {

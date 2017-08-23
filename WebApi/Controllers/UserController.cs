@@ -71,5 +71,12 @@ namespace WebApi.Controllers
             var result = await this._user.Get(userId);
             return result;
         }  
+
+		// GET api/values   
+        [HttpPost("Remove")]
+        public async Task<bool> Remove([FromBody] int userId)
+        {           
+            return await this._user.Remove(userId);
+        }  
     }
 }
