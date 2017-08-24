@@ -7,6 +7,17 @@ namespace Service
 	public static class UserMapper
 	{
 
+		public static ChartDto Map(Chart chart) {
+			return new ChartDto() {
+				ChartId = chart.Id,
+				DateCreated = chart.DateCreated,
+				Description = chart.Description,
+				Name = chart.Name,
+				Url = chart.Url,
+				UserId = chart.UserId
+			};
+		}
+		
 		public static UserDto Map(User user)
 		{
 			return new UserDto()

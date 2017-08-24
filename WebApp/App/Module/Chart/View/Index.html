@@ -1,0 +1,63 @@
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12 text-center">
+            <h3 class="text-super">Grafico {{viewmodel.chart.name}}</h3>
+                <p><a ui-sref="ChartList">Volver</a></p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">&nbsp
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <form ng-submit="viewmodel.save()">
+                        <div class="row">
+                            <div class="form-group col-lg-4">
+                                <label>Nombre</label>
+                                <input class="form-control" type="text" required ng-model="viewmodel.chart.name" required>
+                            </div>
+
+                            <div class="form-group col-lg-4">
+                                <label>Descripción</label>
+                                <input class="form-control" type="text" ng-model="viewmodel.chart.description" required>
+                            </div>
+
+                            <div class="form-group col-lg-4">
+                                <label>Url</label>
+                                <input class="form-control" type="text" ng-model="viewmodel.chart.url" required>
+                            </div>
+
+                        </div>
+                        <div class="row">
+
+                            <div class="form-group col-lg-4">
+                                <label>Usuario</label>
+                                
+                                <select class="form-control" ng-model="viewmodel.user.chart.userId" required>
+                                     <option value="">Seleciona una opción</option> 
+                                </select>
+                            </div>  
+                        </div>                            
+                            
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="pull-right">
+                                    <input type="submit" class="btn btn-primary btn-lg" value="Confirmar">
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

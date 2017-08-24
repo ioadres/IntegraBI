@@ -13,5 +13,11 @@ namespace Repository.Contracts
         }
 
         public abstract Task<IEnumerable<ChartDto>> GetCharts(int userId);
+        public abstract Task<Chart> Get(int userid);
+		public abstract Task<ChartDto> Add(ChartDto model);
+
+        public abstract Task<ChartDto> Update(ChartDto model);
+        public abstract Task<IEnumerable<ChartDto>> GetAll();
+        public abstract Task<bool> Remove(int userId);
     }
 }

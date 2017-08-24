@@ -31,7 +31,11 @@
             },
 
             ChartController: {
-                GetCharts: url + '/Chart/GetCharts'
+                GetCharts: url + '/Chart/GetCharts',
+                Add: url + '/Chart/Add',
+                GetAll: url + '/Chart/GetAll',
+                Get: url + '/Chart/Get',
+                Remove: url + '/Chart/Remove',
 
             }
         }
@@ -68,6 +72,18 @@
             url: '/User/?id',
             templateUrl: 'App/Module/User/View/Index.html',
             controller: 'UserViewCtrl'
+        },
+
+        ChartListViewCtrl: {
+            url: '/Chart/List',
+            templateUrl: 'App/Module/Chart/View/List.html',
+            controller: 'ChartListViewCtrl'
+        },
+
+        ChartViewCtrl: {
+            url: '/Chart/?id',
+            templateUrl: 'App/Module/Chart/View/Index.html',
+            controller: 'ChartViewCtrl'
         },
 
         HomeViewCtrl: {
