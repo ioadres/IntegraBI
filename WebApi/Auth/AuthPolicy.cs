@@ -32,16 +32,16 @@ namespace WebApi.Auth
 					}
 				);
 
-				options.AddPolicy("Admin",
+				options.AddPolicy("WebMaster",
 					policy =>
 					{
-						policy.RequireRole("Admin");
+						policy.RequireRole("WebMaster");
 					}
 				);
 
 				options.AddPolicy(
 					"Base",
-					policyBuilder => policyBuilder.RequireAssertion(context => context.User.HasClaim(claim =>context.User.IsInRole("Client")) || context.User.IsInRole("Admin"))
+					policyBuilder => policyBuilder.RequireAssertion(context => context.User.HasClaim(claim =>context.User.IsInRole("Client")) || context.User.IsInRole("WebMaster"))
 				);
 			});
 		}
