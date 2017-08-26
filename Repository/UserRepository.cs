@@ -65,7 +65,7 @@ namespace Repository
         public override async Task<bool> Remove(int userId)
         {
             return await Task.Run(() => {             
-                var entity = this.Context.User.Where(x=> x.Id == userId).FirstOrDefault();
+                var entity = this.Context.User.Include(x=>x.Chart).Include(x=>x.Report).Where(x=> x.Id == userId).FirstOrDefault();
                 return this.Delete(entity, true);
             }); 
         }

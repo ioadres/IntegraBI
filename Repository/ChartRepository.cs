@@ -69,7 +69,7 @@ namespace Repository
 
         public override async Task<Chart> Get(int id) {
             return await Task.Run(()=> {
-                return this.Context.Chart.Where(x=> x.Id == id).FirstOrDefault();
+                return this.Context.Chart.FirstOrDefault(x=> x.Id == id);
             });
         }
         

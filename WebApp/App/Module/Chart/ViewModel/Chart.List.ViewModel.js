@@ -23,7 +23,7 @@
             ngLoadRequest.startBlock();
             self.service.getAll().then(function(result) {
                 if (result.data == "") {} else {
-                    self.users = result.data;
+                    self.charts = result.data;
                 }
             }).finally(function() {
                 ngLoadRequest.stopBlock();
@@ -38,13 +38,13 @@
                     ngLoadRequest.showToastError("No se ha podido eliminar el gráfico : " + item.name);
                 } else {
                     ngLoadRequest.showToastSuccess("Se ha eliminado correctamente el gráfico : " + item.name);
-                    var idx = self.users.indexOf(item);
+                    var idx = self.charts.indexOf(item);
                     self.charts.splice(idx, 1);
                 }
             }).finally(function() {
                 ngLoadRequest.stopBlock();
             });
-        }        
+        }
 
         viewmodel.prototype.formatDate = function(date) {
             var self = this;

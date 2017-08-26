@@ -15,12 +15,18 @@
             var self = this;
             var url = ngServicesCtrl.ChartController.Add;
             return $http.post(url, params);
-        };       
+        };
 
         Service.prototype.get = function(params) {
             var self = this;
             var url = ngServicesCtrl.ChartController.Get;
             return $http.post(url, params);
+        };
+
+        Service.prototype.getUsers = function() {
+            var self = this;
+            var url = ngServicesCtrl.UserController.GetAll;
+            return $http.post(url);
         };
 
         Service.prototype.getAll = function() {
