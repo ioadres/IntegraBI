@@ -417,6 +417,7 @@ namespace Repository.Contracts.Helper
             return Delete(entity, saveChanges: saveChanges, useTransaction: useTransaction);
         }
 
+        
         /// <summary>
         /// removes an individual entity instance.
         /// 
@@ -447,6 +448,19 @@ namespace Repository.Contracts.Helper
                 return false;
 
             return true;
+        }
+
+        public virtual bool DeleteList(ICollection<TEntity> entity, bool saveChanges = true, bool useTransaction = false)
+        {
+            try {
+                foreach (var item in entity)
+                {
+                    Delete(item, saveChanges, useTransaction);
+                }
+                return true;
+            } catch(Exception e) {
+                return false;
+            }
         }
 
 

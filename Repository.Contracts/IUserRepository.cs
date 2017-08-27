@@ -20,6 +20,6 @@ namespace Repository.Contracts
 
         public abstract Task<UserDto> Update(UserDto model);
         public abstract Task<IEnumerable<UserDto>> GetAll();
-        public abstract Task<bool> Remove(int userId);
+        public abstract bool Remove(int userId);
     }
 }

@@ -19,5 +19,6 @@ namespace Repository.Contracts
         public abstract Task<ChartDto> Update(ChartDto model);
         public abstract Task<IEnumerable<ChartDto>> GetAll();
         public abstract Task<bool> Remove(int userId);
+        public abstract bool RemoveList(ICollection<Chart> list);
     }
 }

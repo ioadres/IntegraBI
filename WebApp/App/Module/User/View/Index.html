@@ -1,10 +1,7 @@
-
-
 <div class="container">
     <div class="row">
         <div class="col-lg-12 text-center">
-            <h3 class="text-super">Perfil de usuario {{viewmodel.user.username}}</h3>
-                <p><a ui-sref="UserList">Volver</a></p>
+            <h3 class="text-super">Perfil de usuario {{::viewmodel.user.username}}</h3>
         </div>
     </div>
 
@@ -39,7 +36,7 @@
 
                             <div class="form-group col-lg-4">
                                 <label>Rol</label>
-                                
+
                                 <select class="form-control" ng-model="viewmodel.user.rol.id" required>
                                      <option value="">Seleciona una opción</option> 
                                     <option ng-selected="viewmodel.user.rol.id == 1" ng-value="1">Cliente</option>
@@ -47,7 +44,7 @@
                                 </select>
                             </div>
 
-                            <div class="form-group col-lg-4" >
+                            <div class="form-group col-lg-4">
                                 <label>Email</label>
                                 <input class="form-control" type="text" ng-model="viewmodel.user.email" required>
                             </div>
@@ -56,17 +53,18 @@
                                 <label>&nbsp;</label>
                                 <br>
                                 <input type="checkbox" ng-model="viewmodel.user.lock"> &nbsp; Bloqueado
-                            </div> 
-                        </div>          
-                            
+                            </div>
+                        </div>
+
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="pull-right">
-                                    <input type="submit" class="btn btn-primary btn-lg" value="Crear">
+                                    <a ui-sref="UserList" class="btn btn-danger btn-lg">Cancelar</a>
+                                    <input type="submit" class="btn btn-primary btn-lg" value="Confirmar">
                                 </div>
                             </div>
                         </div>
-                        
+
                     </form>
                 </div>
             </div>
