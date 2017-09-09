@@ -54,6 +54,11 @@ namespace Repository
             });        
         }
 
+        public override bool RemoveList(ICollection<Report> list)
+        {                   
+          return this.DeleteList(list, true);           
+        }
+
         public override async Task<bool> Remove(int reportId, int userId)
         {
             return await Task.Run(() => {             

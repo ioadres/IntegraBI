@@ -4,6 +4,7 @@ using System;
 using System.Threading.Tasks;
 using Common;
 using System.Collections.Generic;
+using Microsoft.EntityFrameworkCore;
 using System.Linq;
 
 namespace Repository
@@ -46,14 +47,14 @@ namespace Repository
         public override async Task<IEnumerable<ChartDto>> GetAll()
         {
              return await Task.Run(() => {                
-                return this.Context.Chart.Select(x=> new ChartDto() {
+                return this.Context.Chart.Include(x=>x.User).Select(x=> new ChartDto() {
                     DateCreated = x.DateCreated,
                     Name = x.Name,
                     ChartId = x.Id,
                     Url = x.Url,
                     UserId =x.UserId,
                     Description =  x.Description,
-                   // NombreUsuario = this.Context.User.Where(y=>y.Id == x.UserId).FirstOrDefault().Username
+                    NombreUsuario = x.User.Username
                 });
             });        
         }
@@ -65,6 +66,11 @@ namespace Repository
                 var entity = this.Context.Chart.Where(x=> x.Id == id).FirstOrDefault();
                 return this.Delete(entity, true);
             }); 
+        }
+
+        public override bool RemoveList(ICollection<Chart> list)
+        {           
+          return this.DeleteList(list, true);          
         }
 
         public override async Task<Chart> Get(int id) {

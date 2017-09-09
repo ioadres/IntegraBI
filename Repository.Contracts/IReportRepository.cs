@@ -17,5 +17,7 @@ namespace Repository.Contracts
         public abstract Task<Report> Update(ReportDto model);
         public abstract Task<IEnumerable<ReportDto>> GetReports(int userId);
         public abstract Task<bool> Remove(int reportId, int userId);
+        public abstract bool RemoveList(ICollection<Report> list);
+
     }
 }

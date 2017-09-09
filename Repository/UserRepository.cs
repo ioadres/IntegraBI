@@ -12,8 +12,12 @@ namespace Repository
 {
 	public class UserRepository : IUserRepository
     {
-		public UserRepository(AppDbContext context) : base(context)
+        private IChartRepository _chartRepo;
+        private IReportRepository _reportRepo;
+		public UserRepository(AppDbContext context, IChartRepository chartRepo, IReportRepository reportRepo) : base(context)
         {
+            _chartRepo = chartRepo;
+            _reportRepo = reportRepo;
 		}
 
         public override async Task<UserDto> Add(UserDto model)
@@ -58,16 +62,16 @@ namespace Repository
         public override async Task<User> Login(string username, string password)
 		{
 			return await Task.Run(() => { 
-				return this.Context.User.Include(x => x.Rol).Where(x => x.Username == username && x.Password == password).FirstOrDefault();			
+				return this.Context.User.Include(x => x.Rol).Where(x => x.Username == username && x.Password == password && x.Lock == false).FirstOrDefault();			
 			});
 		}
 
-        public override async Task<bool> Remove(int userId)
-        {
-            return await Task.Run(() => {             
-                var entity = this.Context.User.Include(x=>x.Chart).Include(x=>x.Report).Where(x=> x.Id == userId).FirstOrDefault();
-                return this.Delete(entity, true);
-            }); 
+        public override bool Remove(int userId)
+        {                 
+            var entity = this.Context.User.Include(x=>x.Chart).Include(x=>x.Report).Where(x=> x.Id == userId).FirstOrDefault();
+            _chartRepo.RemoveList(entity.Chart);
+            _reportRepo.RemoveList(entity.Report);
+            return this.Delete(entity, true);  
         }
 
         public override async Task<User> Get(int userid) {

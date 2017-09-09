@@ -59,7 +59,10 @@ namespace Service
         }
 
         public async  Task<bool> Remove(int userId) {
-            return await _userRepo.Remove(userId);
+            return await Task.Run(() => {               
+                return _userRepo.Remove(userId);
+            });
+            
         }
     }
 }
