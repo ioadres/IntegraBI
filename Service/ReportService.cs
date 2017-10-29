@@ -6,7 +6,8 @@ using Common;
 using System.Collections.Generic;
 using System;
 using System.Security.Cryptography.X509Certificates;
-
+using RestSharp;
+using RestSharp.Authenticators;
 
 namespace Service
 {
@@ -47,41 +48,39 @@ namespace Service
             };
         }
 
+        public static async Task SendSimpleMessageAsync(Report report, String mail)
+        {
+            var uri = new Uri("https://api.mailgun.net/v3");
+            RestClient client = new RestClient
+            {
+                BaseUrl = uri,
+                Authenticator =
+                new HttpBasicAuthenticator("api", "key-fe4f6680de6e875abd392ea237ba8824")
+            };
+
+            RestRequest request = new RestRequest();
+            request.AddParameter("domain", "sandbox76e17c68ed47448b8e88b30821388d09.mailgun.org", ParameterType.UrlSegment);
+            request.Resource = "{domain}/messages";
+            request.AddParameter("from", "Mailgun Sandbox <postmaster@sandbox76e17c68ed47448b8e88b30821388d09.mailgun.org>");
+            request.AddParameter("to", mail);
+            request.AddParameter("subject", "Permisos para visualizar el reporte "+ report.Name );
+            request.AddParameter("html","<div style='border: 1px solid #eee;padding: 10px;width: 300px;background: #eee;'><h1 style='margin: 0px;border-bottom: 1px solid #ffffff;'>Reporte "+report.Name+"</h1><br><p>Se ha concedido un día de acceso al reporte, acceda desde este <a href='' style='color: #51afea;'>link</a></p></div>");
+
+            request.Method = Method.POST;
+            var result = client.ExecuteAsync(request, null);
+
+        }
+
         public async Task<bool> SendReport(int reportId, string emails) {
             try {
-                await Task.Run(() => {                      
-                    string FromAddress = "andres.prog.dev@gmail.com";
-                    string FromAdressTitle = "Email from ASP.NET Core 1.1";
-                    
-                    string Subject = "Hello World - Sending email using ASP.NET Core 1.1";
-                    string BodyContent = "ASP.NET Core was previously called ASP.NET 5. It was renamed in January 2016. It supports cross-platform frameworks ( Windows, Linux, Mac ) for building modern cloud-based internet-connected applications like IOT, web apps, and mobile back-end.";
-    
-                    //Smtp Server
-                    string SmtpServer = "smtp.gmail.com";
-                    //Smtp Port Number
-                    int SmtpPortNumber = 587;
-    
-                    /*var mimeMessage = new MimeMessage();
-                    mimeMessage.From.Add(new MailboxAddress(FromAdressTitle, FromAddress));
-                    
+                await Task.Run(async () => {   
+                 
+                    var report = await _report.Load(reportId);
                     var email_a = emails.Split(';');
                     for(int i = 0; i < email_a.Length; i++) {
-                        mimeMessage.To.Add(new MailboxAddress("", email_a[i]));
-                    }*/
-
-                    /*mimeMessage.Subject = Subject;
-                    mimeMessage.Body = new TextPart("plain")
-                    {
-                        Text = BodyContent    
-                    };
-    
-                    using (var client = new SmtpClient())
-                    { 
-                        client.Connect(SmtpServer, SmtpPortNumber);
-                        client.AuthenticationMechanisms.Remove("XOAUTH2");
-                        client.Authenticate("", "");
-                        client.Send(mimeMessage); 
-                    }*/
+                        SendSimpleMessageAsync(report,email_a[i]); 
+                    } 
+                                 
                 });
 
             return true;
