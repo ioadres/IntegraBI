@@ -1,4 +1,4 @@
-﻿<Properties StartupConfiguration="{35DA2231-55FE-4343-8667-DCC4DEECA42C}|Default">
+﻿<Properties StartupConfiguration="{9C6B6BE5-4EDA-4B3B-94F7-AA4C758DD669}|Default">
   <MonoDevelop.Ide.Workbench ActiveDocument="Service/ReportService.cs">
     <Files>
       <File FileName="WebApp/App/Module/Login/ViewModel/Login.ViewModel.js" Line="37" Column="45" />
