@@ -51,9 +51,11 @@
             ngLoadRequest.startBlock();
             self.service.sendReport(self.currentReport, self.emails).then(function(result) {
                 if (result.data == "" || result.data == false) {
-                    ngLoadRequest.showToastError("No se ha podido enviar el reporte");
+                    ngLoadRequest.showToastError("No se ha podido enviar el reporte. Contacte con el administrador.");
                 } else {
                     ngLoadRequest.showToastSuccess("Se ha enviado correctamente el reporte");
+                    $("#closeModalMail").click();
+                    self.emails = "";
                 }
             }).finally(function() {
                 ngLoadRequest.stopBlock();
