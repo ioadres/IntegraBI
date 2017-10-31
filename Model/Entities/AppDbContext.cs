@@ -10,10 +10,10 @@ namespace Model.Entities
         public virtual DbSet<Profile> Profile { get; set; }
         public virtual DbSet<Report> Report { get; set; }
         public virtual DbSet<Rol> Rol { get; set; }
+        public virtual DbSet<TokenReport> TokenReport { get; set; }
         public virtual DbSet<User> User { get; set; }
 
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
-
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -98,6 +98,25 @@ namespace Model.Entities
                 entity.Property(e => e.Name)
                     .IsRequired()
                     .HasColumnType("varchar(255)");
+            });
+
+            modelBuilder.Entity<TokenReport>(entity =>
+            {
+                entity.Property(e => e.Id).HasDefaultValueSql("newid()");
+
+                entity.Property(e => e.DateEnd).HasColumnType("datetime");
+
+                entity.Property(e => e.DateStart).HasColumnType("datetime");
+
+                entity.Property(e => e.Email)
+                    .IsRequired()
+                    .HasColumnType("varchar(255)");
+
+                entity.HasOne(d => d.Report)
+                    .WithMany(p => p.TokenReport)
+                    .HasForeignKey(d => d.ReportId)
+                    .OnDelete(DeleteBehavior.Restrict)
+                    .HasConstraintName("FK__TokenRepo__Repor__70DDC3D8");
             });
 
             modelBuilder.Entity<User>(entity =>

@@ -9,5 +9,6 @@
   <PropertyGroup>
     <NameOfLastUsedPublishProfile>IntegraBI - Web Deploy</NameOfLastUsedPublishProfile>
     <ShowAllFiles>false</ShowAllFiles>
+    <ActiveDebugProfile>IIS Express</ActiveDebugProfile>
   </PropertyGroup>
 </Project>

@@ -11,6 +11,7 @@ namespace Service
 			((IServiceCollection)services).AddSingleton<IUserService, UserService>();
 			((IServiceCollection)services).AddSingleton<IReportService, ReportService>();
 			((IServiceCollection)services).AddSingleton<IChartService, ChartService>();
+			((IServiceCollection)services).AddSingleton<ITokenReportService, TokenReportService>();
 
 			//Lifetimes demo
 			//services.AddTransient<IOperationTransient, Operation>();/
