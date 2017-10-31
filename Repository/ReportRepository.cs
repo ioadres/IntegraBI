@@ -65,6 +65,6 @@ namespace Repository
                 var entity = this.Context.Report.Where(x=> x.UserId.Equals(userId) && x.Id.Equals(reportId)).FirstOrDefault();
                 return this.Delete(entity, true);
             });        
-        }
+        }       
     }
 }

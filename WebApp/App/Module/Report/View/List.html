@@ -43,6 +43,12 @@
                             <h4 class="modal-title">Enviar Reporte por email</h4>
                         </div>
                         <div class="modal-body">
+                            <label>Fecha Inicio</label>
+                            <input type="Date" ng-model="viewmodel.dateStart">
+                            <br>
+                            <label>Fecha Fin</label>
+                            <input type="Date" ng-model="viewmodel.dateEnd">
+                            <br>
                             <h5>Añade los destinatarios separados por punto y coma</h5>
                             <textarea style="width:100%;" ng-model="viewmodel.emails"></textarea>
                         </div>

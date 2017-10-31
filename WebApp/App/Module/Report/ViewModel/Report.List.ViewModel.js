@@ -49,7 +49,7 @@
         viewmodel.prototype.sendReport = function() {
             var self = this;
             ngLoadRequest.startBlock();
-            self.service.sendReport(self.currentReport, self.emails).then(function(result) {
+            self.service.sendReport(self.currentReport, self.emails, self.dateStart, self.dateEnd).then(function(result) {
                 if (result.data == "" || result.data == false) {
                     ngLoadRequest.showToastError("No se ha podido enviar el reporte. Contacte con el administrador.");
                 } else {

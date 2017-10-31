@@ -8,5 +8,6 @@
   </PropertyGroup>
   <PropertyGroup>
     <NameOfLastUsedPublishProfile>IntegraBIApi - Web Deploy</NameOfLastUsedPublishProfile>
+    <ActiveDebugProfile>IIS Express</ActiveDebugProfile>
   </PropertyGroup>
 </Project>

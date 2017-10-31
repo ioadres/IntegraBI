@@ -47,11 +47,11 @@
             return $http.post(url, params);
         };
 
-        Service.prototype.sendReport = function(reportId, emails) {
+        Service.prototype.sendReport = function(reportId, emails, dateStart, dateEnd) {
             var self = this;
             debugger;
             var url = ngServicesCtrl.ReportController.SendReport;
-            return $http.post(url, { reportId: reportId, emails: emails });
+            return $http.post(url, { reportId: reportId, emails: emails, dateStart:dateStart, dateEnd :dateEnd });
         }
 
         return Service;

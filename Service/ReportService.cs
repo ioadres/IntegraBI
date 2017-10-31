@@ -14,10 +14,12 @@ namespace Service
     public class ReportService : IReportService
     {
         private IReportRepository _report;
+        private ITokenReportRepository _tokenReport;
 
-        public ReportService(IReportRepository report)
+        public ReportService(IReportRepository report, ITokenReportRepository tokenReport)
         {
             this._report = report;
+            this._tokenReport = tokenReport;
         }
 
         public async Task<Report> Add(ReportDto model)
@@ -71,18 +73,24 @@ namespace Service
 
         }
 
-        public async Task<bool> SendReport(int reportId, string emails) {
+        public async Task<bool> SendReport(int reportId, string emails, DateTime dateStart, DateTime dateEnd) {
             try {
-                await Task.Run(async () => {   
-                 
+                await Task.Run(async () => {                    
                     var report = await _report.Load(reportId);
                     var email_a = emails.Split(';');
                     for(int i = 0; i < email_a.Length; i++) {
-                        SendSimpleMessageAsync(report,email_a[i]); 
-                    } 
-                                 
+                        var tokenReportDto = new TokenReportDto()
+                        {
+                            DateStart = dateStart,
+                            DateEnd = dateEnd,
+                            Email = email_a[i],
+                            ReportId = reportId,
+                        };
+                        await _tokenReport.Remove(tokenReportDto.Email, reportId);
+                        await _tokenReport.Add(tokenReportDto);
+                        await SendSimpleMessageAsync(report,email_a[i]); 
+                    }                                  
                 });
-
             return true;
             } catch(Exception e ) {
                 return false;
@@ -91,9 +99,7 @@ namespace Service
 
         public async Task<bool> Remove(int reportId, int userId) {
             return await _report.Remove(reportId, userId);
-        }
-
-      
+        }  
 
     }
 }
