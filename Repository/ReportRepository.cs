@@ -10,8 +10,15 @@ namespace Repository
 {
     public class ReportRepository : IReportRepository
     {
-        public ReportRepository(AppDbContext context) : base(context)
+        public ITokenReportRepository _tokenReport
         {
+            get;
+            set;
+        }
+
+        public ReportRepository(AppDbContext context, ITokenReportRepository tokenReport) : base(context)
+        {
+            _tokenReport = tokenReport;
         }
 
         public override async Task<Report> Add(ReportDto model)
@@ -61,9 +68,14 @@ namespace Repository
 
         public override async Task<bool> Remove(int reportId, int userId)
         {
-            return await Task.Run(() => {             
+            return await Task.Run(async () => {   
                 var entity = this.Context.Report.Where(x=> x.UserId.Equals(userId) && x.Id.Equals(reportId)).FirstOrDefault();
-                return this.Delete(entity, true);
+                if(entity != null) {
+                    await _tokenReport.Remove(reportId);
+                    return this.Delete(entity, true);        
+                    
+                }
+                return false;
             });        
         }       
     }

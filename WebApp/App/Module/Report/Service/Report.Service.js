@@ -41,6 +41,12 @@
             return $http.post(url, params);
         };
 
+        Service.prototype.getVisor = function(params) {
+            var self = this;
+            var url = ngServicesCtrl.ReportController.GetVisor;
+            return $http.post(url, { id: params });
+        };
+
         Service.prototype.removeReport = function(params) {
             var self = this;
             var url = ngServicesCtrl.ReportController.Remove;
@@ -51,7 +57,7 @@
             var self = this;
             debugger;
             var url = ngServicesCtrl.ReportController.SendReport;
-            return $http.post(url, { reportId: reportId, emails: emails, dateStart:dateStart, dateEnd :dateEnd });
+            return $http.post(url, { reportId: reportId, emails: emails, dateStart: dateStart, dateEnd: dateEnd });
         }
 
         return Service;

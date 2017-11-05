@@ -20,6 +20,7 @@
                 Update: url + '/Report/Update',
                 GetReports: url + '/Report/GetReports',
                 Get: url + '/Report/Get',
+                GetVisor: url + '/Report/GetVisor',
                 SendReport: url + '/Report/SendReport',
                 Remove: url + '/Report/Remove',
             },
@@ -62,7 +63,16 @@
             controller: 'ReportViewViewCtrl'
         },
 
-         UserListViewCtrl: {
+        ReportVisorViewCtrl: {
+            url: '/Report/Visor/?id',
+            templateUrl: 'App/Module/Report/View/View.html',
+            controller: 'ReportVisorViewCtrl',
+            data: {
+                guestAccess: true
+            }
+        },
+
+        UserListViewCtrl: {
             url: '/User/List',
             templateUrl: 'App/Module/User/View/List.html',
             controller: 'UserListViewCtrl'

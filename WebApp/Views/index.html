@@ -1,5 +1,6 @@
 ﻿<!DOCTYPE html>
 <html>
+
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge; IE=9" />
     <meta charset="utf-8" />
@@ -10,15 +11,16 @@
     <link rel="stylesheet" href="/lib/angular-material/angular-material.min.css" />
     <link rel="stylesheet" href="/lib/angular-block-ui/dist/angular-block-ui.min.css" />
     <link rel="stylesheet" href="/lib/ngtoast/dist/ngToast.min.css" />
-     <link rel="stylesheet" href="/lib/angular-widget-grid/angular-widget-grid.css">
+    <link rel="stylesheet" href="/lib/angular-widget-grid/angular-widget-grid.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto|Rubik:900" rel="stylesheet">
 </head>
+
 <body>
     <script>
         var SP = {};
         SP.lang = 'es-ES';
         if (!String.prototype.includes) {
-            String.prototype.includes = function () {
+            String.prototype.includes = function() {
                 'use strict';
                 return String.prototype.indexOf.apply(this, arguments) !== -1;
             };
@@ -27,7 +29,7 @@
 
 
     <div block-ui="spinner" ng-app="App" class="block-ui-main">
-        <appheader ng-if="headerVisible == true && (state !==  null && state.name !== 'Login')" ></appheader>
+        <appheader ng-if="headerVisible == true && (state !==  null && state.name !== 'Login' && state.name !== 'ReportVisor')"></appheader>
         <div>
             <toast></toast>
             <div ui-view ng-cloak></div>
@@ -49,10 +51,10 @@
     <script src="/lib/angular-ui-router/release/angular-ui-router.min.js"></script>
     <script src="/lib/angular-powerbi/dist/angular-powerbi.js"></script>
     <script src="/lib/moment/moment.js"></script>
-    <script src="/lib/ngtoast/dist/ngToast.min.js"></script>   
+    <script src="/lib/ngtoast/dist/ngToast.min.js"></script>
     <script src="/lib/angular-widget-grid/angular-widget-grid.min.js"></script>
 
- 
+
     <!-- inject:dev:js -->
     <!-- the rest of the *.js files will be injected here -->
     <!-- endinject -->
@@ -60,4 +62,5 @@
 
 
 </body>
+
 </html>
