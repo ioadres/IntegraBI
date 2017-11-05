@@ -1,9 +1,8 @@
-
 <style>
     body {
         background: inherit;
     }
-
+    
     .grid-header-viewer {
         width: 299px;
         position: fixed;
@@ -15,11 +14,12 @@
         padding: 5px;
         color: #eee;
     }
-    .grid-header-viewer h5{
+    
+    .grid-header-viewer h5 {
         margin: 0px;
         color: #eee;
     }
-
+    
     .grid-viewer {
         max-width: 100%;
         height: 98vh;
@@ -29,8 +29,8 @@
         z-index: 1;
         padding-top: 31px;
     }
-
-    .grid-viewer .grid-panel-viewer {        
+    
+    .grid-viewer .grid-panel-viewer {
         max-width: 100%;
         height: 100%;
         overflow-x: auto;
@@ -38,31 +38,41 @@
         position: relative;
         transition: margin .2s ease;
     }
-
+    
     .grid-viewer .grid-panel-viewer .panel {
         width: 3840px;
         height: 2160px;
         border: 1px solid #eee;
         box-shadow: inherit !important;
     }
-    
 </style>
 
+<div ng-if="viewmodel.error == false">
+    <div class="grid-header-viewer">
+        <div class="text-center">
+            <h5>
+                {{viewmodel.name}}
+            </h5>
+        </div>
+    </div>
 
-<div class="grid-header-viewer">
-    <div class="text-center">
-        <h5>
-            {{viewmodel.name}} 
-        </h5>
+    <div class="grid-viewer">
+        <div class="grid-panel-viewer">
+            <wg-grid columns="30" rows="30" class="panel" options="viewmodel.options">
+                <wg-widget ng-repeat="(key, item) in viewmodel.widgets" position="item.position" wg-resizable="" wg-movable="" editable="false">
+                    <iframe style="width:100%;height:100%;" ng-src="{{::viewmodel.getUrlIframe(item)}}" frameborder="0" allowFullScreen="true"></iframe>
+                </wg-widget>
+            </wg-grid>
+        </div>
     </div>
 </div>
 
-<div class="grid-viewer">
-    <div class="grid-panel-viewer">
-        <wg-grid columns="30" rows="30" class="panel" options="viewmodel.options">
-            <wg-widget ng-repeat="(key, item) in viewmodel.widgets" position="item.position" wg-resizable="" wg-movable="" editable="false">                
-                <iframe style="width:100%;height:100%;" ng-src="{{::viewmodel.getUrlIframe(item)}}" frameborder="0" allowFullScreen="true"></iframe>
-            </wg-widget>
-        </wg-grid>
+<div class="grid-viewer" ng-if="viewmodel.error == true">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="alert alert-danger">
+                <strong>Sin acceso!</strong> - Error al cargar el reporte. Contacte con el administrador.
+            </div>
+        </div>
     </div>
 </div>

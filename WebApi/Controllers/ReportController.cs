@@ -5,19 +5,23 @@ using System.Linq;
 using System.Threading.Tasks;
 using Common;
 using System.Collections.Generic;
+using System;
 
 namespace WebApi.Controllers
 {
-    [Authorize(Policy = "Base")]
+    [AllowAnonymous]
     [Route("api/[controller]")]
     public class ReportController : Controller
     {
         private IReportService _report;
-        public ReportController(IReportService _report)
+        private ITokenReportService _tokenReport;
+        public ReportController(IReportService _report, ITokenReportService tokenReport )
         {
             this._report = _report;
+            this._tokenReport = tokenReport;
         }
 
+        [Authorize(Policy = "Base")]
         // GET api/values   
         [HttpPost("Add")]
         public async Task<ReportDto> Add([FromBody]ReportDto model)
@@ -37,6 +41,7 @@ namespace WebApi.Controllers
             return null;
         }
 
+        [Authorize(Policy = "Base")]
         // GET api/values   
         [HttpPost("GetReports")]
         public async Task<IEnumerable<ReportDto>> GetReports()
@@ -46,6 +51,7 @@ namespace WebApi.Controllers
             return result.OrderByDescending(x=>x.DateCreated);
         }
 
+        [Authorize(Policy = "Base")]
         // GET api/values   
         [HttpPost("Get")]
         public async Task<ReportDto> Get([FromBody] int reportId)
@@ -54,7 +60,26 @@ namespace WebApi.Controllers
             var result = await this._report.Get(reportId);
             return result;
         }
+  
+        [HttpPost("GetVisor")]
+        public async Task<ReportDto> GetVisor([FromBody] TokenDto token)
+        {
+            try {
+                var uidt = Guid.Parse(token.Id);
+                var tokenReport = await this._tokenReport.Get(uidt);
+                if(tokenReport != null) {
+                    if (await _tokenReport.Valid(tokenReport.Email, tokenReport.ReportId, tokenReport.DateStart, tokenReport.DateEnd)) {
+                        return await this._report.Get(tokenReport.ReportId);
+                    }
+                }      
+            }    catch(Exception e) {
+                
+            }     
+            return null;
+        }
 
+
+        [Authorize(Policy = "Base")]
         // GET api/values   
         [HttpPost("SendReport")]
         public async Task<bool> SendReport([FromBody] SendReportDto report)
@@ -64,6 +89,7 @@ namespace WebApi.Controllers
             return result;
         }
 
+        [Authorize(Policy = "Base")]
         // GET api/values   
         [HttpPost("Update")]
         public async Task<ReportDto> Update([FromBody]ReportDto model)
@@ -83,6 +109,7 @@ namespace WebApi.Controllers
             return null;
         }
 
+        [Authorize(Policy = "Base")]
         // GET api/values   
         [HttpPost("Remove")]
         public async Task<bool> Remove([FromBody] int reportId)

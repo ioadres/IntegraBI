@@ -27,8 +27,14 @@ namespace Service
         public async Task<bool> Remove(string email, int reportId) {
             return await _report.Remove(email, reportId);
         }
+
         public async Task<bool> Valid(string email, int reportId, DateTime  dateStart, DateTime dateEnd) {
             return await _report.Valid(email, reportId,dateStart,dateEnd);
-        }    
+        }  
+
+        public async Task<TokenReport> Get(Guid Id)
+        {
+            return await _report.Load(Id);
+        }
     }
 }

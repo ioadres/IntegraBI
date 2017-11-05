@@ -1,27 +1,45 @@
 ﻿<Properties StartupConfiguration="{9C6B6BE5-4EDA-4B3B-94F7-AA4C758DD669}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Service/ReportService.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="WebApi/Controllers/ReportController.cs">
     <Files>
-      <File FileName="WebApp/App/Module/Login/ViewModel/Login.ViewModel.js" Line="37" Column="45" />
-      <File FileName="WebApp/App/Module/Login/Service/Login.Service.js" Line="25" Column="69" />
-      <File FileName="WebApp/App/Common/ngAuth.js" Line="15" Column="91" />
+      <File FileName="WebApi/Controllers/ReportController.cs" Line="12" Column="21" />
+      <File FileName="WebApi/Controllers/UserController.cs" Line="1" Column="1" />
+      <File FileName="Service/TokenReportService.cs" Line="32" Column="1" />
       <File FileName="WebApi/appsettings.json" Line="17" Column="1" />
-      <File FileName="WebApi/Startup.Auth.cs" Line="77" Column="8" />
-      <File FileName="WebApi/Auth/TokenProviderMiddleware.cs" Line="87" Column="30" />
-      <File FileName="WebApi/Auth/TokenProviderOptions.cs" Line="14" Column="17" />
-      <File FileName="Service/ReportService.cs" Line="58" Column="18" />
+      <File FileName="WebApi/appsettings.Development.json" Line="1" Column="1" />
+      <File FileName="WebApi/Auth/TokenProviderMiddleware.cs" Line="41" Column="1" />
+      <File FileName="Repository/TokenReportRepository.cs" Line="52" Column="1" />
+      <File FileName="Service/ReportService.cs" Line="86" Column="48" />
+      <File FileName="Service.Contracts/IReportService.cs" Line="16" Column="52" />
+      <File FileName="Common/Model/TokenDto.cs" Line="7" Column="25" />
+      <File FileName="Common/Model/ChartDto.cs" Line="30" Column="1" />
+      <File FileName="WebApi/Auth/AuthPolicy.cs" Line="1" Column="1" />
+      <File FileName="WebApi/Controllers/ReportBotController.cs" Line="11" Column="21" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="IntegraBI" expanded="True">
-            <Node name="2 - Service" expanded="True">
-              <Node name="Service" expanded="True">
-                <Node name="Dependencies" expanded="True">
-                  <Node name="PackageDependencies" expanded="True" />
-                  <Node name="ProjectDependencies" expanded="True" />
-                  <Node name="SdkDependencies" expanded="True" />
+            <Node name="1 - Presentation" expanded="True">
+              <Node name="WebApi" expanded="True">
+                <Node name="Auth" expanded="True" />
+                <Node name="Controllers" expanded="True">
+                  <Node name="ReportController.cs" selected="True" />
                 </Node>
-                <Node name="ReportService.cs" selected="True" />
+              </Node>
+            </Node>
+            <Node name="2 - Service" expanded="True">
+              <Node name="Service" expanded="True" />
+              <Node name="Service.Contracts" expanded="True" />
+            </Node>
+            <Node name="3 - Repository" expanded="True">
+              <Node name="Repository" expanded="True" />
+              <Node name="Repository.Contracts" expanded="True">
+                <Node name="Helper" expanded="True" />
+              </Node>
+            </Node>
+            <Node name="5 - Common" expanded="True">
+              <Node name="Common" expanded="True">
+                <Node name="Model" expanded="True" />
               </Node>
             </Node>
           </Node>

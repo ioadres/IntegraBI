@@ -51,9 +51,12 @@
 
         viewmodel.prototype.get = function() {
             var self = this;
+            self.error = false;
             ngLoadRequest.startBlock();
             self.service.get(self.reportId).then(function(result) {
-                if (result.data == "") {} else {
+                if (result.data == "") {
+                    self.error = true;
+                } else {
                     self.name = result.data.name;
                     if (result.data.json != "") {
                         self.widgets = JSON.parse(result.data.json);

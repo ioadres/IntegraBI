@@ -50,7 +50,7 @@ namespace Service
             };
         }
 
-        public static async Task SendSimpleMessageAsync(Report report, String mail)
+        public static async Task SendSimpleMessageAsync(Report report, String mail, Guid token)
         {
             var uri = new Uri("https://api.mailgun.net/v3");
             RestClient client = new RestClient
@@ -66,7 +66,7 @@ namespace Service
             request.AddParameter("from", "Mailgun Sandbox <postmaster@sandbox76e17c68ed47448b8e88b30821388d09.mailgun.org>");
             request.AddParameter("to", mail);
             request.AddParameter("subject", "Permisos para visualizar el reporte "+ report.Name );
-            request.AddParameter("html","<div style='border: 1px solid #eee;padding: 10px;width: 300px;background: #eee;'><h1 style='margin: 0px;border-bottom: 1px solid #ffffff;'>Reporte "+report.Name+"</h1><br><p>Se ha concedido un día de acceso al reporte, acceda desde este <a href='' style='color: #51afea;'>link</a></p></div>");
+            request.AddParameter("html","<div style='border: 1px solid #eee;padding: 10px;width: 300px;background: #eee;'><h1 style='margin: 0px;border-bottom: 1px solid #ffffff;'>Reporte "+report.Name+"</h1><br><p>Se ha concedido un día de acceso al reporte, acceda desde este <a href='http://integrabi.azurewebsites.net/#/Report/Visor/?id="+token.ToString()+"' style='color: #51afea;'>link</a></p></div>");
 
             request.Method = Method.POST;
             var result = client.ExecuteAsync(request, null);
@@ -87,8 +87,8 @@ namespace Service
                             ReportId = reportId,
                         };
                         await _tokenReport.Remove(tokenReportDto.Email, reportId);
-                        await _tokenReport.Add(tokenReportDto);
-                        await SendSimpleMessageAsync(report,email_a[i]); 
+                        var token = await _tokenReport.Add(tokenReportDto);
+                        await SendSimpleMessageAsync(report,email_a[i],token.Id); 
                     }                                  
                 });
             return true;
