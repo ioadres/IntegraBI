@@ -453,7 +453,8 @@ namespace Repository.Contracts.Helper
         public virtual bool DeleteList(ICollection<TEntity> entity, bool saveChanges = true, bool useTransaction = false)
         {
             try {
-                foreach (var item in entity)
+                var items = entity.ToList();
+                foreach (var item in items)
                 {
                     Delete(item, saveChanges, useTransaction);
                 }
