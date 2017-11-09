@@ -25,7 +25,7 @@
 
                     $rootScope.state = toState;
                     $rootScope.headerVisible = true;
-                    blockUIConfig.message = "Un momentito"; //$rootScope.translation.LabelMomento;
+                    blockUIConfig.message = "Cargando..."; //$rootScope.translation.LabelMomento;
 
                     //### Cuando es un pagina huesped y es la pantalla de login --> deslogueamos
                     if (self.guestAccess(toState.data) && toState.name == 'Login') {
