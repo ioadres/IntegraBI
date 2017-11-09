@@ -15,6 +15,7 @@
             self.user = {
                 rol : {}
             };
+            self.user.lock = false;
             self.scope = $scope;
             self.passwordValidate = true;          
             self.runValidation();

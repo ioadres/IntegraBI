@@ -14,10 +14,12 @@ namespace Repository
     {
         private IChartRepository _chartRepo;
         private IReportRepository _reportRepo;
-		public UserRepository(AppDbContext context, IChartRepository chartRepo, IReportRepository reportRepo) : base(context)
+        private ITokenReportRepository _reportTokenRepo;
+		public UserRepository(AppDbContext context, IChartRepository chartRepo, IReportRepository reportRepo, ITokenReportRepository tokenReport) : base(context)
         {
             _chartRepo = chartRepo;
             _reportRepo = reportRepo;
+            _reportTokenRepo = tokenReport;
 		}
 
         public override async Task<UserDto> Add(UserDto model)
@@ -69,8 +71,13 @@ namespace Repository
         public override bool Remove(int userId)
         {                 
             var entity = this.Context.User.Include(x=>x.Chart).Include(x=>x.Report).Where(x=> x.Id == userId).FirstOrDefault();
+            foreach (var item in entity.Report)
+            {
+                _reportTokenRepo.Remove(item.Id);
+            }            
             _chartRepo.RemoveList(entity.Chart);
             _reportRepo.RemoveList(entity.Report);
+            
             return this.Delete(entity, true);  
         }
 
